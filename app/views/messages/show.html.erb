@@ -1,0 +1,36 @@
+<div class="offset0 hero-unit">
+  <h2>Message</h2>
+  <p><%= link_to @message.sender.username, @message.sender %> 
+     --> <%= link_to @message.user.username, @message.user %><br>
+<div class="msg-padding">
+<% line_breaks(@message.content).each do |m| %>
+  <%= m %><br>
+<% end %>
+</div>
+<br>
+<p>
+
+<% if @message.user == current_user %>
+<% if @message.read == false %>
+	<%= form_for @message do |f| %>
+	<%= f.hidden_field(:read, :value => true) %>
+	<b><%= f.submit "mark as read", :class => "btn btn-primary" %></b>
+	<% end %>
+<% else %>
+	<%= form_for @message do |f| %>
+	<%= f.hidden_field(:read, :value => false) %>
+	<%= f.submit "mark as unread", :class => "btn" %>
+    <% end %>
+<% end %>
+<%= link_to "delete |", message_path(@message), :method => :delete  %>
+<%= link_to "back to inbox |", user_messages_path(current_user) %>
+<% else %>
+<%= link_to "reply |", new_user_message_path(@message.sender) if current_user == @message.user %>
+<%= link_to "edit |", edit_message_path(@message) if current_user == @message.sender %>
+<%= link_to "back to user |", @message.user if @message.sender == current_user %>
+
+<% end %>
+<%= link_to "profile", current_user %>
+
+</p>
+<div>

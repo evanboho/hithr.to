@@ -1,0 +1,26 @@
+<div class="hero-unit">
+<h2>sign up</h2>
+<%= session["devise.omniauth"] %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  
+  <div><%= f.label :firstname, "first name:" %>
+  <%= f.text_field :firstname %></div>
+  <div><%= f.label :lastname, "last name:" %>
+  <%= f.text_field :lastname %></div>
+  
+  <div><%= f.label :email, "email:" %>
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password, "password:" %>
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation, "confirm password:" %>
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "sign up", :class => "btn btn-primary" %></div>
+<% end %>
+
+<%= render "shared/links" %>
+
+</div>

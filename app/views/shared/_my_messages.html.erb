@@ -1,0 +1,12 @@
+
+<tr>
+	<td class="center"><h3>- unread messages (<%= @user.messages.unread.count %>) -</h3><br></td>
+</tr>
+<% if @user.messages.present? %>
+	<% current_user.messages.my_messages.each do |msg| %>
+	  <%= render 'messages/message', :msg => msg %>
+	<% end %>
+<% else %>
+<tr><td class="center">you have no messages<br>
+<%= link_to "see all messages", user_messages_path(@user) %><br></tr>
+<% end %>

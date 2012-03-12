@@ -1,0 +1,28 @@
+<div class="hero-unit shadow-down">
+  <h2 class="">message inbox</h2>
+</div
+<hr>
+<div class="span4">
+<table class="tble shadow">
+<tr><th>
+Unread Messages:</tr>
+<% @message.each do |msg| %>
+  
+  <%= render 'messages/message', :msg => msg %>
+  
+<% end %>
+</table>
+<table class="tble table-bordered shadow">
+
+
+<hr>
+<tr><th>
+Read Messages:</tr>
+<% @message_read.each do |msg| %>
+  
+  <%= render 'messages/message', :msg => msg %>
+  
+<% end %>
+</table>
+</div>
+</div>

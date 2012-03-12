@@ -1,0 +1,7 @@
+<div class="hero-unit">
+  <h2>profile</h2>
+    <p>knowing is half the battle.</p>
+  <%= form_for [@user, @profile], :html => { :multipart => true } do |f| %>
+    <%= render 'fields', :f => f %>
+  <% end %>
+</div>

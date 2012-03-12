@@ -1,0 +1,9 @@
+<h2>write a message</h2>
+
+from <%= link_to current_user.username, current_user %> to <%= link_to @user.username, @user %><br>
+
+<%= form_for [@user, @message] do |f| %>
+
+<%= render 'fields', :user => @user, :f => f  %>
+ <%= f.submit "send" %>
+<% end %>

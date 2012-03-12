@@ -1,0 +1,8 @@
+<div class="hero-unit">
+  <%= image_tag @profile.avatar.url(:thumb) unless @profile.avatar_file_name.blank? %>
+  <h2>public profile</h2>
+    <p>sharing is caring</p>
+  <%= form_for @profile, :html => {:multipart => true, :class=> "form-inline"} do |f| %>
+    <%= render 'fields', :f => f %>
+  <% end %>
+</div>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  seats_available: 1
+  cost: 1
+  radio: MyString
+  smoking: 1
+  bikes: 1
+  message: MyText
+  confirmed_riders: MyString
+  ride_id: 1
+
+two:
+  seats_available: 1
+  cost: 1
+  radio: MyString
+  smoking: 1
+  bikes: 1
+  message: MyText
+  confirmed_riders: MyString
+  ride_id: 1

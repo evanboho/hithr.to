@@ -1,0 +1,13 @@
+<tr> 
+  <td class="">
+    <div class="center">
+	 <u><%= link_to ("#{msg.sender.username}  -->  #{msg.user.username} - #{msg.msg_time}"), msg %></u><br>
+
+	<p class="well"><em><%= truncate(msg.content, :length => 40) %></em>
+	</p>
+	</div>
+	<% if current_user == msg.sender || current_user == msg.user %>
+    <% end %>
+    </div>
+  </td>
+</tr>

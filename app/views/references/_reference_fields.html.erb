@@ -1,0 +1,26 @@
+from <%= link_to current_user.username, current_user %> to <%= link_to @user.username, @user %><br>
+
+<%= form_for [@user, @reference] do |f| %>
+
+<% if @reference.errors.any? %>
+
+  <div id="error_explanation">
+    <h2><%= pluralize(f.object.errors.count, "error") %> 
+        prohibited this <%= f.object.class.to_s.underscore.humanize.downcase %> 
+        from being saved:</h2>
+    <p>There were problems with the following fields:</p>
+    <ul>
+    <% @reference.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+	
+	<%= f.label :content, "message:" %>
+	<%= f.text_area :content, :class => "text_area"%><br>
+	<%= f.select(:positive, options_for_select([['super!', 2],['fine!', 1],['OK', 0],['sort of awk', -1],['negative', -2]]))%>
+	<%= f.submit %>
+	
+<% end %>

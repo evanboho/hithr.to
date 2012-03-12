@@ -1,0 +1,9 @@
+<h2>edit your message</h2>
+from <%= current_user.username %> to <%= link_to @user.username, @user  %><br>
+
+
+<%= form_for @message do |f| %>
+
+<%= render 'fields', :f => f %>
+<%= f.submit "update" %>
+<% end %>

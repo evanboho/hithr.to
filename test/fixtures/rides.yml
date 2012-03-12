@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_city: MyString
+  start_state: MyString
+  latitude: 1.5
+  longitude: 1.5
+  end_city: MyString
+  end_state: MyString
+  bearing: 1.5
+  trip_distance: 1.5
+  go_time: 2012-03-09 18:20:28
+  user_id: 1
+
+two:
+  start_city: MyString
+  start_state: MyString
+  latitude: 1.5
+  longitude: 1.5
+  end_city: MyString
+  end_state: MyString
+  bearing: 1.5
+  trip_distance: 1.5
+  go_time: 2012-03-09 18:20:28
+  user_id: 1

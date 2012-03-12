@@ -1,0 +1,45 @@
+<%= form_for(@ride) do |f| %>
+  <% if @ride.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
+
+      <ul>
+      <% @ride.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+<tr>
+  <td colspan="1">
+    <%= f.label :start_city, "From:" %>
+    <%= f.text_field :start_city, :class => "text_field" %> 
+ <%= state_select(f, :start_state) %>
+  </td>
+  <td colspan="1">
+    <%= f.label :end_city, "To:" %>
+    <%= f.text_field :end_city, :class => "text_field" %> 
+ <%= state_select(f, :end_state) %><br/>
+  </td>
+
+</tr>
+<tr>
+  <td>
+    <%= f.label :go_time, "On:" %>
+    <%= f.date_select(:go_time, 
+        					:order => [:month, :day], 
+     					    :ampm => true, 
+      				    :minute_step => 15
+      				    ) %> 
+  </td>
+  <td colspan="1">
+    <%= f.label :go_time, "At:" %>
+    <%= f.time_select(:go_time,
+     					    :ampm => true, 
+      				    :minute_step => 15
+      				    ) %> 
+  </td>
+</tr>
+</table>
+<% end %>

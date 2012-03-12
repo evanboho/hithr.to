@@ -1,0 +1,13 @@
+<h1>Editing ride</h1>
+
+<%= form_for @ride do |f| %>
+  <div class="hero-unit"
+  <%= render 'form', :f => f %>
+  <div class="actions">
+    <%= f.submit "continue" %>
+  </div>
+</div>
+<% end %>
+
+<%= link_to 'Show', @ride %> |
+<%= link_to 'Back', rides_path %>

@@ -1,0 +1,3 @@
+<% @user.messages.each do |msg| %>
+  ERROR<% render 'messages/message', :msg => msg %>
+<% end %>

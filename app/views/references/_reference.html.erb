@@ -1,0 +1,25 @@
+<% @user.references.each do |msg| %>
+<tr> 
+  <td>
+    <div class="center">
+	<u><%= link_to "from: #{msg.sender.username}", msg.sender %></u><br>
+	</div>
+	<p class="well center">
+	<% if msg.positive > 0 %>
+	  <span class="label label-positive">
+	<% elsif msg.positive == 0 %>
+	  <span class="label label-neutral">
+	<% else %>
+	  <span class="label label-warning">
+	<% end %>
+	<%= msg.positive_exp? %></span><br>
+      <em><%= msg.content %></em>
+    <% if msg.sender == current_user %>
+	<br><%= link_to "delete", reference_path(msg), :method => :delete %>
+	<% end %>
+	</p>
+	</div>
+	
+  </td>
+</tr>
+<% end %>

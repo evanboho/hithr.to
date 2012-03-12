@@ -1,0 +1,68 @@
+<div class="row">
+	<div class="hero-unit span8 user-profile">
+		<table class="shadow tble">
+		  <tr>
+		    <td>
+		      <%= link_to (image_tag @user.profile.avatar.url(:small)), 
+							@user.profile.avatar.url(:medium) if @user.profile.avatar_file_name.present?  %></td>
+		    <td><h1><%= @user.username %></h1>
+		      <%= link_to "(edit your public profile)", edit_profile_path(@user) if @user == current_user %><br><br></td>
+		    <td rowspan="1" class="btn-large" >
+			  <h2 class="cred">cred: <%= cred_magic(@user.profile.cred) %></h2>
+		  </tr>
+		  <tr>
+		    <td class="padding" colspan="2">
+		      <%= "age: #{distance_in_years(@user.profile.birthday)}" if @user.profile.birthday.present? %><br>
+		      <%= "gender: #{@user.profile.gender}" if @user.profile.gender.present? %><br>
+		      <%= "lives in: #{@user.profile.hometown}" if @user.profile.hometown.present? %><br><br></td>
+		  </tr>
+		  <tr>
+			<td class="bio" colspan="3">
+		      <% if @user.profile.about.present? %>
+			    <strong>bio:</strong><br>
+		          <%= @user.profile.about %>
+		      <% else %>
+		      This person has not filled out their bio yet.
+	          <% end %>
+	        </td></tr><tr>
+		   
+	      </tr>
+	      <tr>
+		    <td class="padding" colspan="2"><br>
+		      <% if @user.authentications.present? %>
+		      connected through:<br/>
+		        <% @user.authentications.each do |auth| %>
+		          <%= link_to (image_tag "#{auth.provider}_64.png"), auth_link(auth), :class => "auth_provider" %>
+		        <% end %>
+		      <% end %>
+		    </td>
+		  </tr>
+		</table>
+		<% if @user == current_user %>
+		  <table class="tble shadow-down profile"><tr>	  
+		    <td><b>private profile:</b>
+		  <%= link_to "(edit)", edit_user_registration_path(@user) %>	  
+		  <br>
+		  <strong>name: </strong><%= "#{@user.firstname.titleize} #{@user.lastname.titleize}" %><br>
+		  <strong>email: </strong><%= "#{@user.email}"  %><br>
+		  <strong>birthday: </strong><%= @user.profile.birthday.strftime("%B %d, %Y") if @user.profile.birthday.present? %><br>
+		  </td></tr>
+		  </table>
+		  </p>
+		<% else #not current_user %>
+		  <p></p>
+		<% end %>
+	</div>
+	<div class="span4 pull-right"><br>
+   		  <% if current_user %>
+            <table class="messages shadow span4 table-striped">
+		      <% if @user == current_user %>
+		        <%= render 'shared/my_messages', :user => @user %>
+		      <% else %>
+		  	    <%= render 'shared/mutual_messages', :user => @user %>
+		      <% end %>
+		  <% end %>
+		    <%= render 'shared/my_references', :user => @user %>
+	  	  </table>
+	</div>
+</div>

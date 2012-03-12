@@ -1,0 +1,22 @@
+<header></header>
+<div class="center hero-unit">
+  <h1>hithr.to</h1>
+  <p>helping people move together</p>
+<% if !current_user %>
+
+<%= link_to "sign in", new_user_session_path, :class => "btn btn-primary" %>
+<%= link_to "sign up", new_user_registration_path, :class => "btn" %><br><br>
+
+<% else %>
+
+<br><%= link_to "post a ride", new_ride_path, :class => "btn btn-large" if current_user %>
+
+<% end %>
+<%= link_to "see rides", rides_path, :class => "btn btn-primary btn-large" %>
+
+
+</div>
+<div class="hero-unit center">
+<p><strong>connect with:</strong><br>
+<%= render 'layouts/create_authentications' %></p>
+</div>
