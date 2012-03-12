@@ -1,7 +1,6 @@
 class RidesController < ApplicationController
 
   def index
-    #criteria = make_criteria
     @rides = Ride.paginate(:page => params[:page], :per_page => 15).search(make_criteria).reorder('go_time ASC')
     if @rides.blank?
       flash.now[:notice] = "No rides matched your results. Try increasing the search radius."    
@@ -80,6 +79,9 @@ class RidesController < ApplicationController
   # POST /rides.json
   def create
     @ride = current_user.rides.build(params[:ride])
+    # @ride.go_time.month = params[:go_date].month
+    # @ride.go_time.day = params[:go_date].day
+    
     if @ride.save
       flash[:success] = "So far so good..."
       redirect_to new_ride_detail_path(@ride)

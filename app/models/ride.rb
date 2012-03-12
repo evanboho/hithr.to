@@ -2,6 +2,7 @@ class Ride < ActiveRecord::Base
   
   belongs_to :user
   has_one :detail, :dependent => :destroy
+  attr_accessor :go_date
   
   
   validates :user_id, :presence => true

@@ -14,31 +14,28 @@
 <tr>
   <td colspan="1">
     <%= f.label :start_city, "From:" %>
-    <%= f.text_field :start_city, :class => "text_field" %> 
+    <%= f.text_field :start_city, :class => "text_field", :placeholder => "(city)" %> 
  <%= state_select(f, :start_state) %>
   </td>
   <td colspan="1">
     <%= f.label :end_city, "To:" %>
-    <%= f.text_field :end_city, :class => "text_field" %> 
+    <%= f.text_field :end_city, :class => "text_field", :placeholder => "(city)" %> 
  <%= state_select(f, :end_state) %><br/>
   </td>
 
 </tr>
 <tr>
   <td>
-    <%= f.label :go_time, "On:" %>
+    <%= f.label :date, "On:" %>
     <%= f.date_select(:go_time, 
         					:order => [:month, :day], 
-     					    :ampm => true, 
-      				    :minute_step => 15
+      				    	:style => "width:60px" 
       				    ) %> 
   </td>
   <td colspan="1">
-    <%= f.label :go_time, "At:" %>
-    <%= f.time_select(:go_time,
-     					    :ampm => true, 
-      				    :minute_step => 15
-      				    ) %> 
+    <%= f.label :time, "At:" %>
+    <%= go_time_select(f, :go_time) %>
+    <%= go_time_min_select(f, :go_time) %> 
   </td>
 </tr>
 </table>
