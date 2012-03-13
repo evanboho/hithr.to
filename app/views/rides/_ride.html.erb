@@ -1,20 +1,25 @@
 <tr>
-  <td class="date day">
-    <%= link_to "#{ridetime(ride)[0]} #{ridetime(ride)[1]} #{ridetime(ride)[2]}", ride %>
-  </td>
-  <td class="gravatar">
-    <%= link_to (image_tag ride.user.profile.avatar.url(:thumb)), ride.user %>
+  
+  <td class="avatar">
+	<% if ride.user.profile.avatar_file_name.present? %>
+    <%= link_to (image_tag ride.user.profile.avatar.url(:thumb), :size => "30x30"), ride.user %>
+    <% else %>
+    <%= link_to (image_tag 'anon.png'), ride.user %>
+    <% end %>
   </td>
   <td class="user">
 
     <%= link_to ride.user.username, ride.user %> 
+  </td>
+  <td class="date day">
+    <%= link_to "#{ridetime(ride)[0]} #{ridetime(ride)[1]} #{ridetime(ride)[2]}", ride %>
   </td>
   <td class="cities">
     <strong>
     <%= "#{ride.start_city}, #{ride.start_state}" %>
     </strong> 
   </td>
-  <td>
+  <td class="span1">
     to 
   </td>
   <td>
@@ -22,7 +27,7 @@
     <%= "#{ride.end_city}, #{ride.end_state}" %>
     </strong> 
   </td>
-  <td class="alt timestamp">
+  <td class="alt span2">
     <%= time_ago_in_words(ride.created_at) %> 
     ago.
   </td>

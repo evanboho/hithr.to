@@ -1,16 +1,18 @@
+
 <td colspan="2">
 <%= form_tag rides_path, :method => 'get' do %>
-<% @search_date ||= Date.today %>
-<%= select_date @search_date, {:prefix => :search_date,
-                            :order => [:month, :day]}, {:class => "auto"} %>
-</td>
+<%= select_tag(:miles_radius, options_for_select([['search radius', 0], ['10 miles', 10], ['20 miles', 20], ['30 miles', 30], ['40 miles', 40]], params[:miles_radius]), :class => "auto") %>
 <td>
-+<%= select_tag(:miles_radius, options_for_select([0, 10, 20, 30, 40], params[:miles_radius]), :class => "auto") %>
+<% @search_date = get_search_date %>
+<%= select_date @search_date, {:order => [:month, :day]}, {:class => "auto"} %>
 </td>
+
 <td colspan="2">
-<% seed_city ||= request.location.city %>
+
+<% seed_city = params[:search_start] ||= request.location.city %>
 <%= text_field_tag :search_start, seed_city, 
                                           :placeholder => "city, state", :class => "span2" %>
+
 </td>
 <td>					
 <%= text_field_tag :search_end,
@@ -19,6 +21,7 @@
 </td>
 <td>
 
-<%= submit_tag "Search", :name => nil %>
+<%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+
 <% end %>
 </td>

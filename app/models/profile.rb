@@ -13,6 +13,7 @@ class Profile < ActiveRecord::Base
   before_save :clean_up_city
   
   def clean_up_city
+    if self.hometown?
     c_s = self.hometown.split(',')
     c = c_s.first.try(:titleize).try(:strip)
     if c_s.count > 1
@@ -22,6 +23,7 @@ class Profile < ActiveRecord::Base
       c_s = c
     end
     self.hometown = c_s
+    end
   end
   
 end

@@ -9,10 +9,10 @@ class RidesController < ApplicationController
    
   def make_criteria
     criteria = {}
-    if params[:search_date].present?
-      @start_date = make_date
+    if params[:date].present?
+      search_date = make_date
     end
-    criteria[:search_date] = @start_date ||= Date.today
+    criteria[:search_date] = search_date ||= Date.today
     if params[:search_end].present?
       criteria[:search_end_city] = get_city(params[:search_end])
       criteria[:search_end_state] = get_state(params[:search_end])
@@ -26,7 +26,7 @@ class RidesController < ApplicationController
   end
    
   def make_date
-    Date.civil(params[:search_date][:year].to_i, params[:search_date][:month].to_i, params[:search_date][:day].to_i)
+    Date.civil(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i)
   end
    
   def get_user_ip

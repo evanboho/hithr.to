@@ -7,21 +7,19 @@
 <% unless @rides.blank? %>
 
 <div class="small-container">
-<table class="table table-striped round shadow-down">
+<table class="table table-condensed round shadow-down">
 	<thead>
-	<tr class="round"><th colspan="1">
+	<tr class="round"><th colspan="2">
+		</th><th class="date">
 		On:
-		</th><th colspan="2">
-		Driver:
 		</th><th colspan="2">
 		From:
     	</th><th>
 	    To:
  		</th><th>
-	    Posted:
 	</tr>
 	</thead>
-	<tr><%= render 'shared/ride_search' %>
+	<tr class="gray"><%= render 'shared/ride_search' %>
 	</tr>
     <%= render @rides %>
 </table>

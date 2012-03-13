@@ -3,8 +3,12 @@
 		<table class="shadow tble">
 		  <tr>
 		    <td>
+			  <% if @user.profile.avatar_file_name.present? %>
 		      <%= link_to (image_tag @user.profile.avatar.url(:small)), 
-							@user.profile.avatar.url(:medium) if @user.profile.avatar_file_name.present?  %></td>
+							@user.profile.avatar.url(:medium) %>
+			  <% else %>
+			  <%= image_tag 'anon.png', :size => "100x100"%>
+			  <% end %></td>
 		    <td><h1><%= @user.username %></h1>
 		      <%= link_to "(edit your public profile)", edit_profile_path(@user) if @user == current_user %><br><br></td>
 		    <td rowspan="1" class="btn-large" >

@@ -3,7 +3,7 @@
   <h1><%= "Where to, #{current_user.firstname.humanize}?"%></h1>
 </div>
 <%= form_for @ride do |f| %>
-  <div class="hero-unit"
+  <div class="small-container">
   <%= render 'form', :f => f %>
   <div class="actions">
     <%= f.submit "continue" %>
