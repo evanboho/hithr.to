@@ -22,10 +22,18 @@ class DetailsController < ApplicationController
   end
   
   def edit
-    
+    @ride = Ride.find(params[:id])
+    @detail = @ride.detail
   end
   
   def update
+    @detail = Detail.find(params[:id])
+    if @detail.update_attributes(params[:detail])
+      flash[:notice] = "success"
+      redirect_to 
+    else
+      render 'edit'
+    end
   end
   
   def destroy

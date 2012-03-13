@@ -6,7 +6,7 @@
 	<%= f.select(:gender, options_for_select(['woman', 'man', 'human', 'traveller'], @profile.gender)) %><br>
 	
 	<%= f.label :hometown, "current city:" %><br>
-	<%= f.text_field :hometown %><br>
+	<%= f.text_field :hometown, :placeholder => "(city, state)" %><br>
 
 	<%= f.label :about, "bio:" %><br>
 	<%= f.text_area :about, :class => "text_area" %><br><br>
@@ -14,5 +14,5 @@
 	<%= f.label :avatar, "upload new photo:" if @profile.avatar_file_name.present? %><br>
 	<%= f.file_field :avatar %><br><br>
 
-	<%= f.submit %>
+	<%= f.submit "update", :class => "btn btn-primary" %>
 </strong>

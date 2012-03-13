@@ -37,7 +37,7 @@
 		      <li class="no-padding"><%= link_to image_tag(current_user.profile.avatar.url(:thumb)), current_user %></li>
 			<% end %>
 		    <li><%= link_to current_user.username, current_user %></li>	
-	        <li><%= link_to "#{pluralize(current_user.messages.unread.count, 'unread message')}", 
+	        <li><%= link_to "#{pluralize(current_user.messages.unread.count, 'msg')}", 
 					user_messages_path(current_user) if current_user.messages.present? %></li>
 			<li><%= link_to "sign out", sign_out_path, :method => :delete %></li>
 	      <% else %>

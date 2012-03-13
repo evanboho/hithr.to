@@ -1,0 +1,14 @@
+<% provide(:title, "edit") %>
+<div class="hero-unit"><h1>edit ride details</h1></div>
+
+
+<%= form_for @detail do |f| %>
+  <table class="options form round shadow_down">
+    <%= render '/details/fields', :f => f %>
+    <tr>
+	  <td align="right">
+        <%= f.submit "finish" %>
+      </td>
+    </tr>
+  </table>
+<% end %>

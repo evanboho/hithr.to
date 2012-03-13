@@ -1,5 +1,32 @@
 <%= provide(:title, "#{@ride.start_city} to #{@ride.end_city}") %>
 
+<div class="row">
+	<div class="hero-unit">
+
+	<div class="span2">
+		<%= link_to (image_tag @ride.user.profile.avatar.url(:small)), @ride.user %>
+	      <h2><%= link_to @ride.user.username, @ride.user %></h2>
+	</div>
+	<div class="span4">
+		<h3><%= "#{@ride.start_city}, #{@ride.start_state}" %>
+		  to
+		  <%= "#{@ride.end_city}, #{@ride.end_state}" %>
+		<% unless @ride.detail.nil? %>
+		  $<%= @ride.detail.cost  %>
+	    <% end %>
+	</h3>
+	</div>
+	<div class="span2">
+		<%= link_to "see all rides", rides_path %><br/>
+	      <% if @ride.user == current_user %>
+	        <%= link_to "edit", edit_ride_path(@ride) %><br/>
+		    <%= link_to "delete", @ride, :confirm => "Are you sure?", :method => :delete %>
+	      <% end %>
+	</div>
+</div>
+</div>
+		
+
 <table class="round shadow_up ride">
   <tr><td colspan="5">
 	<div class="hero-unit">

@@ -50,23 +50,12 @@ class RidesController < ApplicationController
     end
   end
 
-  # GET /rides/new
-  # GET /rides/new.json
-  # def new
-  #   @ride = Ride.new
-  # 
-  #   respond_to do |format|
-  #     format.html # new.html.erb
-  #     format.json { render json: @ride }
-  #   end
-  # end
-  
   def new
     @ride = Ride.new
-    # loc = get_user_ip
-    #@ride.start_city = loc.city
-    #@ride.start_state = loc.state_code
-    #@ride.end_state = loc.state_code
+    loc = get_user_ip
+    @ride.start_city = loc.city
+    @ride.start_state = loc.state_code
+    @ride.end_state = loc.state_code
     @ride.go_time = Date.tomorrow + 9.hours
   end
 
@@ -75,13 +64,8 @@ class RidesController < ApplicationController
     @ride = Ride.find(params[:id])
   end
 
-  # POST /rides
-  # POST /rides.json
   def create
     @ride = current_user.rides.build(params[:ride])
-    # @ride.go_time.month = params[:go_date].month
-    # @ride.go_time.day = params[:go_date].day
-    
     if @ride.save
       flash[:success] = "So far so good..."
       redirect_to new_ride_detail_path(@ride)
@@ -94,15 +78,15 @@ class RidesController < ApplicationController
   # PUT /rides/1.json
   def update
     @ride = Ride.find(params[:id])
-
-    respond_to do |format|
-      if @ride.update_attributes(params[:ride])
-        format.html { redirect_to @ride, notice: 'Ride was successfully updated.' }
-        format.json { head :no_content }
+    if @ride.update_attributes(params[:ride])
+      flash[:success] = "So far so good..."
+      unless @ride.detail.nil?
+        redirect_to edit_detail_path(@ride)
       else
-        format.html { render action: "edit" }
-        format.json { render json: @ride.errors, status: :unprocessable_entity }
+        redirect_to new_ride_detail_option_path(@ride)
       end
+    else
+      render 'edit'
     end
   end
 

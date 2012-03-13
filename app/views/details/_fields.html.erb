@@ -1,6 +1,6 @@
 <%= render 'shared/error_messages', :object => f.object %>  
   <tr>
-    <td class="right">
+    <td class="">
       <strong><%= f.label :seats_available, "Seats available:"%></strong>
     </td>
     <td>
@@ -28,13 +28,6 @@
       <%= f.select(:bikes, options_for_select([["No bikes", 0], ["1 bike in the trunk", 1], ["1 bike on a bike rack", 2], ["2 bikes on a bike rack", 2], ["3 bikes on a bike rack", 3]], @detail.bikes)) %>
     </td>
   </tr>
-  <!-- <tr>
-  	<td class="right">
-  	  <strong>Taste in Music/Radio:</strong>
-  	</td>
-      <td> -->
-	  <!-- < f.text_field :music, :placeholder => "(Optional)", :class => "text_field" > -->
-	<!-- </td> -->
 	<td class="right">
 	  <strong>How much?</strong>
 	</td>
