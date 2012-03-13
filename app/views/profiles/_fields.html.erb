@@ -3,7 +3,7 @@
 	<%= f.date_select(:birthday, :order => [:month, :day, :year], :start_year => 1940, :end_year => 1994) %><br>
 	
 	<%= f.label :gender, "gender:" %><br>
-	<%= f.select(:gender, options_for_select(['woman', 'man', 'human', 'traveller'])) %><br>
+	<%= f.select(:gender, options_for_select(['woman', 'man', 'human', 'traveller'], @profile.gender)) %><br>
 	
 	<%= f.label :hometown, "current city:" %><br>
 	<%= f.text_field :hometown %><br>
