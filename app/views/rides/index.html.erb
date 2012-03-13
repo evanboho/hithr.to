@@ -1,13 +1,31 @@
 <% provide :title, "rides" %>
-<h3 class="rides">Rides</h3>
+<div class="small-container">
+<div class="hero-unit">
+<h1>find a ride</h1></div>
 
-<%= render 'shared/ride_search' %>
-
+</div>
 <% unless @rides.blank? %>
 
-<table class="rides shadow_down round">
+<div class="small-container">
+<table class="table table-striped round shadow-down">
+	<thead>
+	<tr class="round"><th colspan="1">
+		On:
+		</th><th colspan="2">
+		Driver:
+		</th><th colspan="2">
+		From:
+    	</th><th>
+	    To:
+ 		</th><th>
+	    Posted:
+	</tr>
+	</thead>
+	<tr><%= render 'shared/ride_search' %>
+	</tr>
     <%= render @rides %>
 </table>
+</div>
 <%= will_paginate %>
 <% else %>
 <br/>
