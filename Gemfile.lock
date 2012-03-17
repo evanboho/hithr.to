@@ -60,6 +60,7 @@ GEM
       multipart-post (~> 1.1)
       rack (~> 1.1)
     geocoder (1.1.1)
+    gravatar_image_tag (1.0.0.pre2)
     hashie (1.2.0)
     hike (1.2.1)
     httparty (0.8.1)
@@ -182,6 +183,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   geocoder
+  gravatar_image_tag (= 1.0.0.pre2)
   jquery-rails
   omniauth-facebook
   omniauth-google-oauth2 (~> 0.1.9)

@@ -1,63 +1,35 @@
-<%= provide(:title, "#{@ride.start_city} to #{@ride.end_city}") %>
+<% provide(:title, "#{@ride.start_city} to #{@ride.end_city}") %>
 
-<div class="row">
-	<div class="hero-unit">
 
-	<div class="span2">
-		<%= link_to (image_tag @ride.user.profile.gravatar(:small)), @ride.user %>
-	      <h2><%= link_to @ride.user.username, @ride.user %></h2>
-	</div>
-	<div class="span4">
-		<h3><%= "#{@ride.start_city}, #{@ride.start_state}" %>
+<div class="hero-unit">
+  <div class="row">
+    <div class="span2">
+      <%= link_to  (gravatar_for @ride.user), @ride.user %>
+      <h2><%= link_to @ride.user.username, @ride.user %></h2>
+      <%=  %>
+    </div>
+    <div class="well span6">
+		<h2><%= "#{@ride.start_city}, #{@ride.start_state}" %>
 		  to
-		  <%= "#{@ride.end_city}, #{@ride.end_state}" %>
-		<% unless @ride.detail.nil? %>
+		  <%= "#{@ride.end_city}, #{@ride.end_state}" %></h2>
+		<h3><% unless @ride.detail.nil? %>
 		  $<%= @ride.detail.cost  %>
 	    <% end %>
 	</h3>
-	</div>
-	<div class="span2">
-		<%= link_to "see all rides", rides_path %><br/>
+    </div>
+	<div class="span2"><p>
+		<%= link_to "all rides", rides_path %><br/>
 	      <% if @ride.user == current_user %>
 	        <%= link_to "edit", edit_ride_path(@ride) %><br/>
 		    <%= link_to "delete", @ride, :confirm => "Are you sure?", :method => :delete %>
 	      <% end %>
+	</p>
 	</div>
+  </div>
 </div>
-</div>
-		
+  
 
-<table class="round shadow_up ride">
-  <tr><td colspan="5">
-	<div class="hero-unit">
-	
-  <table class="plain">
-  <tr>
-    <td colspan="1">
-      
-      <%= link_to (image_tag @ride.user.profile.gravatar(:small)), @ride.user %>
-      <h3><%= link_to @ride.user.username, @ride.user %></h3>
-    </td>
-    <td class="title" colspan="1">
-	  <%= "#{@ride.start_city}, #{@ride.start_state}" %>
-	  to
-	  <%= "#{@ride.end_city}, #{@ride.end_state}" %>
-	</td>
-	<td class="title">
-    <% unless @ride.detail.nil? %>
-	  $<%= @ride.detail.cost  %>
-    <% end %>
-    <td colspan="1">
-      <%= link_to "see all rides", rides_path %><br/>
-      <% if @ride.user == current_user %>
-        <%= link_to "edit", edit_ride_path(@ride) %><br/>
-	    <%= link_to "delete", @ride, :confirm => "Are you sure?", :method => :delete %>
-      <% end %>
-    </td>
-  </tr>
-  </table>
-</div>
-  </td></tr>
+<table>
   <tr>
     <td colspan="3">
 	  Leaving on <%= @ride.go_time.strftime("%A, %B %d at #{@ride.go_time.strftime("%I").to_i}:%M") %>

@@ -1,5 +1,5 @@
 <div class="hero-unit">
-  <%= image_tag @profile.gravatar(:small) %>
+  <%= gravatar_for @profile.user, :small, :size => 100 %>
   <h2>public profile</h2>
     <p></p>
   <%= form_for @profile, :html => {:multipart => true, :class=> "form-inline"} do |f| %>

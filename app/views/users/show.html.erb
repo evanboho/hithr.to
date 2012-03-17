@@ -3,8 +3,8 @@
 		<table class="shadow tble">
 		  <tr>
 		    <td>
-		      <%= link_to (image_tag @user.profile.gravatar(:small)), 
-							@user.profile.avatar.url(:medium) %>
+		      <%= link_to (gravatar_for @user, :small, :size => 100), 
+							avatar_medium %>
 		    <td><h1><%= @user.username %></h1>
 		      <%= link_to "(edit your public profile)", edit_profile_path(@user) if @user == current_user %><br><br></td>
 		    <td rowspan="1" class="btn-large" >

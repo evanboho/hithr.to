@@ -34,6 +34,7 @@ group :assets do
 end
 
 gem 'simple_form'
+gem 'gravatar_image_tag', '1.0.0.pre2'
 
 
 # To use ActiveModel has_secure_password
