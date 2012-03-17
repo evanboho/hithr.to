@@ -1,0 +1,42 @@
+<div class="well">
+  <h4>unread messages:</h4><hr>
+
+<% unless @messages.unread.empty? %>
+  <% @messages.unread.each do |msg| %>
+
+    <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
+
+  <% end %>
+<% else %>
+  <i>no unread messages</i>
+<% end %>
+
+</div>
+<div class="well">
+
+<h4>recent sent messages:</h4><hr>
+
+<% unless @messages_sent.empty? %>
+  <% @messages_sent.each do |msg| %>
+
+    <%= render 'messages/message_stubs', :user => msg.user, :msg => msg %>
+
+  <% end %>
+<% else %>
+  <i>no sent messages</i>
+<% end %>
+
+</div>
+<div class="well">
+ <h4>read messages:</h4><hr>
+
+<% unless @messages.archived.empty? %>
+  <% @messages.archived.each do |msg| %>
+
+    <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
+
+  <% end %>
+<% else %>
+  <i>no archived messages</i>
+<% end %>
+</div>

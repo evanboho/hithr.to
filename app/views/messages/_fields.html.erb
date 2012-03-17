@@ -1,0 +1,10 @@
+<table class="tble shadow"><tr><td>
+
+	<%= simple_form_for msg do |f| %>
+	  <%= f.input :sujet, :label => "subject:", :required => false %>
+	  <%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
+	  <%= f.submit "send", :class => "btn btn-primary" %>
+	<% end %>
+
+
+</table>

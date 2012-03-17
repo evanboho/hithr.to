@@ -3,16 +3,21 @@ class MessagesController < ApplicationController
   before_filter :current_user?
 
   def index
-    msg = current_user.messages.last
-    redirect_to message_path(msg)
+    @messages = current_user.messages.order('created_at DESC')
+    @messages_sent = Message.sent(current_user)
+    #msg = current_user.messages.last
+    #redirect_to message_path(msg)
   end
   
   def show
     @message = Message.find(params[:id])
-    messages = current_user.messages.order('created_at DESC')
-    @messages_unread = messages.unread.limit(5)
+    @messages = current_user.messages.order('created_at DESC')
     @messages_sent = Message.sent(current_user)
-    @messages_read = messages.archived.limit(5)
+    @reply = current_user.messages.new
+  end
+  
+  def reply
+    @reply = current_user.messages.new
   end
   
   def new

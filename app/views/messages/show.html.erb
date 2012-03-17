@@ -2,83 +2,20 @@
   <h1>inbox</h1>
 </div
 
+
 <div class="row">
-	<div class="span4">
-	<div class="well">
-	  <h4>unread messages:</h4><hr>
-
-	<% unless @messages_unread.empty? %>
-	  <% @messages_unread.each do |msg| %>
-
-	    <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
-
-	  <% end %>
-	<% else %>
-	  <i>no unread messages</i>
-	<% end %>
-
-	</div>
-	<div class="well">
-
-	<h4>recent sent messages:</h4><hr>
-
-	<% unless @messages_sent.empty? %>
-	  <% @messages_sent.each do |msg| %>
-
-	    <%= render 'messages/message_stubs', :user => msg.user, :msg => msg %>
-
-	  <% end %>
-	<% else %>
-	  <i>no sent messages</i>
-	<% end %>
-
-	</div>
-	<div class="well">
-	 <h4>read messages:</h4><hr>
-
-	<% unless @messages_read.empty? %>
-	  <% @messages_read.each do |msg| %>
-
-	    <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
-
-	  <% end %>
-	<% else %>
-	  <i>no archived messages</i>
-	<% end %>
-	</div>
-  </div>
-
+	
   <div class="span4">
-  <table class="tble shadow">
-  <tr><td><h3>
-  From: <%= @message.sender.username %> 
-  To: <%= @message.user.username %></h3><hr>
-  <div class="alt"><%= @message.msg_time %></div>
-  <br><h5><%= @message.sujet %></h5>
-  <div class="well">
-	<%= @message.content %>
-  </div> 
-  <%= form_for @message do |f| %>
-  <% if @message.user == current_user %>
-	  <% if @message.read == false %>
-	   	<%= f.hidden_field(:read, :value => true) %>
-	   	<b><%= f.submit "mark as read", :class => "btn btn-primary" %></b>
-	  <% else %>
-	   	<%= f.hidden_field(:read, :value => false) %>
-	   	<%= f.submit "mark as unread", :class => "btn" %>
-	  <% end %>
-  <% else %>
-    <%= link_to "edit", edit_message_path(@message), :class => "btn" %>
-    <%= link_to "delete", message_path(@message), :class => "btn btn-danger", :method => :delete  %>
-	  
-  <% end %>
-<% end %>
-  
-  </table>
+    <%= render 'inbox' %>	
   </div>
+  
+  <div class="span4">
+    <%= render 'show_message'%>
+    <% render 'fields', :msg => @message %>
+  </div>
+  
+
 </div>
-
-
 
 
 

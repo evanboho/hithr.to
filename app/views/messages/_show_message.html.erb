@@ -1,0 +1,30 @@
+<table class="tble shadow">
+  <tr><td>
+  <h3>
+  From: <%= @message.sender.username %> 
+  To: <%= @message.user.username %></h3><hr>
+  <div class="alt"><%= @message.msg_time %></div>
+  <br><h5><%= @message.sujet %></h5>
+  <div class="well">
+	<%= @message.content %>
+  </div> 
+  <% if @message.user == current_user %>
+    <%= form_for @message do |f| %>
+    <%= link_to "reply", new_user_message_path(@message.sender), :class => "btn btn-primary" if current_user == @message.user %>
+   	  <% if @message.read == false %>
+   	   	<%= f.hidden_field(:read, :value => true) %>
+   	   	<b><%= f.submit "mark as read", :class => "btn" %></b>
+   	  <% else %>
+   	   	<%= f.hidden_field(:read, :value => false) %>
+   	   	<%= f.submit "mark as unread", :class => "btn" %>
+	  <% end %>
+    <% end %>
+
+  <% else %>
+    <%= link_to "edit", edit_message_path(@message), :class => "btn" %>
+    <%= link_to "delete", message_path(@message), :class => "btn btn-danger", :method => :delete  %>
+	  
+  <% end %>
+
+  
+  </table>

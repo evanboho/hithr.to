@@ -3,12 +3,27 @@
 </div
 
 <div class="row">
+	
+  <div class="span4">
+    <%= render 'inbox' %>	
+  </div>
+  
+  <div class="span4">
+
+  </div>
+  
+
+</div>
+
+
+
+<div class="row">
 	<div class="span4">
 	<div class="well">
 	  <h4>unread messages:</h4><br>
 
-	<% unless @messages_unread.empty? %>
-	  <% @messages_unread.each do |msg| %>
+	<% unless @messages.unread.limit(5).empty? %>
+	  <% @messages.unread.limit(5).each do |msg| %>
 
 	    <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
 
@@ -36,8 +51,8 @@
 	<div class="well">
 	 <h4>read messages:</h4><br>
 
-	<% unless @messages_read.empty? %>
-	  <% @messages_read.each do |msg| %>
+	<% unless @messages.archived.limit(5).empty? %>
+	  <% @messages.archived.limit(5).each do |msg| %>
 
 	    <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
 
@@ -49,12 +64,6 @@
   </div>
 
   <div class="span4">
-  <table class="tble shadow">
-  <tr><th>
-  message:</tr>
-  <%= @message.user.username %>
   
-  
-  </table>
   </div>
 </div>
