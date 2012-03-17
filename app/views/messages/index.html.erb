@@ -9,61 +9,13 @@
   </div>
   
   <div class="span4">
-
-  </div>
-  
-
-</div>
-
-
-
-<div class="row">
-	<div class="span4">
-	<div class="well">
-	  <h4>unread messages:</h4><br>
-
-	<% unless @messages.unread.limit(5).empty? %>
-	  <% @messages.unread.limit(5).each do |msg| %>
-
-	    <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
-
-	  <% end %>
-	<% else %>
-	  <i>no unread messages</i>
-	<% end %>
-
-	</div>
-	<div class="well">
-
-	<h4>recent sent messages:</h4><br>
-
-	<% unless @messages_sent.empty? %>
-	  <% @messages_sent.each do |msg| %>
-
-	    <%= render 'messages/message_stubs', :user => msg.user, :msg => msg %>
-
-	  <% end %>
-	<% else %>
-	  <i>no sent messages</i>
-	<% end %>
-
-	</div>
-	<div class="well">
-	 <h4>read messages:</h4><br>
-
-	<% unless @messages.archived.limit(5).empty? %>
-	  <% @messages.archived.limit(5).each do |msg| %>
-
-	    <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
-
-	  <% end %>
-	<% else %>
-	  <i>no archived messages</i>
-	<% end %>
-	</div>
-  </div>
-
-  <div class="span4">
-  
+    <% if current_user.messages.unread.count > 0 %>
+      <% @message = current_user.messages.unread.first %>
+      <%= render 'show_message' %>
+    <% else %>
+       <div class="well center"><br>
+       <h4><i>you have no unread messages.</i></h4><br>
+	   </div>
+    <% end %>
   </div>
 </div>

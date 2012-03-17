@@ -1,12 +1,15 @@
 <table class="tble shadow">
   <tr><td>
   <h3>
-  From: <%= @message.sender.username %> 
-  To: <%= @message.user.username %></h3><hr>
+	<%= gravatar_for @message.sender, :thumb, :size => 30 %> <%= @message.sender.username %>
+    to
+	<%= gravatar_for @message.user, :thumb, :size => 30 %> <%= @message.user.username %></h3><hr>
   <div class="alt"><%= @message.msg_time %></div>
-  <br><h5><%= @message.sujet %></h5>
+  <br><h5>subject: <%= @message.sujet %></h5>
   <div class="well">
-	<%= @message.content %>
+	<% line_breaks(@message.content).each do |m| %>
+	  <%= m %><br>
+	<% end %>
   </div> 
   <% if @message.user == current_user %>
     <%= form_for @message do |f| %>

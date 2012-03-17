@@ -20,14 +20,15 @@
 	  <div class="nav-collapse pull-right">
 	    <ul class="nav nav-pills">
 	      <% if signed_in? %>
-	      <li><%= link_to "post ride", new_ride_path %></li>
+		    <% if current_user.messages.unread.count > 0 %><li><%= link_to "#{pluralize(current_user.messages.unread.count, 'new message')}", 
+						message_path(current_user.messages.unread.first) %></li><% end %>
 	      <li class="dropdown">
 	        <a class="dropdown-toggle" data-toggle="dropdown">
 	          <%= current_user.username %>
 	          <b class="caret"></b>
 	         <ul class="dropdown-menu">
-		      <li><%= link_to "#{pluralize(current_user.messages.unread.count, 'new message')}", 
-						user_messages_path(current_user) %></li> 
+		      <li><%= link_to "post ride", new_ride_path %></li>
+		      <li><%= link_to "messages", user_messages_path(current_user) %></li> 
 		       <li><%= link_to "profile", current_user %></li>
 		       <li><%= link_to "sign_out", sign_out_path %></li>
 		       

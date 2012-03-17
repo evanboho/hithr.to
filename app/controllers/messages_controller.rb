@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     if @message.update_attributes(params[:message])
       flash[:notice] = "message updated"
-      redirect_to user_messages_path(@message.user)
+      redirect_to user_messages_path(current_user)
     else
       flash[:error] = "what happened?"
       render 'edit'
