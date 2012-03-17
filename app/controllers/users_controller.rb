@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  
+  # before_filter :authenticate_user!, :only => [:edit, :index, :update, :destroy]
+  before_filter :current_user?, :except => [:new, :create]
+  
   def index
     @users = User.all
   end
@@ -26,7 +30,6 @@ class UsersController < ApplicationController
   
   def destroy
   end
-  
   
   
   

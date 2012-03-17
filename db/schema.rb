@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120310011931) do
+ActiveRecord::Schema.define(:version => 20120316212410) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20120310011931) do
     t.datetime "updated_at", :null => false
     t.integer  "ride_id"
     t.boolean  "read"
+    t.string   "sujet"
   end
 
   add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"

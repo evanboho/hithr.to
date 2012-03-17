@@ -26,4 +26,13 @@ class Profile < ActiveRecord::Base
     end
   end
   
+  def gravatar(size)
+    if avatar_file_name.present?
+      x = avatar.url(size)
+      else
+	    x = "anon.png"
+	  end
+    x
+	end
+  
 end

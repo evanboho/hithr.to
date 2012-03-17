@@ -8,7 +8,7 @@ Hithr::Application.routes.draw do
   match 'users/auth/:provider/callback/' => 'authentications#create'
    
   devise_for :users, :controllers => { :registrations => 'registrations', :sessions => 'users/sessions' } do
-    match "/sign_in" => "devise/sessions#new"
+    match "/sign_in" => "users/sessions#new"
     match "/sign_out" => "devise/sessions#destroy" 
     match "/sign_up" => "registrations#new" 
   end
@@ -23,6 +23,7 @@ Hithr::Application.routes.draw do
   get "/about" => "pages#about"
   get "/contact" => "pages#contact"
   get "/help" => "pages#help"
+  get "/test" => "pages#test"
 
   get 'users/auth/failure' do # necessary?
     flash[:notice] = params[:message]

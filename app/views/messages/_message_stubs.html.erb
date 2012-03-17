@@ -1,0 +1,7 @@
+<ul>
+  <li>
+	<b><%= image_tag user.profile.gravatar(:thumb) %><%= link_to user.username, user %>:</b>
+	<%= link_to (msg.sujet ||= "subject"), msg %><br>
+	<div class="alt"><%= msg.msg_time %></div>
+  </li>
+</ul>

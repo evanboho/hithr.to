@@ -1,0 +1,13 @@
+<% if notice.present? %>
+	<div class="alert">
+	  <a class="close" data-dismiss="alert">×</a>
+	  <%= notice.downcase %>
+	</div>
+  <% end %>
+
+<% if alert.present? %>
+	<div class="alert">
+	  <a class="close" data-dismiss="alert">×</a>
+      <%= alert.downcase %>	
+    </div>
+<% end %>

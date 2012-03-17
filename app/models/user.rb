@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   validates :firstname, :presence => true
   validates :lastname, :presence => true
+  validates :email, :presence => true, :uniqueness => true
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :firstname, :lastname, :password, :password_confirmation, :remember_me

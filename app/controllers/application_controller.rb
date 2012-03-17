@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
     true
   end
   
-
+  def current_user?
+     if !current_user
+       flash[:notice] = "you must be signed in to do that."
+       redirect_to sign_in_path
+     end
+   end
   
 end

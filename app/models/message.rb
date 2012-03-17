@@ -2,7 +2,8 @@ class Message < ActiveRecord::Base
   
   belongs_to :user
     
-  validates :content, :length => {:maximum => 200}
+  validates :content, :presence => true, :length => { :maximum => 200 }
+  validates :sujet, :presence => true, :length => { :maximum => 40 }
   
 
   def sender
@@ -35,6 +36,14 @@ class Message < ActiveRecord::Base
   
   def self.unread
     self.where(:read => false)
+  end
+  
+  def self.sent(user)
+    self.where(:sender_id => user.id).order('created_at DESC').limit(5)
+  end
+  
+  def self.archived
+    self.where(:read => true)
   end
   
 end

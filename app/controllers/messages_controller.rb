@@ -1,14 +1,18 @@
 class MessagesController < ApplicationController
 
+  before_filter :current_user?
+
   def index
-    @user = current_user
-    message = @user.messages.order('created_at ASC')
-    @message = message.where(:read => false)
-    @message_read = message.where(:read => true)
+    msg = current_user.messages.last
+    redirect_to message_path(msg)
   end
   
   def show
     @message = Message.find(params[:id])
+    messages = current_user.messages.order('created_at DESC')
+    @messages_unread = messages.unread.limit(5)
+    @messages_sent = Message.sent(current_user)
+    @messages_read = messages.archived.limit(5)
   end
   
   def new
@@ -20,6 +24,7 @@ class MessagesController < ApplicationController
     @user = User.find(params[:user_id])
     @message = @user.messages.build(params[:message])
     @message.sender_id = current_user.id
+    @message.read = false
     if @message.save
       flash[:notice] = "Message sent"
       redirect_to @message
@@ -34,6 +39,7 @@ class MessagesController < ApplicationController
       flash[:notice] = "message updated"
       redirect_to user_messages_path(@message.user)
     else
+      flash[:error] = "what happened?"
       render 'edit'
     end
   end

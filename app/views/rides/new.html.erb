@@ -1,13 +1,13 @@
 <% provide(:title, "post ride") %>
 <div class="hero-unit">
-  <h1><%= "Where to, #{current_user.firstname.humanize}?"%></h1>
+  <h1>post ride</h1>
 </div>
+
+<div class="well">
 <%= form_for @ride do |f| %>
   <div class="small-container">
   <%= render 'form', :f => f %>
-  <div class="actions">
-    <%= f.submit "continue" %>
-  </div>
+    <%= f.submit "continue", :class => "btn" %>
 </div>
 
 <% end %>

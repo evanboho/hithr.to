@@ -1,0 +1,26 @@
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name, :class => "form-inline" )) do |f| %>
+<fieldset>
+  <div class="well">
+  <table class="tble">
+  <tr><td>
+  <%= f.input :firstname, :label => "name:", :placeholder => "(first)", :required => false %>
+  <%= f.input :lastname, :label => false, :placeholder => "(last)" %></div>
+  </td>
+  <td>
+  <%= f.input :email, :label => "email:", :required => false %>
+  </td></tr>
+  <tr><td>
+  <% if params[:action] == "update" %>
+  <%= f.input :current_password, :label => "current password:", :required => false %><br>
+  <h5>change password?</h5>
+  <% end %>
+  <%= f.input :password, :label => "password:", :required => false %>
+  <%= f.input :password_confirmation, :label => "confirm password:", :required => false %>
+  </td>
+  <td>
+
+  <%= f.submit "sign up", :class => "btn btn-primary" %>
+  </table>
+  </div>
+</fieldset>
+<% end %>

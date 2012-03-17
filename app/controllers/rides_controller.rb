@@ -1,5 +1,8 @@
 class RidesController < ApplicationController
 
+  before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy]
+  before_filter :current_user?, :except => [:index, :show]
+ 
   def index
     @rides = Ride.paginate(:page => params[:page], :per_page => 15).search(make_criteria).reorder('go_time ASC')
     if @rides.blank?

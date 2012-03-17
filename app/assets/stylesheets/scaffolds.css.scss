@@ -6,6 +6,9 @@
 td.avatar {
   width: 30px;
 }
+.well {
+  box-shadow: 0px 0px 5px #003366;
+}
 
 .msg-padded {
   padding-top: 15px;
@@ -19,7 +22,6 @@ td.avatar {
   width:80%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #fff;
 }
 .alt {
   color: #666;
@@ -164,16 +166,21 @@ text-align: center;
 .jumbotron {
 position: relative;
 }
-
+a.btn-primary { &:visited {
+  color: white;}
+}
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px; }
 
-.text_area {
+text_area {
   height: 100px;
 }
-
+#message_content {
+  height: 100px;
+  width: 360px;
+}
 pre {
   background-color: #eee;
   padding: 10px;
@@ -194,10 +201,13 @@ div {
 #notice {
   color: green; }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: gray;
-  display: table; }
+ .field_with_errors {
+  border-color: #a47e3c;
+  -webkit-box-shadow: 0 0 6px #dbc59e;
+  -moz-box-shadow: 0 0 6px #dbc59e;
+  box-shadow: 0 0 6px #dbc59e;
+   }
+
 
 #error_explanation {
   width: 450px;

@@ -10,16 +10,16 @@
       </ul>
     </div>
   <% end %>
-
+ 
 <div class="row">
 	<div class="span3">
     <%= f.label :start_city, "From:" %>
-    <%= f.text_field :start_city, :class => "text_field", :placeholder => "(city)", :class => "span2" %> 
+    <%= f.text_field :start_city, :placeholder => "(city)", :class => "text_field span2" %> 
  <%= state_select(f, :start_state) %>
   </div>
   <div class="span3">
     <%= f.label :end_city, "To:" %>
-    <%= f.text_field :end_city, :class => "text_field", :placeholder => "(city)", :class => "span2" %> 
+    <%= f.text_field :end_city, :placeholder => "(city)", :class => "text_field span2"  %> 
  <%= state_select(f, :end_state) %><br/>
   </div>
 </div>

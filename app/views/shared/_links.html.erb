@@ -1,5 +1,15 @@
+<%- if devise_mapping.omniauthable? %>
+   <h3>connect with:</h3>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+   
+    <%= link_to (image_tag "#{provider}_64.png"), omniauth_authorize_path(resource_name, provider), :class => "auth_provider" %>
+    <% link_to "#{provider.to_s.split('_').first}", omniauth_authorize_path(resource_name, provider) %>
+  <% end -%>
+<% end -%>
+<br><br>
+
 <%- if controller_name != 'sessions' %>
-  already a member? <br><%= link_to "sign in", new_session_path(resource_name) %><br />
+  <h3>already a member?</h3><%= link_to "sign in", new_session_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
@@ -18,11 +28,3 @@
   <%= link_to "didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.omniauthable? %>
-   or connect with:<br>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-   
-    <%= link_to (image_tag "#{provider}_64.png"), omniauth_authorize_path(resource_name, provider), :class => "auth_provider" %>
-    <% link_to "#{provider.to_s.split('_').first}", omniauth_authorize_path(resource_name, provider) %>
-  <% end -%>
-<% end -%>

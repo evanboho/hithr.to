@@ -1,28 +1,60 @@
 <div class="hero-unit shadow-down">
-  <h2 class="">message inbox</h2>
+  <h1>inbox</h1>
 </div
-<hr>
-<div class="span4">
-<table class="tble shadow">
-<tr><th>
-Unread Messages:</tr>
-<% @message.each do |msg| %>
-  
-  <%= render 'messages/message', :msg => msg %>
-  
-<% end %>
-</table>
-<table class="tble table-bordered shadow">
 
+<div class="row">
+	<div class="span4">
+	<div class="well">
+	  <h4>unread messages:</h4><br>
 
-<hr>
-<tr><th>
-Read Messages:</tr>
-<% @message_read.each do |msg| %>
+	<% unless @messages_unread.empty? %>
+	  <% @messages_unread.each do |msg| %>
+
+	    <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
+
+	  <% end %>
+	<% else %>
+	  <i>no unread messages</i>
+	<% end %>
+
+	</div>
+	<div class="well">
+
+	<h4>recent sent messages:</h4><br>
+
+	<% unless @messages_sent.empty? %>
+	  <% @messages_sent.each do |msg| %>
+
+	    <%= render 'messages/message_stubs', :user => msg.user, :msg => msg %>
+
+	  <% end %>
+	<% else %>
+	  <i>no sent messages</i>
+	<% end %>
+
+	</div>
+	<div class="well">
+	 <h4>read messages:</h4><br>
+
+	<% unless @messages_read.empty? %>
+	  <% @messages_read.each do |msg| %>
+
+	    <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
+
+	  <% end %>
+	<% else %>
+	  <i>no archived messages</i>
+	<% end %>
+	</div>
+  </div>
+
+  <div class="span4">
+  <table class="tble shadow">
+  <tr><th>
+  message:</tr>
+  <%= @message.user.username %>
   
-  <%= render 'messages/message', :msg => msg %>
   
-<% end %>
-</table>
-</div>
+  </table>
+  </div>
 </div>

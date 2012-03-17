@@ -1,6 +1,5 @@
 <h2>edit your message</h2>
-from <%= current_user.username %> to <%= link_to @user.username, @user  %><br>
-
+from <%= @message.sender.username %> to <%= link_to @message.user.username, @message.user  %><br>
 
 <%= form_for @message do |f| %>
 

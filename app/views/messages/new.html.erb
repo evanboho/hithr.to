@@ -1,9 +1,12 @@
-<h2>write a message</h2>
+<div class="hero-unit"><h1>write a message</h1>
+</div>
 
 from <%= link_to current_user.username, current_user %> to <%= link_to @user.username, @user %><br>
-
-<%= form_for [@user, @message] do |f| %>
-
-<%= render 'fields', :user => @user, :f => f  %>
- <%= f.submit "send" %>
+<div class="span8">
+<%= simple_form_for [@user, @message] do |f| %>
+<%= f.input :sujet, :label => "subject:", :required => false %>
+<%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
+ <%= f.submit "send", :class => "btn btn-primary" %>
 <% end %>
+
+</div>

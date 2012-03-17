@@ -1,11 +1,7 @@
 <tr>
   
   <td class="avatar">
-	<% if ride.user.profile.avatar_file_name.present? %>
-    <%= link_to (image_tag ride.user.profile.avatar.url(:thumb), :size => "30x30"), ride.user %>
-    <% else %>
-    <%= link_to (image_tag 'anon.png'), ride.user %>
-    <% end %>
+	<%= image_tag ride.user.profile.gravatar(:thumb) %>
   </td>
   <td class="user">
 
