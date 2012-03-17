@@ -4,7 +4,7 @@
 <div class="hero-unit">
   <div class="row">
     <div class="span2">
-      <%= link_to  (gravatar_for @ride.user), @ride.user %>
+      <%= link_to  (gravatar_for @ride.user, :small, :size => 100), @ride.user %>
       <h2><%= link_to @ride.user.username, @ride.user %></h2>
       <%=  %>
     </div>
