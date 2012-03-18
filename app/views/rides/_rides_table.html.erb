@@ -1,0 +1,25 @@
+<table class="table table-condensed round shadow-down">
+	<thead>
+	<tr class="round"><th colspan="2">
+		</th><th class="date">
+		On:
+		</th><th colspan="2">
+		From:
+    	</th><th>
+	    To:
+ 		</th><th>
+	</tr>
+	</thead>
+	<tr class="gray"><%= render 'shared/ride_search' %>
+	</tr>
+	<% unless @rides.blank? %>
+	
+      <%= render @rides %>
+
+	  <tr><td colspan="7">
+    
+    <% else %>
+	  <tr><td colspan="7"><h3 align="center">no rides matched your search</h3>	
+	<% end %>
+</table>
+<%= will_paginate @rides, :page_links => false %>
