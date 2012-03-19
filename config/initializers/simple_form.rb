@@ -98,7 +98,7 @@ SimpleForm.setup do |config|
   config.button_class = 'btn'
 
   # Method used to tidy up errors.
-  # config.error_method = :first
+  config.error_method = :to_sentence
 
   # Default tag used for error notification helper.
   config.error_notification_tag = :div
@@ -163,7 +163,7 @@ SimpleForm.setup do |config|
   # config.country_priority = nil
 
   # Default size for text inputs.
-  # config.default_input_size = 50
+  config.default_input_size = 30
 
   # When false, do not use translations for labels.
   # config.translate_labels = true

@@ -1,11 +1,10 @@
-<% msg = Message.mutual_messages(@user, current_user) %>
 
-<tr><td class="center"><h3>- messages between you (<%= msg.count %>) -</h3><br>
+<tr><td class="center"><h3>- messages between you (<%= @mutual_messages.count %>) -</h3><br>
 
 <%= link_to "send them a message", new_user_message_path(@user), :class => "btn btn-primary" %></td></tr>
 <br><br>
-<% if msg.present? %>
-	<% msg.each do |msg| %>
+<% if !@mutual_messages.empty? %>
+	<% @mutual_messages.each do |msg| %>
 	  <%= render 'messages/message', :msg => msg %>
 	<% end %>	
 <% end %>

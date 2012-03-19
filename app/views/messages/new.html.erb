@@ -1,12 +1,33 @@
-<div class="hero-unit"><h1>write a message</h1>
+<div class="hero-unit shadow-down"><h1>write a message</h1>
 </div>
 
-from <%= link_to current_user.username, current_user %> to <%= link_to @user.username, @user %><br>
-<div class="span8">
-<%= simple_form_for [@user, @message] do |f| %>
-<%= f.input :sujet, :label => "subject:", :required => false %>
-<%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
- <%= f.submit "send", :class => "btn btn-primary" %>
-<% end %>
 
+<div class="row">
+
+	
+  <div class="span4">
+    <%= render 'inbox' %>	
+  </div>
+
+
+  <div class="span8">
+    <div class="well">
+	    <h4>
+		  <span style="margin-left: 138px; margin-right: 8px;">to: </span>
+		  <%= gravatar_for @user, :thumb, :size => 30 %> 
+	      <%= link_to @user.username, @user %>
+	    </h4><br>
+    
+	    <%= simple_form_for [@user, @message] do |f| %>
+	      <%= f.input :sujet, :label => "subject:", :required => false %>
+	      <%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
+	      <%= f.submit "send", :class => "btn btn-primary", :style => "margin-left: 170px;" %>
+	    <% end %>
+    </div>
+    <% if @reply_from.present? %>
+    <div class="well">
+	  <%= render 'show_message', :msg => @reply_from %>
+	</div>
+	<% end %>
+  </div>
 </div>

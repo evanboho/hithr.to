@@ -18,13 +18,15 @@
 
 
 </div>
+<% if !current_user %>
 <div class="hero-unit center">
 <p><h3>connect with:</h3>
 <%= render 'layouts/create_authentications' %></p>
 </div>
+<% end %>
 
 
 <div class="small-container">
-	<div class=""><h3 class="center">recent rides:</h3></div><br>
+	<div class=""><h3 class="center">- recent ride posts -</h3></div><br>
 	<%= render 'rides/rides_table' %>
 </div>

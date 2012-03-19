@@ -1,6 +1,6 @@
 <div class="hero-unit shadow-down">
   <h1>inbox</h1>
-</div
+</div>
 
 
 <div class="row">
@@ -9,47 +9,20 @@
     <%= render 'inbox' %>	
   </div>
   
-  <div class="span4">
-    <%= render 'show_message'%>
-    <% render 'fields', :msg => @message %>
+  <div class="span8">
+	<div class="well">
+    <%= render 'show_message', :msg => @message %>
+    </div>
+   
+    <% if 1 == 0 %>
+    <div class="well">
+	<h4 class="center">- conversation - </h4> 
+	<% if !@mutual_messages.empty? %>
+	<%= @mutual_messages.each do |msg| %>
+	  <%= render 'show_message', :msg => msg %>
+	<% end %>
+	<% end %>
+    </div>
+    <% end %>
   </div>
-  
-
 </div>
-
-
-
-<div class="offset0 hero-unit">
-  <h2>Message</h2>
-  <p><%= link_to @message.sender.username, @message.sender %> 
-     --> <%= link_to @message.user.username, @message.user %><br>
-<div class="msg-padding">
-<% line_breaks(@message.content).each do |m| %>
-  <%= m %><br>
-<% end %>
-</div>
-<br>
-<p>
-
-<% if @message.user == current_user %>
-<%= form_for @message do |f| %>
-  <% if @message.read == false %>
-   	<%= f.hidden_field(:read, :value => true) %>
-   	<b><%= f.submit "mark as read", :class => "btn btn-primary" %></b>
-  <% else %>
-   	<%= f.hidden_field(:read, :value => false) %>
-   	<%= f.submit "mark as unread", :class => "btn" %>
-  <% end %>
-<% end %>
-<%= link_to "delete |", message_path(@message), :method => :delete  %>
-<%= link_to "back to inbox |", user_messages_path(current_user) %>
-<% else %>
-<%= link_to "reply |", new_user_message_path(@message.sender) if current_user == @message.user %>
-<%= link_to "edit |", edit_message_path(@message) if current_user == @message.sender %>
-<%= link_to "back to user |", @message.user if @message.sender == current_user %>
-
-<% end %>
-<%= link_to "profile", current_user %>
-
-</p>
-<div>

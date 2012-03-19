@@ -20,3 +20,16 @@
 <% end %>
 
 <%= render "shared/links" %>
+
+
+<div class="span8">
+	<div class="well">
+  <% if current_user.messages.unread.count > 0 %>
+    <% @message = current_user.messages.unread.first %>
+    <%= render 'show_message', :msg => @message %>
+  <% else %>
+     <div class="center"><br>
+     <h4><i>you have no unread messages.</i></h4><br>
+	   </div>
+  <% end %>
+</div>

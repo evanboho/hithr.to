@@ -1,21 +1,13 @@
 <div class="hero-unit shadow-down">
   <h1>inbox</h1>
-</div
+</div>
 
-<div class="row">
-	
-  <div class="span4">
-    <%= render 'inbox' %>	
-  </div>
+
+<div class="span4">
+  <%= render 'inbox' %>	
+</div>
   
-  <div class="span4">
-    <% if current_user.messages.unread.count > 0 %>
-      <% @message = current_user.messages.unread.first %>
-      <%= render 'show_message' %>
-    <% else %>
-       <div class="well center"><br>
-       <h4><i>you have no unread messages.</i></h4><br>
-	   </div>
-    <% end %>
-  </div>
+<div class="span7 well"><br>
+  <h4 class="center">you have <%= pluralize(current_user.messages.unread.count, "new message") %>
+<br><br>
 </div>

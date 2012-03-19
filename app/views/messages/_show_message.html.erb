@@ -1,20 +1,22 @@
-<table class="tble shadow">
-  <tr><td>
-  <h3>
-	<%= gravatar_for @message.sender, :thumb, :size => 30 %> <%= @message.sender.username %>
-    to
-	<%= gravatar_for @message.user, :thumb, :size => 30 %> <%= @message.user.username %></h3><hr>
-  <div class="alt"><%= @message.msg_time %></div>
-  <br><h5>subject: <%= @message.sujet %></h5>
-  <div class="well">
-	<% line_breaks(@message.content).each do |m| %>
+  <h3 class="center">
+  	<%= gravatar_for msg.sender, :thumb, :size => 30 %> <%= link_to msg.sender.username, msg.sender %> 
+     to 
+  	<%= gravatar_for msg.user, :thumb, :size => 30 %> <%= link_to msg.user.username, msg.user %></h3>
+  <div class="alt center"><%= msg.msg_time %><br><br></div>
+  <h3 style="margin-left: 80px;"><%= msg.sujet %></h3>
+
+
+  <div class="msg">
+	<% line_breaks(msg.content).each do |m| %>
 	  <%= m %><br>
 	<% end %>
   </div> 
-  <% if @message.user == current_user %>
-    <%= form_for @message do |f| %>
-    <%= link_to "reply", new_user_message_path(@message.sender), :class => "btn btn-primary" if current_user == @message.user %>
-   	  <% if @message.read == false %>
+  <div style="margin-left:80px;">
+  <% if msg.user == current_user %>
+    
+
+    <%= form_for msg do |f| %>
+      <% if msg.read == false %>
    	   	<%= f.hidden_field(:read, :value => true) %>
    	   	<b><%= f.submit "mark as read", :class => "btn" %></b>
    	  <% else %>
@@ -22,12 +24,15 @@
    	   	<%= f.submit "mark as unread", :class => "btn" %>
 	  <% end %>
     <% end %>
-
+          
+   <%= form_tag new_user_message_path(msg.sender), :method => 'get' do %>
+     <%= hidden_field_tag(:reply_from, msg.id) %>
+     <%= submit_tag "reply", :class => "btn btn-primary" %>
+   <% end %>
+    
   <% else %>
-    <%= link_to "edit", edit_message_path(@message), :class => "btn" %>
-    <%= link_to "delete", message_path(@message), :class => "btn btn-danger", :method => :delete  %>
-	  
+    <%= link_to "edit", edit_message_path(msg), :class => "btn" %>
+    <%= link_to "delete", message_path(msg), :class => "btn btn-danger", :method => :delete  %>
+  	  
   <% end %>
-
-  
-  </table>
+  </div>

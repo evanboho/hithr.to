@@ -75,13 +75,22 @@ body { padding-top: 40px; font-family: verdana, arial, helvetica, sans-serif; }
 
 .round {
   -moz-border-radius: 20px 20px;
-  -webkit-border-radius: 10px 10px;
+  -webkit-border-radius: 20px 20px;
   border-radius: 20px;
 }
-
 .well { 
   // border-color: #336699;
   -webkit-box-shadow: 0 0 5px #003366;
   -moz-box-shadow: 0 0 5px #003366;
   box-shadow: 0px 0px 5px #003366;
+}
+.control-group.error input, .control-group.error select, .control-group.error textarea {
+  color: #000;
+}
+
+input,
+textarea,
+select,
+.uneditable-input {
+  width: 150px;
 }

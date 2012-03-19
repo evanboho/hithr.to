@@ -10,16 +10,21 @@
  		</th><th>
 	</tr>
 	</thead>
-	<tr class="gray"><%= render 'shared/ride_search' %>
+	<% if params[:controller] == "pages" %>
+	  <tr class="gray"><%= render 'shared/city_search' %>
+	<% else %>  
+      <tr class="gray"><%= render 'shared/ride_search' %>
+  	<% end %>
 	</tr>
 	<% unless @rides.blank? %>
 	
       <%= render @rides %>
 
 	  <tr><td colspan="7">
-    
+		
+	
     <% else %>
 	  <tr><td colspan="7"><h3 align="center">no rides matched your search</h3>	
 	<% end %>
 </table>
-<%= will_paginate @rides, :page_links => false %>
+<%= will_paginate @rides, :class => "apple_pagination" %>

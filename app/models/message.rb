@@ -28,11 +28,11 @@ class Message < ActiveRecord::Base
   end
   
   def msg_time
-        t = created_at.strftime("%b %d, %l:%M")
-        t = t + ' am' if created_at.hour < 12
-        t = t + ' pm' if created_at.hour > 12
-        t
-      end
+    t = created_at.strftime("%b %d, %l:%M")
+    t = t + ' am' if created_at.hour < 12
+    t = t + ' pm' if created_at.hour >= 12
+    t
+  end
   
   def self.unread
     self.where(:read => false)
