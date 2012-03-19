@@ -10,19 +10,13 @@
   </div>
   
   <div class="span8">
-	<div class="well">
     <%= render 'show_message', :msg => @message %>
-    </div>
-   
-    <% if 1 == 0 %>
-    <div class="well">
-	<h4 class="center">- conversation - </h4> 
+
+<br>	<h3 class="center">- conversation - </h3> <br>   
 	<% if !@mutual_messages.empty? %>
-	<%= @mutual_messages.each do |msg| %>
+	<% @mutual_messages.each do |msg| %>
 	  <%= render 'show_message', :msg => msg %>
 	<% end %>
 	<% end %>
-    </div>
-    <% end %>
   </div>
 </div>

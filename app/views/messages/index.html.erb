@@ -2,12 +2,21 @@
   <h1>inbox</h1>
 </div>
 
+<div class="row">
 
 <div class="span4">
   <%= render 'inbox' %>	
 </div>
   
-<div class="span7 well"><br>
-  <h4 class="center">you have <%= pluralize(current_user.messages.unread.count, "new message") %>
-<br><br>
+<div class="span8">
+  <div class="well">
+  <br>
+  <h4 class="center">you have <%= pluralize(current_user.messages.unread.count, "unread message") %>
+  <br><br>
+  </div>
+
+  <% @messages.unread.each do |msg| %>
+  <%= render 'show_message', :msg => msg %>
+  <% end %>
+  </div>
 </div>

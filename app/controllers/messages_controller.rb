@@ -5,8 +5,7 @@ class MessagesController < ApplicationController
   def get_inbox
     @messages = current_user.messages.order('created_at DESC').limit(5)
     @messages_sent = Message.sent(current_user).limit(5)  
-    @mutual_messages = Message.mutual_messages(@user, current_user)
-    
+    @mutual_messages = Message.mutual_messages(@user, current_user, params[:id])   
   end
   
   def index
@@ -20,6 +19,7 @@ class MessagesController < ApplicationController
   def show
     get_inbox
     @message = Message.find(params[:id])
+    @mutual_messages = Message.mutual_messages(@message.user, @message.sender, params[:id])
     # @messages = current_user.messages.order('created_at DESC')
     # @messages_sent = Message.sent(current_user)
     @reply = current_user.messages.new
@@ -36,7 +36,11 @@ class MessagesController < ApplicationController
     @message = @user.messages.new
     if params[:reply_from].present?
       @reply_from = Message.find(params[:reply_from])
-      @message.sujet = "re: " + @reply_from.sujet
+      unless @reply_from.sujet.split(":").first == "re"
+        @message.sujet = "re: " + @reply_from.sujet 
+      else
+        @message.sujet = @reply_from.sujet
+      end
     end
   end
   
