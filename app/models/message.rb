@@ -15,7 +15,7 @@ class Message < ActiveRecord::Base
     end
   end
   
-  def self.mutual_messages(user, sender, msg)
+  def self.mutual_messages(user, sender)
     z = self.scoped
     x = z.where(:user_id => user, :sender_id => sender)
     y = z.where(:sender_id => user, :user_id => sender)

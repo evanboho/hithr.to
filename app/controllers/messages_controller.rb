@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def get_inbox
     @messages = current_user.messages.order('created_at DESC').limit(5)
     @messages_sent = Message.sent(current_user).limit(5)  
-    @mutual_messages = Message.mutual_messages(@user, current_user, params[:id])   
+    @mutual_messages = Message.mutual_messages(@user, current_user)   
   end
   
   def index
