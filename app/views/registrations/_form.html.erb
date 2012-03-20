@@ -20,7 +20,14 @@
 <% end %>
 
 <br>
+<%= render 'shared/links' %>
 
+</div>
+</div>
+
+
+
+<br><br>
 Already a user? <%= link_to "sign in", sign_in_path %>
 
 <%- if devise_mapping.omniauthable? %>
@@ -31,5 +38,3 @@ Already a user? <%= link_to "sign in", sign_in_path %>
     <% link_to "#{provider.to_s.split('_').first}", omniauth_authorize_path(resource_name, provider) %>
   <% end -%>
 <% end -%>
-</div>
-</div>

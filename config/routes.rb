@@ -7,10 +7,11 @@ Hithr::Application.routes.draw do
   resources :authentications, :only => [:new, :create, :destroy]
   match 'users/auth/:provider/callback/' => 'authentications#create'
    
-  devise_for :users, :controllers => { :registrations => 'registrations', :sessions => 'users/sessions' } do
+  devise_for :users, :controllers => { :registrations => 'registrations', :sessions => 'users/sessions', :passwords => 'users/passwords' } do
     match "/sign_in" => "users/sessions#new"
     match "/sign_out" => "devise/sessions#destroy" 
     match "/sign_up" => "registrations#new" 
+    # match "/users/password/new" => "users/passwords#new"
   end
 
   resources :users, :shallow => true do

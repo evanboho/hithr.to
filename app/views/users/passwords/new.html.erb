@@ -1,12 +1,17 @@
-<h2>Forgot your password?</h2>
+<div class="hero-unit">
+<h1>forgotten password?</h1>
+</div>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="super-small-container well">
+	<br>
+<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <div><%= f.input :email, :label => "email:", :required => false %>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
+  <div class="center"><%= f.submit "reset password", :class => "btn btn-primary" %></div>
 <% end %>
-
-<%= render "links" %>
+<br>
+<div class="center">
+<%= render "shared/links" %>
+</div>
+</div>

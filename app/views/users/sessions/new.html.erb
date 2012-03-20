@@ -1,9 +1,8 @@
 <div class="small-container">
-<div class="hero-unit">
-
-<h1>sign in</h1>
+  <div class="hero-unit">
+    <h1>sign in</h1>
+  </div>
 </div>
-
 <div class="super-small-container well">
 <br>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -19,6 +18,6 @@
   <%= f.submit "sign in", :class => "btn btn-primary", :style => "width: 150px;" %>
 <% end %>
 <br><br>
-<%= render '/shared/links' %>
+<%= render 'shared/links' %>
 
 </div>

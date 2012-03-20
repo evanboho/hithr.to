@@ -1,0 +1,16 @@
+	<div class="center">
+  <h3>- recent rides -</h3>
+  <%= render 'shared/city_search' %>
+<% @rides.each do |ride| %>
+<strong><%= ridetime(ride)[1] %></strong><br>
+
+<a href="<%= url_for(ride) %>">
+<%= ride.start_city%> to 
+
+<%= ride.end_city %>
+</a><br>
+
+<div class="alt">
+<%= time_ago_in_words(ride.created_at) %> ago <br><br>
+</div>
+<% end %>

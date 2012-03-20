@@ -11,5 +11,12 @@ class ApplicationController < ActionController::Base
        redirect_to sign_in_path
      end
    end
+   
+   private 
   
+   def mobile_device?
+     request.user_agent =~ /Mobile|webOS/
+   end
+   helper_method :mobile_device?
+   
 end
