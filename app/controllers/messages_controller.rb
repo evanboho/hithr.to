@@ -19,7 +19,6 @@ class MessagesController < ApplicationController
   def show
     get_inbox
     @message = Message.find(params[:id])
-    @mutual_messages = Message.mutual_messages(@message.user, @message.sender, params[:id])
     # @messages = current_user.messages.order('created_at DESC')
     # @messages_sent = Message.sent(current_user)
     @reply = current_user.messages.new
