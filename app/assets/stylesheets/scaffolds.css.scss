@@ -1,3 +1,14 @@
+table.tble {
+  width:100%;
+  border: black 10px;
+  background-color: #f5f5f5	;
+  # box-shadow: 0px 0px 10px #f5f5f5;
+  line-height: 24px;
+  border-radius: 10px;
+}
+table.tble td {
+  padding: 15px;
+}
 .msg {
   border-color: black;
   border: 1px;
@@ -137,10 +148,6 @@ div.center_block {
   margin-left:auto;
   margin-right:auto;
 }
-.center {
-  margin-left:auto;
-  margin-right:auto;
-}
 .hero-unit {
   background-color: #eee;
   height: 100%;
@@ -161,19 +168,9 @@ table.shadow-down {
 }
 .center {
   text-align: center;
+  margin-left:auto;
+  margin-right:auto;
 }
-table.tble {
-  width:100%;
-  border: black 10px;
-  background-color: #f5f5f5	;
-  # box-shadow: 0px 0px 10px #f5f5f5;
-  line-height: 24px;
-  border-radius: 10px;
-}
-table.tble td {
-  padding: 15px;
-}
-
 td.bio {
   padding: 5% 15%;
   background-color: #ddd;
@@ -208,20 +205,10 @@ table.profile td {
   padding-top: 36px;
   margin-bottom: 0px;
 }
-.jumbotron h1 {
-  margin-bottom: 0px;
-  font-size: 81px; 
-  letter-spacing: -9px;
-  line-height: 1;
-}
 .hero-unit h1 {
-  letter-spacing: -5px;
+  letter-spacing: -6px;
 }
-.jumbotron p {
-margin-bottom: 0px;
-font-size: 20px;
-font-weight: 300;
-}
+
 .tble-wide {
   width: 100%;
 }
@@ -233,9 +220,6 @@ text-align: center;
 
 }
 
-.jumbotron {
-position: relative;
-}
 a.btn-primary { &:visited {
   color: white;}
 }
@@ -248,7 +232,7 @@ textarea {
   height: 100px;
 }
 input[type="text"] {
-  widht: 30px;
+  width: 150px;
 }
 #message_content {
   height: 100px;

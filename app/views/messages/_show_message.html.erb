@@ -1,4 +1,4 @@
-<table border=0 class="tble message">
+<table border=0 class="tble msg">
 	<tr>
 	<th class="top">from: </th>
 	<td><%= gravatar_for msg.sender, :thumb, :size => 30 %> <%= link_to msg.sender.username, msg.sender %><br></td>
@@ -24,7 +24,7 @@
 	  <% msg.line_breaks.each do |m| %>
 	    <%= m %><br>
 	  <% end %>
-    </td>
+	</td>
     </tr>
   <br>
   <tr>
@@ -50,7 +50,7 @@
     </td>
   <% else %>
     <td style="text-align: right;">
-    <%= link_to "edit", edit_message_path(msg), :class => "btn" %>
+    <%= link_to "edit", edit_message_path(msg), :class => "btn btn-warning" %>
     </td>
     <td>
     <%= link_to "delete", message_path(msg), :class => "btn btn-danger", :method => :delete  %>

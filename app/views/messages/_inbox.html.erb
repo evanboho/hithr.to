@@ -1,6 +1,6 @@
-<div class="well">
+<div class="center"><h4 class="btn">- sent messages -</div></h4><hr>
   <% unless @messages_sent.empty? %>
-    <h4 class="center">- sent messages -</h4><hr>
+    <div class="well">
     <% @messages_sent.each do |msg| %>
       <%= render 'messages/message_stubs', :user => msg.user, :msg => msg %>
     <% end %>
