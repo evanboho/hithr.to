@@ -33,3 +33,12 @@
 	   </div>
   <% end %>
 </div>
+
+<% unless @messages.unread.empty? %>
+  <div class="well">
+  <h4 class="center">- unread messages -</h4><hr>
+    <% @messages.unread.each do |msg| %>
+      <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
+    <% end %>
+  </div>
+<% end %>

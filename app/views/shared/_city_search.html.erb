@@ -1,6 +1,6 @@
-<%= form_tag rides_path, :method => 'get' do %>
+<%= form_tag rides_path, :method => 'get', :class => "form-search" do %>
 	<% seed_city = request.location.city %>
 	<%= text_field_tag :search_origin, seed_city, 
-	                                          :placeholder => "(city, state)", :style => "margin-top: 8px;" %> 
+	                                          :placeholder => "(city, state)", :style => "" %> 
 	<%= submit_tag "search rides", :name => nil, :class => "btn btn-primary" %>
 <% end %>

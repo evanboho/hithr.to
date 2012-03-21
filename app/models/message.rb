@@ -15,6 +15,10 @@ class Message < ActiveRecord::Base
     end
   end
   
+  def line_breaks
+    content.split("\n")
+  end
+  
   def self.mutual_messages(user, sender)
     z = self.scoped
     x = z.where(:user_id => user, :sender_id => sender)

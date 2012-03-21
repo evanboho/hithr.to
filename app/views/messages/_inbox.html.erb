@@ -1,13 +1,3 @@
-<% unless @messages.unread.empty? %>
-  <div class="well">
-  <h4 class="center">- unread messages -</h4><hr>
-    <% @messages.unread.each do |msg| %>
-      <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
-    <% end %>
-  </div>
-<% end %>
-
-
 <div class="well">
   <% unless @messages_sent.empty? %>
     <h4 class="center">- sent messages -</h4><hr>

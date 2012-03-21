@@ -1,26 +1,21 @@
 class MessagesController < ApplicationController
 
   before_filter :current_user?
+  # before_filter :authenticate_user
 
   def get_inbox
     @messages = current_user.messages.order('created_at DESC').limit(5)
     @messages_sent = Message.sent(current_user).limit(5)  
-    @mutual_messages = Message.mutual_messages(@user, current_user)   
   end
   
   def index
     get_inbox
-    # @messages = current_user.messages.order('created_at DESC')
-    #     @messages_sent = Message.sent(current_user)
-    #msg = current_user.messages.last
-    #redirect_to message_path(msg)
   end
   
   def show
     get_inbox
     @message = Message.find(params[:id])
-    # @messages = current_user.messages.order('created_at DESC')
-    # @messages_sent = Message.sent(current_user)
+    @mutual_messages = Message.where('id <> ?', @message.id).mutual_messages(@message.user, @message.sender)
     @reply = current_user.messages.new
   end
   
@@ -50,6 +45,7 @@ class MessagesController < ApplicationController
     @message.sender_id = current_user.id
     @message.read = false
     if @message.save
+      MessageMailer.send_message(@message).deliver
       flash[:notice] = "Message sent"
       redirect_to @message
     else
@@ -75,7 +71,7 @@ class MessagesController < ApplicationController
   
   def destroy
     Message.find(params[:id]).destroy
-    redirect_to current_user 
+    redirect_to user_messages_path(current_user) 
   end
 
 end

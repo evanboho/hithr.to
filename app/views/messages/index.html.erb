@@ -2,21 +2,24 @@
   <h1>inbox</h1>
 </div>
 
-<div class="row">
-
-<div class="span4">
-  <%= render 'inbox' %>	
-</div>
-  
-<div class="span8">
-  <div class="well">
-  <br>
-  <h4 class="center">you have <%= pluralize(current_user.messages.unread.count, "unread message") %>
-  <br><br>
+<div class="row">	
+  <div class="span8"> 
+    <% if current_user.messages.unread.count == 0 %>
+      <div class="well">
+	    <br>
+        <h4 class="center"><i>no unread messages</i></h4>
+        <br>
+      </div>
+    <% else %>
+      <h3 class="center">- unread messages - </h3><br>
+      <% @messages.unread.each do |msg| %>
+	    <%= render 'show_message', :msg => msg %>
+	  <% end %>
+    <% end %>
   </div>
 
-  <% @messages.unread.each do |msg| %>
-  <%= render 'show_message', :msg => msg %>
-  <% end %>
+  <div class="span4">
+    <%= render 'inbox' %>	
   </div>
+
 </div>

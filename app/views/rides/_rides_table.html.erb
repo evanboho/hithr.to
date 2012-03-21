@@ -1,10 +1,6 @@
 <div class="center">
 <h3>- recent rides -</h3>
-<% if params[:controller] == "pages" %>
-  <%= render 'shared/city_search' %>
-<% else %>  
-  <%= render 'shared/ride_search' %>
-<% end %>
+<br>
 </div>
 <table class="table table-condensed round shadow-down">
 	<thead>
@@ -15,10 +11,15 @@
 		From:
     	</th><th>
 	    To:
- 		</th><th>
-	</tr>
+ 		</th>
+    </tr>
 	</thead>
-	
+	<tr>
+	<% if params[:controller] == "pages" %>
+	  <td colspan=3></td><td colspan=3><%= render 'shared/city_search' %>
+	<% else %>  
+	  <td colspan=7 class="center"><%= render 'shared/ride_search' %>
+	<% end %>
 	</tr>
 	<% unless @rides.blank? %>
 	
@@ -31,4 +32,4 @@
 	  <tr><td colspan="7"><h3 align="center">no rides matched your search</h3>	
 	<% end %>
 </table>
-<%= will_paginate @rides, :class => "apple_pagination" %>
+<%= will_paginate @rides, :class => "apple_pagination" unless controller_name == "pages" %>

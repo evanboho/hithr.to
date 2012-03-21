@@ -57,6 +57,7 @@ module Hithr
     config.assets.version = '1.0'
     
     config.assets.initialize_on_precompile = false # not sure what this does; required for heroku?
- 
+    config.action_mailer.default_url_options = { :host => "127.0.0.1:3000" }
+    
   end
 end

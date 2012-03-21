@@ -13,10 +13,6 @@ module ApplicationHelper
     t
   end
   
-  def line_breaks(msg)
-    msg.split("\n")
-  end
-  
   def get_search_date
     if params[:date].present?
       "#{params[:date][:year]}-#{params[:date][:month]}-#{params[:date][:day]}".to_date

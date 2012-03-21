@@ -3,13 +3,6 @@
 
 
 <div class="row">
-
-	
-  <div class="span4">
-    <%= render 'inbox' %>	
-  </div>
-
-
   <div class="span8">
     <div class="well">
 	    <h4>
@@ -27,5 +20,8 @@
     <% if @reply_from.present? %>
 	  <%= render 'show_message', :msg => @reply_from %>
 	<% end %>
+  </div>
+  <div class="span4">
+    <%= render 'inbox' %>	
   </div>
 </div>

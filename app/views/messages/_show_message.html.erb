@@ -1,21 +1,39 @@
 <div class="well">
 
-  <h3 class="center">
-  	<%= gravatar_for msg.sender, :thumb, :size => 30 %> <%= link_to msg.sender.username, msg.sender %> 
-     to 
-  	<%= gravatar_for msg.user, :thumb, :size => 30 %> <%= link_to msg.user.username, msg.user %></h3>
-  <div class="alt center"><%= msg.msg_time %><br><br></div>
-  <h3 style="margin-left: 80px;"><%= msg.sujet %></h3>
+  <table border=0 class="tble msg round">
+	<tr>
+	<th class="top">from: </th>
+	<td><%= gravatar_for msg.sender, :thumb, :size => 30 %> <%= link_to msg.sender.username, msg.sender %><br></td>
+    </tr>
 
+    <tr>
+	<th style="background-color: #ddd; text-align: right; padding-right: 5px;">to: </th>
+	<td><%= gravatar_for msg.user, :thumb, :size => 30 %> <%= link_to msg.user.username, msg.user %></td>
+	</tr>
+	
+	<tr style="padding-top: 0px; vertical-align: bottom;">
+	<th style="background-color: #ddd; text-align: right; padding-right: 5px; padding-bottom: 0px;">subject: </th>
+	<td style="padding-bottom: 4px;"><strong> <%= msg.sujet %></strong>
+	</td>
+	<th style="background-color: transparent;">sent: </th>
+	<td style="padding-bottom: 4px;" class="alt"><%= msg.msg_time %>
+	</tr>
+	
+	<tr>
+	<th class="bottom">message: </th>
+	<td colspan=3 border=1 class="msg" style="background-color: white;">
+	  <div="alt"></div>
+	  <% msg.line_breaks.each do |m| %>
+	    <%= m %><br>
+	  <% end %>
+    </td>
+    </tr>
+  </table><br>
 
-  <div class="msg">
-	<% line_breaks(msg.content).each do |m| %>
-	  <%= m %><br>
-	<% end %>
-  </div> 
   <div style="margin-left:80px;">
   <% if msg.user == current_user %>
     
+
 
     <%= form_for msg do |f| %>
       <% if msg.read == false %>

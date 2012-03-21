@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+	<br>
+    <table>
+
+	<tr>
+	<th style="background-color: #ddd; cell-padding:10px;">from:</th>
+	<td style="font-size:16px; padding-left: 10px;"><%= gravatar_for(@msg.sender, :thumb, :size => 30) %>
+		<%= link_to @msg.sender.username, "hithr.herokuapp.com/<%= url_for(@msg.sender)" %>
+		
+	<tr>
+	<th style="background-color: #ddd;">subject: </th>
+	<td style="font-size:16px; padding-left: 10px;"><br><u><%= @msg.sujet %>:</h2><br><br></td>
+    
+    <tr>
+	<th style="background-color: #ddd; padding-right: 10px; padding-left: 10px;"> message: </th>
+	<td style="font-size:16px; padding-left: 10px;"><br>
+      <% @msg.line_breaks.each do |m| %>
+        <%= m %><br>
+	  <% end %>
+	<br>
+    </td>
+    </table>
+    <hr>
+    <p>Thanks! And enjoy the ride!</p>
+
+    <p>~hithr.to</p>	
+  </body>
+</html>

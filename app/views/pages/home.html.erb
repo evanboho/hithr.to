@@ -1,5 +1,4 @@
-<header></header>
-  <div class="center hero-unit">
+<div class="center hero-unit">
 
   <h1>hithr.to</h1>
   <p>helping people move together</p>
@@ -8,8 +7,10 @@
 
 <%= link_to "sign in", new_user_session_path, :class => "btn btn-primary" %>
 <%= link_to "sign up", new_user_registration_path, :class => "btn" %><br><br><br>
+<div>
 <h3>connect with:</h3>
 <%= render 'layouts/create_authentications' %><br>
+</div>
 
 <% else %>
 
@@ -20,7 +21,7 @@
 
 
 <% if mobile_device? %>
-  <div class="hero-unit">
+  <div class="well">
 	<%= render 'rides/small_rides_table' %>
   </div>
 <% else %>
