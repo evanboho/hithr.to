@@ -3,7 +3,7 @@ class MessageMailer < ActionMailer::Base
   
   def send_message(message)
     @msg = message
-    mail(:to => message.user.email, :subject => "hithr.to: Message from #{message.sender.username}. Re: #{ message.sujet}")
+    mail(:to => message.user.email, :subject => "hithr.to: Message from #{message.sender.username} - #{ message.sujet}")
   end
   
 end

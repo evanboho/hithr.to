@@ -7,12 +7,12 @@
 	<% if @message.sender == current_user %>
 	  <h3 class="center"><div class="btn btn-large" style="cursor: default;">- sent message -</div></h3>
 	<% else %>
-	  <h3><div class="btn btn-large">- incoming message -</div></h3>
+	  <h3 class="center"><div class="btn btn-large">- incoming message -</div></h3>
 	<% end %>
     <%= render 'show_message', :msg => @message %>
 	
 	<% if @mutual_messages.count > 0 %>
-    <br>	
+    <br><hr>	
     <h3 class="center"><div class="btn btn-large" style="cursor: default;">- conversation between you - </div></h3> 
 	<% @mutual_messages.each do |msg| %>
 	  <%= render 'show_message', :msg => msg %>
