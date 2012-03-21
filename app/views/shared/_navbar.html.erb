@@ -20,7 +20,7 @@
 	    <ul class="nav nav-pills">
 	      <% if signed_in? %>
 		    <% if current_user.messages.unread.count > 0 %>
-		      <li><%= link_to "#{pluralize(current_user.messages.unread.count, 'unread message')}", user_messages_path(current_user) %>
+		      <li><%= link_to "#{pluralize(current_user.messages.unread.count, 'unread message')}", message_path(current_user.messages.unread.first) %>
 			  </li>
 			<% end %>
 	      <li class="dropdown">

@@ -11,7 +11,7 @@
         <br>
       </div>
     <% else %>
-      <h3 class="center">- unread messages - </h3><br>
+      <h3 class="center"><div class="btn btn-large">- unread messages - </div></h3><br>
       <% @messages.unread.each do |msg| %>
 	    <%= render 'show_message', :msg => msg %>
 	  <% end %>

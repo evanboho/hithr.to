@@ -13,6 +13,7 @@
 	<th style="background-color: #ddd; text-align: right; padding-right: 5px; padding-bottom: 0px;">subject: </th>
 	<td style="padding-bottom: 4px;"><strong> <%= msg.sujet %></strong>
 	</td>
+	<td></td>
 	<td style="padding-bottom: 1px; vertical-align: bottom;"><b>sent: </b><span class="alt"><%= msg.msg_time %></div>
 	</tr>
 	
@@ -32,12 +33,12 @@
   <% if msg.user == current_user %>
     <td style="text-align: right;">
     <%= form_for msg do |f| %>
-      <% if msg.read == false %>
-   	   	<%= f.hidden_field(:read, :value => true) %>
-   	   	<b><%= f.submit "mark as read", :class => "btn" %></b>
-   	  <% else %>
+      <% if msg.read == true %>
    	   	<%= f.hidden_field(:read, :value => false) %>
    	   	<%= f.submit "mark as unread", :class => "btn" %>
+      <% else %>
+        <%= f.hidden_field(:read, :value => true) %>
+        <%= f.submit "mark as read", :class => "btn btn-primary" %>
 	  <% end %>
     <% end %>
     </td>      
@@ -57,4 +58,8 @@
     </tr>	  
   <% end %>
   </div>
-  </table>
+  <% if msg.id == params[:id].to_i %>
+    <% msg.read = true %><% msg.save %>
+  <% end %>
+  </table>    
+  
