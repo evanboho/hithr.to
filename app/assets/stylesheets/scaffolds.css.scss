@@ -1,5 +1,5 @@
 .msg {
-  font-size: 105%;
+//  font-size: 105%;
   border-color: black;
   border: 1px;
   padding: 20px 40px;
@@ -12,19 +12,17 @@
   -webkit-border-radius: 10px 10px;
   border-radius: 10px;
 }
-
-.msg th {
+table.msg th {
   background-color: #ddd;
   text-align: right; 
-  padding-right: 5px;
-  
+  padding-right: 5px; 
 }
-.msg th.top {
+table.msg th.top {
   -moz-border-radius: 10px 0px 0px 0px;
   -webkit-border-radius: 10px 0px 0px 0px;
   border-radius: 10px 10px 0px 0px;
 }
-.msg th.bottom {
+table.msg th.bottom {
   -moz-border-radius: 0px 0px;
   -webkit-border-radius: 10px 10px;
   border-radius: 0px 0px 10px 10px;
