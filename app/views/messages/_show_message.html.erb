@@ -1,6 +1,4 @@
-<div class="">
-
-  <table border=0 class="tble msg">
+<table border=0 class="tble msg">
 	<tr>
 	<th class="top">from: </th>
 	<td><%= gravatar_for msg.sender, :thumb, :size => 30 %> <%= link_to msg.sender.username, msg.sender %><br></td>
@@ -21,7 +19,7 @@
 	
 	<tr>
 	<th class="bottom">message: </th>
-	<td colspan=3 border=1 class="msg" style="background-color: white;">
+	<td colspan=3 border=1 class="msg" style="background-color: white; font-size:16px;">
 	  <div="alt"></div>
 	  <% msg.line_breaks.each do |m| %>
 	    <%= m %><br>
@@ -61,4 +59,3 @@
   <% end %>
   </div>
   </table>
-</div>
