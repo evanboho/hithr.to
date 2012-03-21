@@ -22,17 +22,17 @@ table.message {
   -webkit-border-radius: 10px 10px;
   border-radius: 10px;
 }
-table.msg th {
+table.message th {
   background-color: #ddd;
   text-align: right; 
   padding-right: 5px; 
 }
-table.msg th.top {
+table.message th.top {
   -moz-border-radius: 10px 0px 0px 0px;
   -webkit-border-radius: 10px 0px 0px 0px;
   border-radius: 10px 10px 0px 0px;
 }
-table.msg th.bottom {
+table.message th.bottom {
   -moz-border-radius: 0px 0px;
   -webkit-border-radius: 10px 10px;
   border-radius: 0px 0px 10px 10px;
