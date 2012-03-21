@@ -1,20 +1,6 @@
-.message {
-  border-color: black;
-  border: 1px;
-  -webkit-box-shadow: 0 0 3px #000;
-  -moz-box-shadow: 0 0 3px #000;
-  box-shadow: 0px 0px 3px #000;
-  -moz-border-radius: 10px 10px;
-  -webkit-border-radius: 10px 10px;
-  border-radius: 10px;
-}
-
 .msg {
   border-color: black;
   border: 1px;
-  padding: 20px 40px;
-  margin: 0px 0px 0px 0px;
-  border: 1px black;
   -webkit-box-shadow: 0 0 3px #000;
   -moz-box-shadow: 0 0 3px #000;
   box-shadow: 0px 0px 3px #000;
@@ -22,17 +8,20 @@
   -webkit-border-radius: 10px 10px;
   border-radius: 10px;
 }
-table.message th {
+td.msg {
+  padding: 20px 40px;
+}
+table.msg th {
   background-color: #ddd;
   text-align: right; 
   padding-right: 5px; 
 }
-table.message th.top {
+table.msg th.top {
   -moz-border-radius: 10px 0px 0px 0px;
   -webkit-border-radius: 10px 0px 0px 0px;
   border-radius: 10px 10px 0px 0px;
 }
-table.message th.bottom {
+table.msg th.bottom {
   -moz-border-radius: 0px 0px;
   -webkit-border-radius: 10px 10px;
   border-radius: 0px 0px 10px 10px;
