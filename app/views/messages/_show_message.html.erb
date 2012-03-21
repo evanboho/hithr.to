@@ -1,4 +1,4 @@
-<div class="well">
+<div class="">
 
   <table border=0 class="tble msg">
 	<tr>
@@ -28,13 +28,12 @@
 	  <% end %>
     </td>
     </tr>
-  </table><br>
-
-  <div style="margin-left:80px;">
+  <br>
+  <tr>
+  <td></td>
+  <td></td>
   <% if msg.user == current_user %>
-    
-
-
+    <td style="text-align: right;">
     <%= form_for msg do |f| %>
       <% if msg.read == false %>
    	   	<%= f.hidden_field(:read, :value => true) %>
@@ -44,16 +43,22 @@
    	   	<%= f.submit "mark as unread", :class => "btn" %>
 	  <% end %>
     <% end %>
-          
-   <%= form_tag new_user_message_path(msg.sender), :method => 'get' do %>
-     <%= hidden_field_tag(:reply_from, msg.id) %>
-     <%= submit_tag "reply", :class => "btn btn-primary" %>
-   <% end %>
-    
+    </td>      
+    <td>
+	<%= form_tag new_user_message_path(msg.sender), :method => 'get' do %>
+      <%= hidden_field_tag(:reply_from, msg.id) %>
+      <%= submit_tag "reply", :class => "btn btn-primary" %>
+    <% end %>
+    </td>
   <% else %>
+    <td style="text-align: right;">
     <%= link_to "edit", edit_message_path(msg), :class => "btn" %>
+    </td>
+    <td>
     <%= link_to "delete", message_path(msg), :class => "btn btn-danger", :method => :delete  %>
-  	  
+    </td>
+    </tr>	  
   <% end %>
   </div>
+  </table>
 </div>
