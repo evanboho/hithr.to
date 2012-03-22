@@ -8,15 +8,16 @@ class AboutsController < ApplicationController
     @about = About.new
   end
   
-  
   def new
   end
+  
   def create
     @about = About.new(params[:about])
     if @about.save
       flash[:notice] = "About section created."
-      redirect_to abouts_path
+      redirect_to about_path
     else
+      flash[:warning] = "error"
       render 'index'
     end
   end

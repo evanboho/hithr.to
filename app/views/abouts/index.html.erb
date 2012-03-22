@@ -34,9 +34,10 @@
 <h3 class="heading">create new section</h3>
 <div class="well">
   <br>
-  <%= simple_form_for @about do |f| %>
+  <%= simple_form_for @about, :url => about_path(@about) do |f| %>
     <%= f.input :title %>
-    <%= f.input :genre, :collection => ["paragraph", "FAQ"]%>
+    <%= f.input :genre, :collection => ["paragraph", "FAQ"] %>
     <%= f.input :content %>
     <%= f.submit :style => "margin-left: 170px;", :class => "btn btn-primary" %>
   <% end %>
+</div>
