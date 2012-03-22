@@ -92,6 +92,11 @@ table.msg th.bottom {
 
 td.avatar {
   width: 30px;
+
+}
+#about_content {
+  width: 300px;
+  height: 150px;
 }
 .simple_form label {
   float: left;
@@ -104,7 +109,9 @@ td.avatar {
 .simple_form input[type="submit"] {
   margin-left: 0px;
 }
-
+.simple_form input[type="textarea"] {
+  width: 700px;
+}
 
 .table tbody tr:hover td, .table tbody tr:hover th {
   background-color: #ddd;
