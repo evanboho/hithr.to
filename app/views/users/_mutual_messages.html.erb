@@ -1,0 +1,8 @@
+<h3 class="heading">messages between you (<%= @mutual_messages.count %>)</h3>
+<div class="well">
+<div class="center"><%= link_to "send them a message", new_user_message_path(@user), :class => "btn btn-primary" %></div>
+<br>
+	<% @mutual_messages.each do |msg| %>
+	  <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
+	<% end %>	
+</div>

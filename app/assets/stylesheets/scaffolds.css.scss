@@ -4,6 +4,7 @@ li {
 
 .heading {
   //border: 1px solid;
+  padding: 3px 0px;
   border-color: #999;
   background-color: #eee;
   width: 100%;
@@ -11,9 +12,9 @@ li {
   -moz-border-radius: 10px 10px;
   -webkit-border-radius: 10px 10px;
   border-radius: 10px;
-  -webkit-box-shadow: inset -5px -5px 12px #ccc;
-  -moz-box-shadow: inset -5px -5px 12px #ccc;
-  box-shadow: inset -5px -5px 12px #ccc //, 0 10px 2px #000;
+  -webkit-box-shadow: inset -3px -8px 12px #ccc;
+  -moz-box-shadow: inset -3px -8px 12px #ccc;
+  box-shadow: inset -3px -8px 12px #ccc;
 }
 
 table.tble {

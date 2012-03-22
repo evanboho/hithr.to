@@ -1,0 +1,13 @@
+<h3 class="heading">references (<%= @user.references.count %>)</h3>
+<div class="well">
+<% if @user != current_user %>
+<div class="center">
+<%= link_to "leave a reference", new_user_reference_path(@user), :class => "btn btn-primary	" %>
+</div><br>
+<% end %>
+<% if @user.references.present? %>
+  <%= render 'references/reference' %>
+<% else %>
+<h4 class="center"><i>no references<i></h4>
+<% end %>
+</div>

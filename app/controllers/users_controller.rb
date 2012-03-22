@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @mutual_messages = Message.mutual_messages(@user, current_user)
+    @mutual_messages = Message.order('created_at DESC').limit(5).mutual_messages(@user, current_user)
   end
   
   def new

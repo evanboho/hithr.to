@@ -1,12 +1,17 @@
 <div class="row">
-	<div class="hero-unit span8 user-profile">
+	<div class="span8">
+		<div class="hero-unit"><h1>
+	      <%= link_to (gravatar_for @user, :small, :size => 100), 
+						avatar_medium %><%= @user.username %>
+						<% if @user.authentications.present? %>
+					        <% @user.authentications.each do |auth| %>
+          <%= link_to (image_tag "#{auth.provider}_32.png"), auth_link(auth), :class => "auth_provider" %>
+					        <% end %>
+					      <% end %></h1>
+		  <%= link_to "(edit your public profile)", edit_profile_path(@user) if @user == current_user %></div>
 		<table class="shadow tble">
-		  <tr>
-		    <td>
-		      <%= link_to (gravatar_for @user, :small, :size => 100), 
-							avatar_medium %>
-		    <td><h1><%= @user.username %></h1>
-		      <%= link_to "(edit your public profile)", edit_profile_path(@user) if @user == current_user %><br><br></td>
+		  
+          <tr>
 		    <td rowspan="1" class="btn-large" >
 			  <h2 class="cred">cred: <%= cred_magic(@user.profile.cred) %></h2>
 		  </tr>
@@ -55,14 +60,14 @@
 	</div>
 	<div class="span4 pull-right"><br>
    		  <% if current_user %>
-            <table class="messages shadow span4 table-striped">
 		      <% if @user == current_user %>
-		        <%= render 'shared/my_messages', :user => @user %>
+		        <%= render 'my_messages', :user => @user %>
 		      <% else %>
-		  	    <%= render 'shared/mutual_messages', :user => @user %>
+		        <% if !@mutual_messages.empty? %>
+		  	      <%= render 'mutual_messages', :user => @user %>
+		        <% end %>
 		      <% end %>
 		  <% end %>
-		    <%= render 'shared/my_references', :user => @user %>
-	  	  </table>
+		    <%= render 'my_references', :user => @user %>
 	</div>
 </div>
