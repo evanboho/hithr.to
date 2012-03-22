@@ -1,22 +1,24 @@
 <div class="hero-unit">
 	<h1>about - wiki</h1>
-	<p>click on any of the sections to make an edit.</p>
+	<p><% if !current_user %>log in to <% end %>click on any of the sections to make an edit.</p>
 </div>
+<h3 class="heading">basics</h3><br>
+
 <div class="row">
-	<h3 class="heading">basics</h3><br>
 	<% @about_graphs.each do |about| %>
 	  <div class="span4">
-	  <h3><%= best_in_place about, :title %></h3>
-	  <p><%= best_in_place about, :content, type: :textarea %></p>
+	  <h3><%= best_in_place_if current_user, about, :title %></h3>
+	  <p><%= best_in_place_if current_user, about, :content, type: :textarea %></p>
 	  </div>
 	<% end %>
 </div>
-<div class="row">
 <h3 class="heading">FAQ</h3><br>
+
+<div class="row">
 <% @about_faqs.each do |about| %>
   <div class="span6">
-  <h3><%= best_in_place about, :title %></h3>
-  <p><%= best_in_place about, :content, type: :textarea %></p>
+  <h3><%= best_in_place_if current_user, about, :title %></h3>
+  <p><%= best_in_place_if current_user, about, :content, type: :textarea %></p>
   </div>
 <% end %>
 </div>
