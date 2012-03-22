@@ -1,5 +1,5 @@
 <div class="hero-unit">
-	<h1>about - wiki</h1>
+	<h1>about<% if current_user %> - wiki<% end %></h1>
 	<p><% if !current_user %>log in to <% end %>click on any of the sections to make an edit.</p>
 </div>
 <h3 class="heading">basics</h3>
@@ -34,7 +34,7 @@
 <h3 class="heading">create new section</h3>
 <div class="well">
   <br>
-  <%= simple_form_for @about, :url => about_path(@about) do |f| %>
+  <%= simple_form_for @about do |f| %>
     <%= f.input :title %>
     <%= f.input :genre, :collection => ["paragraph", "FAQ"] %>
     <%= f.input :content %>
