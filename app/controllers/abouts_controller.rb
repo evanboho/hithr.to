@@ -16,6 +16,7 @@ class AboutsController < ApplicationController
   
   def create
     @about = About.new(params[:about])
+    @about.genre = "paragraph" if @about.genre == ""
     if @about.save
       flash[:notice] = "About section created."
       redirect_to abouts_path
