@@ -6,6 +6,7 @@ class Reference < ActiveRecord::Base
   
   validates :user_id, :presence => true
   validates :sender_id, :presence => true
+  validates :positive, :presence => true
   
 
   def msg_time
@@ -25,11 +26,11 @@ class Reference < ActiveRecord::Base
   end
   
   def positive_exp?
-    return "super!"  if positive == 2
+    return "super!"       if positive == 2
     return "pretty good!" if positive == 1
-    return "negative"   if positive == -2
-    return "sort of awk" if positive == -1
-    return "OK"    if positive == 0
+    return "negative"     if positive == -2
+    return "sort of awk"  if positive == -1
+    return "just OK"           if positive == 0
   end
 
 end

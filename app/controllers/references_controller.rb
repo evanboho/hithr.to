@@ -19,6 +19,7 @@ class ReferencesController < ApplicationController
     else
       @reference = @user.references.build(params[:reference])
       @reference.sender_id = current_user.id
+      @reference.positive = 0 if @reference.positive == ""
       if @reference.save
         @user.profile.cred += @reference.positive
         @user.profile.save

@@ -2,12 +2,11 @@
 <%= link_to "unread messages (#{current_user.messages.unread.count})", user_messages_path(current_user) %>
 </h3>
 <div class="well">
-<% if @user.messages.present? %>
+<% if current_user.messages.my_messages.present? %>
 	<% current_user.messages.my_messages.each do |msg| %>
 	  <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
 	<% end %>
 <% else %>
-<h4 class="center"><i>you have no messages<i></h4>
-<%= link_to "see all messages", user_messages_path(@user) %><br></tr>
+<div class="center"><%= link_to "go to inbox", user_messages_path(@user), :class => "btn btn-primary" %></div>
 <% end %>
 </div>

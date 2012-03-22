@@ -113,9 +113,6 @@ td.avatar {
 .simple_form input[type="submit"] {
   margin-left: 0px;
 }
-.simple_form input[type="textarea"] {
-  width: 700px;
-}
 
 .table tbody tr:hover td, .table tbody tr:hover th {
   background-color: #ddd;
@@ -270,6 +267,9 @@ input[type="text"] {
 #message_content {
   height: 200px;
   width: 50%;
+}
+textarea {
+  width: auto;
 }
 pre {
   background-color: #eee;

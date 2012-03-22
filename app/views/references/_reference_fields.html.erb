@@ -1,26 +1,20 @@
-from <%= link_to current_user.username, current_user %> to <%= link_to @user.username, @user %><br>
+<div class='super-small-container'>
+<div class="well">
 
-<%= form_for [@user, @reference] do |f| %>
-
-<% if @reference.errors.any? %>
-
-  <div id="error_explanation">
-    <h2><%= pluralize(f.object.errors.count, "error") %> 
-        prohibited this <%= f.object.class.to_s.underscore.humanize.downcase %> 
-        from being saved:</h2>
-    <p>There were problems with the following fields:</p>
-    <ul>
-    <% @reference.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<h2 class="">
+for: <%= link_to @user.username, @user %><br>
+</h2><br>
+<%= simple_form_for [@user, @reference], :class => "" do |f| %>
 	
-	<%= f.label :content, "message:" %>
-	<%= f.text_area :content, :class => "text_area"%><br>
-	<%= f.select(:positive, options_for_select([['super!', 2],['fine!', 1],['OK', 0],['sort of awk', -1],['negative', -2]]))%>
-	<%= f.submit %>
+	<%= f.input :content, :label => "message:", :class => "text_area"%><br>
+	<%= f.input :positive, 
+			:label => "overall experience:", 
+			:priority => 2, 
+			:required => false,
+			:collection => [['super!', 2],['fine!', 1],['just OK', 0],['sort of awk', -1],['negative', -2]] %>
+	<%= f.button "submit", :class => "btn btn-primary", :style => "margin-left: 170px;" %>
 	
 <% end %>
+
+</div>
+</div>

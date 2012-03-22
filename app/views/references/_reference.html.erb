@@ -1,25 +1,43 @@
-<% @user.references.each do |msg| %>
-<tr> 
-  <td>
-    <div class="center">
-	<u><%= link_to "from: #{msg.sender.username}", msg.sender %></u><br>
-	</div>
-	<p class="well center">
+<% @user.references.order('created_at DESC').each do |msg| %>
+	
+<div class="well">
+
+    <p>
+    <span style="float:left; text-align:left;">
+	<u><%= gravatar_for(msg.sender, :thumb, :size => 30) %><%= link_to msg.sender.username, msg.sender %></u>
+	</span>
+	<div class="" style="float:right; text-align:right; margin-bottom:0px;">
 	<% if msg.positive > 0 %>
-	  <span class="label label-positive">
+	  <div class="" style="background-color: #24E400">
 	<% elsif msg.positive == 0 %>
-	  <span class="label label-neutral">
+	  <div class="">
 	<% else %>
-	  <span class="label label-warning">
+	  <div class="">
+	<% end %>	
+    <h4><%= msg.positive_exp? %></h4>
+	</div>
+    		
+	</div>
+  </p>
+<br>
+  <div class="msg" style="margin: 10px -5px; padding: 10px; font-size:110%;">
+	<div class="center" style="margin: 0px 0 5px 0;">
+	<% if msg.positive > 0 %>
+	  <span class="btn label label-positive">
+	<% elsif msg.positive == 0 %>
+	  <span class="btn label label-neutral">
+	<% else %>
+	  <span class="btn label label-warning">
 	<% end %>
-	<%= msg.positive_exp? %></span><br>
-      <em><%= msg.content %></em>
+	<%= msg.positive_exp? %></span>
+    </div>    
+    <%= msg.content %>
     <% if msg.sender == current_user %>
 	<br><%= link_to "delete", reference_path(msg), :method => :delete %>
 	<% end %>
-	</p>
 	</div>
-	
-  </td>
-</tr>
+<div class="alt"><%= msg.msg_time %>
+</div>
+<br>
+</div>
 <% end %>
