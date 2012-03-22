@@ -11,7 +11,9 @@ li {
   -moz-border-radius: 10px 10px;
   -webkit-border-radius: 10px 10px;
   border-radius: 10px;
-  box-shadow: inset -5px -5px 10px #aaa //, 0 10px 2px #000;
+  -webkit-box-shadow: inset -5px -5px 12px #ccc;
+  -moz-box-shadow: inset -5px -5px 12px #ccc;
+  box-shadow: inset -5px -5px 12px #ccc //, 0 10px 2px #000;
 }
 
 table.tble {
@@ -181,7 +183,9 @@ div.center_block {
   -moz-border-radius: 20px 20px;
   -webkit-border-radius: 20px 20px;
   border-radius: 20px;
-  box-shadow: inset -5px -10px 10px #ccc //, 0 10px 2px #000;
+  -webkit-box-shadow: inset -5px 10px 10px #ccc;
+  -moz-box-shadow: inset -5px 10px 10px #ccc;
+  box-shadow: inset -5px -10px 10px #ccc;
 }
 table.messages {
   padding: 10px;

@@ -5,6 +5,8 @@
 <h3 class="heading">basics</h3><br>
 
 <div class="row">
+	<div style="border: 1px solid #ccc;" class="span12 round">
+	
 	<% @about_graphs.each do |about| %>
 	  <div class="span4">
 	  <h3><%= best_in_place_if current_user, about, :title %></h3>
@@ -12,15 +14,19 @@
 	  </div>
 	<% end %>
 </div>
+</div>
+<br>
 <h3 class="heading">FAQ</h3><br>
 
 <div class="row">
+	<div style="border: 1px solid #ccc;" class="span12 round">
 <% @about_faqs.each do |about| %>
   <div class="span6">
   <h3><%= best_in_place_if current_user, about, :title %></h3>
   <p><%= best_in_place_if current_user, about, :content, type: :textarea %></p>
   </div>
 <% end %>
+</div>
 </div>
 <br>
 <h3 class="heading">create new section</h3>

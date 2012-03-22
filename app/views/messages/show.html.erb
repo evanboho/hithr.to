@@ -13,10 +13,12 @@
 	
 	<% if @mutual_messages.count > 0 %>
     <br><br>	
-    <h3 class="heading">conversation</h3> 
+    <h3 class="heading">all messages between you</h3> 
+	<div class="well">
 	<% @mutual_messages.each do |msg| %>
-	  <%= render 'show_message', :msg => msg %>
+	  <%= render 'message_stubs', :user => msg.user, :msg => msg %>
 	<% end %>
+	</div>
 	<% end %>
   </div>
 
