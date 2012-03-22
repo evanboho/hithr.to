@@ -1,17 +1,19 @@
-<div class="hero-unit shadow-down">
+<div class="hero-unit round">
   <h1>inbox</h1>
 </div>
 
 <div class="row">	
   <div class="span8"> 
     <% if current_user.messages.unread.count == 0 %>
-      <div class="well">
+    <h3 class="heading">unread messages</h3>
+
+      <div class="msg">
 	    <br>
         <h4 class="center"><i>no unread messages</i></h4>
         <br>
       </div>
     <% else %>
-      <h3 class="center"><div class="btn btn-large">- unread messages - </div></h3><br>
+      <h3 class="heading">unread messages</h3>
       <% @messages.unread.each do |msg| %>
 	    <%= render 'show_message', :msg => msg %>
 	  <% end %>

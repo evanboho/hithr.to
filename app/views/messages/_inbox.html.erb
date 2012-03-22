@@ -1,5 +1,5 @@
-<div class="center"><h4 class="btn">- sent messages -</div></h4><hr>
-  <% unless @messages_sent.empty? %>
+ <% unless @messages_sent.empty? %>
+  <h3 class="heading">sent messages</h3> 
     <div class="well">
     <% @messages_sent.each do |msg| %>
       <%= render 'messages/message_stubs', :user => msg.user, :msg => msg %>
@@ -10,13 +10,14 @@
 </div>
 
 
-<div class="well">
   <% unless @messages.archived.empty? %>
-    <h4 class="center">- read messages -</h4><hr>
+    <h3 class="heading">read messages</h3>
+	<div class="well">
     <% @messages.archived.each do |msg| %>
       <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
     <% end %>
   <% else %>
-  <br><h4 class="center"><i>no archived messages</i></h4><br>
+  <br>
+  <h4 class="center"><i>no archived messages</i></h4><br>
 <% end %>
 </div>
