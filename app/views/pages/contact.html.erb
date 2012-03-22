@@ -1,0 +1,11 @@
+<div class="hero-unit">
+	<h1>contact</h1>
+</div>
+
+<div class="super-small-container well">
+<%= simple_form_for [@user, @message] do |f| %>
+	<%= f.input :sender_email, :label => "from:" %>
+	<%= f.input :sujet, :label => "subject:", :required => false %>
+	<%= f.input :content, :style => "width: 200px;", :label => "message:", :required => false %>
+	<%= f.submit :class => "btn btn-primary", :style => "margin-left: 170px;" %>
+<% end %>

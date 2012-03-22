@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120322033253) do
+ActiveRecord::Schema.define(:version => 20120322190820) do
 
   create_table "abouts", :force => true do |t|
     t.string   "genre"
@@ -52,11 +52,12 @@ ActiveRecord::Schema.define(:version => 20120322033253) do
     t.integer  "sender_id"
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "ride_id"
     t.boolean  "read"
     t.string   "sujet"
+    t.string   "sender_email"
   end
 
   add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"

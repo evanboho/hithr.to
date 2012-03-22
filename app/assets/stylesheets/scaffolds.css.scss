@@ -3,14 +3,15 @@ li {
 }
 
 .heading {
-  border: 1px solid;
+  //border: 1px solid;
   border-color: #999;
-  background-color: #ddd;
+  background-color: #eee;
   width: 100%;
   text-align: center;
   -moz-border-radius: 10px 10px;
   -webkit-border-radius: 10px 10px;
   border-radius: 10px;
+  box-shadow: inset -5px -5px 10px #aaa //, 0 10px 2px #000;
 }
 
 table.tble {
@@ -180,6 +181,7 @@ div.center_block {
   -moz-border-radius: 20px 20px;
   -webkit-border-radius: 20px 20px;
   border-radius: 20px;
+  box-shadow: inset -5px -10px 10px #ccc //, 0 10px 2px #000;
 }
 table.messages {
   padding: 10px;
@@ -261,8 +263,8 @@ input[type="text"] {
   width: 150px;
 }
 #message_content {
-  height: 100px;
-  width: 360px;
+  height: 200px;
+  width: 50%;
 }
 pre {
   background-color: #eee;

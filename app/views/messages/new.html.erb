@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="span8">
-    <div class="well">
+    <table class="tble msg"><tr><td>
 	    <h4>
 		  <span style="margin-left: 138px; margin-right: 8px;">to: </span>
 		  <%= gravatar_for @user, :thumb, :size => 30 %> 
@@ -16,7 +16,7 @@
 	      <%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
 	      <%= f.submit "send", :class => "btn btn-primary", :style => "margin-left: 170px;" %>
 	    <% end %>
-    </div>
+    </table>
     <% if @reply_from.present? %>
 	  <%= render 'show_message', :msg => @reply_from %>
 	<% end %>

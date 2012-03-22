@@ -8,6 +8,9 @@ class PagesController < ApplicationController
   end
 
   def contact
+    @user = current_user
+    @user = User.first #User.where(:firstname => "admin").first
+    @message = Message.new
   end
 
   def help
