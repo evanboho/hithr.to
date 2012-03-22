@@ -3,6 +3,7 @@
 	<p>click on any of the sections to make an edit.</p>
 </div>
 <div class="row">
+	<h3 class="heading">basics</h3><br>
 	<% @about_graphs.each do |about| %>
 	  <div class="span4">
 	  <h3><%= best_in_place about, :title %></h3>
@@ -11,7 +12,7 @@
 	<% end %>
 </div>
 <div class="row">
-<h3 class="heading">FAQ</h3>
+<h3 class="heading">FAQ</h3><br>
 <% @about_faqs.each do |about| %>
   <div class="span6">
   <h3><%= best_in_place about, :title %></h3>
