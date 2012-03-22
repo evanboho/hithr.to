@@ -1,8 +1,10 @@
 <h2>edit your message</h2>
 from <%= @message.sender.username %> to <%= link_to @message.user.username, @message.user  %><br>
 
-<%= form_for @message do |f| %>
+<%= simple_form_for [@user, @message] do |f| %>
 
 <%= render 'fields', :f => f %>
+
 <%= f.submit "update" %>
+
 <% end %>

@@ -57,5 +57,8 @@
     </tr>	  
   <% end %>
   </div>
+  <% if msg.id == params[:id].to_i %>
+    <% msg.read = true %><% msg.save %>
+  <% end %>
   </table>    
   

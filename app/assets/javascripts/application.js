@@ -24,4 +24,6 @@
 //= require twitter/bootstrap/bootstrap-collapse
 // require twitter/bootstrap/bootstrap-carousel
 // require twitter/bootstrap/bootstrap-typeahead
+//= require jquery.purr
+//= require best_in_place
 //= require_tree .

@@ -4,20 +4,20 @@
 
 <div class="row">	
   <div class="span8"> 
-    <% if current_user.messages.unread.count == 0 %>
     <h3 class="heading">unread messages</h3>
+    <div class="well">
+    <% if current_user.messages.unread.count == 0 %>
 
-      <div class="msg">
 	    <br>
         <h4 class="center"><i>no unread messages</i></h4>
         <br>
-      </div>
     <% else %>
-      <h3 class="heading">unread messages</h3>
+
       <% @messages.unread.each do |msg| %>
-	    <%= render 'show_message', :msg => msg %>
+	    <%= render 'message_stubs', :msg => msg, :user => msg.user %>
 	  <% end %>
     <% end %>
+  </div>
   </div>
 
   <div class="span4">

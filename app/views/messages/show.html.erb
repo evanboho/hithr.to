@@ -12,7 +12,7 @@
     <%= render 'show_message', :msg => @message %>
 	
 	<% if @mutual_messages.count > 0 %>
-    <br><hr>	
+    <br><br>	
     <h3 class="heading">conversation</h3> 
 	<% @mutual_messages.each do |msg| %>
 	  <%= render 'show_message', :msg => msg %>

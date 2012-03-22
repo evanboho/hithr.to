@@ -1,0 +1,29 @@
+<div class="hero-unit">
+	<h1>about - wiki</h1>
+	<p>click on any of the sections to make an edit.</p>
+</div>
+<div class="row">
+	<% @about_graphs.each do |about| %>
+	  <div class="span4">
+	  <h3><%= best_in_place about, :title %></h3>
+	  <p><%= best_in_place about, :content, type: :textarea %></p>
+	  </div>
+	<% end %>
+</div>
+<div class="row">
+<h3 class="heading">FAQ</h3>
+<% @about_faqs.each do |about| %>
+  <div class="span6">
+  <h3><%= best_in_place about, :title %></h3>
+  <p><%= best_in_place about, :content, type: :textarea %></p>
+  </div>
+<% end %>
+</div>
+
+<div class="span4">
+  <%= simple_form_for @about do |f| %>
+    <%= f.input :title %>
+    <%= f.input :genre, :collection => ["paragraph", "FAQ"]%>
+    <%= f.input :content %>
+    <%= f.submit %>
+  <% end %>
