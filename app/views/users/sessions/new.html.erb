@@ -1,9 +1,8 @@
-<div class="small-container">
   <div class="hero-unit">
     <h1>sign in</h1>
   </div>
 </div>
-<div class="super-small-container well">
+<div class="super-small-container shadow round">
 <br>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <%= f.input :email, :label => "email:", :required => false %>
@@ -17,7 +16,5 @@
   <div class="center">
   <%= f.submit "sign in", :class => "btn btn-primary", :style => "width: 150px;" %>
 <% end %>
-<br><br>
+<br>
 <%= render 'shared/links' %>
-
-</div>

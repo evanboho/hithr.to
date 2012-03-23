@@ -2,19 +2,39 @@ li {
   list-style: none;
 }
 
+
+
+@mixin rounded($radius: 10px) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+@mixin inset-shadow($color, $amount: 15%) {
+  -webkit-box-shadow: inset -3px -8px 15px darken($color, $amount);
+  -moz-box-shadow: inset -3px -8px 15px darken($color, $amount);
+  box-shadow: inset -3px -8px 15px darken($color, $amount);
+}
+.btn {
+  @include inset-shadow(#555);
+}
+.shadow {
+  @include inset-shadow(#003366);
+}
+.round {
+  @include rounded(20px);
+}
+.well { 
+  @include inset-shadow(#f5f5f5, 0%);
+  @include rounded;
+}
 .heading {
-  //border: 1px solid;
+  border: 1px solid #ccc;
   padding: 3px 0px;
-  border-color: #999;
   background-color: #eee;
   width: 100%;
   text-align: center;
-  -moz-border-radius: 10px 10px;
-  -webkit-border-radius: 10px 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: inset -3px -8px 12px #ccc;
-  -moz-box-shadow: inset -3px -8px 12px #ccc;
-  box-shadow: inset -3px -8px 12px #ccc;
+  @include rounded(10px);
+  @include inset-shadow(#eee, 30%);
 }
 
 table.tble {
@@ -23,7 +43,7 @@ table.tble {
   background-color: #f5f5f5	;
   # box-shadow: 0px 0px 10px #f5f5f5;
   line-height: 24px;
-  border-radius: 10px;
+  @include rounded(10px);
 }
 table.tble td {
   padding: 15px;
@@ -31,7 +51,8 @@ table.tble td {
 .content {
   border: 1px solid #bbb;
   background-color: white;
-  padding: 3px 10px;
+  padding: 0px;
+  @include inset-shadow(#fff);
 }
 
 
@@ -39,12 +60,8 @@ table.tble td {
   border-color: black;
   border: 1px;
   margin-top: 0px;
-  -webkit-box-shadow: inset -3px -10px 10px #eee;
-  -moz-box-shadow: inset -3px -10px 10px #eee;
-  box-shadow: inset -3px -10px 10px #eee;
-  -moz-border-radius: 10px 10px;
-  -webkit-border-radius: 10px 10px;
-  border-radius: 10px;
+  @include inset-shadow(#fff);
+  @include rounded();
 }
 td.msg {
   padding: 20px 40px;
@@ -55,51 +72,12 @@ table.msg th {
   padding-right: 5px; 
 }
 table.msg th.top {
-  -moz-border-radius: 10px 0px 0px 0px;
-  -webkit-border-radius: 10px 0px 0px 0px;
-  border-radius: 10px 10px 0px 0px;
+  @include rounded(10px 10px 0px 0px);
+  
 }
 table.msg th.bottom {
-  -moz-border-radius: 0px 0px;
-  -webkit-border-radius: 10px 10px;
-  border-radius: 0px 0px 10px 10px;
+  @include rounded(0px 0px 10px 10px);
 }
-
-.apple_pagination {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  background: #eee;
-  border: 1px solid #ccc;
-  font-size: 110%;
-  text-align: center;
-  padding: 1em;
-  -moz-border-radius: 10px 10px;
-  -webkit-border-radius: 10px 10px;
-  border-radius: 10px;
-  cursor: default; }
-  .apple_pagination a, .apple_pagination span {
-    padding: 0.2em 0.3em; }
-  .apple_pagination .disabled {
-    color: #aaaaaa; }
-  .apple_pagination .current {
-    font-style: normal;
-    font-weight: normal;
-    color: #f0f0f0;
-    background-color: #003366;
-    display: inline-block;
-    width: 1.4em;
-    height: 1.4em;
-    line-height: 1.3;
-    -moz-border-radius: 1em;
-    -webkit-border-radius: 1em;
-    border-radius: 1em;
-    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
-  .apple_pagination a {
-    text-decoration: none;
-    color: black; }
-  .apple_pagination a:hover, .apple_pagination a:focus {
-      text-decoration: underline; }
 
 td.avatar {
   width: 30px;
@@ -183,14 +161,11 @@ div.center_block {
   background-color: #eee;
   height: 100%;
   margin-top: 0px;
+  margin-bottom: 0px;
   padding-top: 25px;
   padding-bottom: 25px;
-  -moz-border-radius: 20px 20px;
-  -webkit-border-radius: 20px 20px;
-  border-radius: 20px;
-  -webkit-box-shadow: inset -5px 10px 10px #ccc;
-  -moz-box-shadow: inset -5px 10px 10px #ccc;
-  box-shadow: inset -5px -10px 10px #ccc;
+  @include rounded(20px);
+  @include inset-shadow(#eee, 50%);
 }
 table.messages {
   padding: 10px;
@@ -198,41 +173,17 @@ table.messages {
   background-color: #f5f5f5;
 }
 table.shadow {
-  box-shadow: 3px -3px 20px #bbb;
+  @include inset-shadow(#eee, 15%);
 }
-table.shadow-down {
-  box-shadow: 3px 3px 20px #bbb;
-}
+//table.shadow-down {
+//  box-shadow: 3px 3px 20px #bbb;
+//}
 .center {
   text-align: center;
   margin-left:auto;
   margin-right:auto;
 }
-td.bio {
-  padding: 5% 15%;
-  background-color: #ddd;
-  border-radius: 10px;
-  line-height: 24px;
-  font-size:16px;
-  box-shadow: 0px 0px 10px #ccc;
-  width: 100%;
-}
 
-table.profile td {
-  padding: 15px;
-}
-
-.cred {
-  background-color: #43BFC7;
-  padding: 0px;
-  margin: 0px;
-  text-align: center;
-  color: #000;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px #43BFC7;
-  
-
-}
 .no-padding {
   padding: 0px;
   margin: -4px 0px -10px 0px;
@@ -283,13 +234,7 @@ pre {
   padding: 10px;
   font-size: 11px; }
 
-a {
-  color: #111;
-  &:visited {
-    color: #111; }
-  &:hover {
-    color: #666; }
-}
+
 
 div {
   &.field, &.actions {
@@ -297,3 +242,51 @@ div {
 
 #notice {
   color: green; }
+
+.cred {
+  font-size: 20px; 
+  height: auto; 
+  width: auto;
+  padding: 30px 20px;
+  text-align: center; 
+  background-color:#003366; 
+  color: white;
+  @include inset-shadow(#003366, 15%);
+}
+.auth_provider {
+  text-decoration: none;
+  &:hover {
+  text-decoration: none; }
+}
+
+a {
+  color: #003366;
+  text-decoration: underline;
+  &:visited {
+    color: #003366; }
+  &:hover {
+    color: lighten(#003366, 10%); }
+}
+.ref {
+  border: 1px solid #bbb;
+  padding: 4px 10px;
+  border: 1px solid #999;
+  .pos {
+  background-color: green; }
+  .neut {
+  background-color: yellow; }
+  .neg {
+  background-color: red; }
+}
+
+.btn {
+  text-decoration: none;
+  &:a {color: #000;}
+  &:hover {
+  text-decoration: none;
+}
+}
+
+ul.dropdown-menu li a {
+  text-decoration: none;
+}

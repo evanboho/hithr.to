@@ -1,4 +1,4 @@
-<div class="super-small-container well">
+<div class="super-small-container shadow round">
 	<br>
 
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -18,23 +18,8 @@
   <%= f.submit "sign up", :class => "btn btn-primary", :style => "width: 150px;" %>
 
 <% end %>
-
 <br>
 <%= render 'shared/links' %>
 
 </div>
 </div>
-
-
-
-<br><br>
-Already a user? <%= link_to "sign in", sign_in_path %>
-
-<%- if devise_mapping.omniauthable? %>
-   <h3>or connect with:</h3>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-   
-    <%= link_to (image_tag "#{provider}_64.png"), omniauth_authorize_path(resource_name, provider), :class => "auth_provider" %>
-    <% link_to "#{provider.to_s.split('_').first}", omniauth_authorize_path(resource_name, provider) %>
-  <% end -%>
-<% end -%>

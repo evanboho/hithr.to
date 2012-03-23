@@ -27,7 +27,7 @@ class Reference < ActiveRecord::Base
   
   def positive_exp?
     return "super!"       if positive == 2
-    return "pretty good!" if positive == 1
+    return "fine and dandy" if positive == 1
     return "negative"     if positive == -2
     return "sort of awk"  if positive == -1
     return "just OK"           if positive == 0

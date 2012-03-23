@@ -1,18 +1,18 @@
 <% @user.references.order('created_at DESC').each do |msg| %>
 	
-<div class="well">
+<div class="well"  style="border: 1px solid #bbb;">
 
     <p>
     <span style="float:left; text-align:left;">
 	<%= gravatar_for(msg.sender, :thumb, :size => 30) %> <u><%= link_to msg.sender.username, msg.sender %></u>
 	</span>
-	<div style="float:right; text-align:right;">
+	<div style="float:right;">
 	<% if msg.positive > 0 %>
-	  <div class="content round" style="background: #86FF6F">
+	  <div class="ref round pos" style="background: #86FF6F; margin-bottom: 13px;">
 	<% elsif msg.positive == 0 %>
-	  <div class="content round" style="background-color: #F5FF6D;">
+	  <div class="content ref round neut" style="background-color: #F5FF6D;">
 	<% else %>
-	  <div class="content round" style="background-color: #FB7B7C;">
+	  <div class="ref round neg">
 	<% end %>	
     <h4><%= msg.positive_exp? %></h4>
 	</div>
@@ -25,7 +25,7 @@
     
 	</div>
 	<% if msg.sender == current_user %>
-	<br><%= link_to "delete", reference_path(msg), :method => :delete %>
+	<br><%= link_to "rescind", reference_path(msg), :method => :delete, :class => "btn btn-warning", :style => "float:right;" %>
 	<% end %>
 <div class="alt"><%= msg.msg_time %>
 </div>

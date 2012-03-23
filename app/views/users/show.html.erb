@@ -1,64 +1,67 @@
 <div class="row">
 	<div class="span8">
-		<div class="hero-unit"><h1>
-	      <%= link_to (gravatar_for @user, :small, :size => 100), 
+		<div class="hero-unit" style="margin-bottom: 0px; height: auto;">
+		  <div class="row">
+	      <h1 style="float: left;"><%= link_to (gravatar_for @user, :small, :size => 100), 
 						avatar_medium %><%= @user.username %>
 						<% if @user.authentications.present? %>
 					        <% @user.authentications.each do |auth| %>
           <%= link_to (image_tag "#{auth.provider}_32.png"), auth_link(auth), :class => "auth_provider" %>
 					        <% end %>
-					      <% end %></h1>
-		  <%= link_to "(edit your public profile)", edit_profile_path(@user) if @user == current_user %></div>
-		<table class="shadow tble">
-		  
-          <tr>
-		    <td rowspan="1" class="btn-large" >
-			  <h2 class="cred">cred: <%= cred_magic(@user.profile.cred) %></h2>
-		  </tr>
-		  <tr>
-		    <td class="padding" colspan="2">
-		      <%= "age: #{distance_in_years(@user.profile.birthday)}" if @user.profile.birthday.present? %><br>
-		      <%= "gender: #{@user.profile.gender}" if @user.profile.gender.present? %><br>
-		      <%= "lives in: #{@user.profile.hometown}" if @user.profile.hometown.present? %><br><br></td>
-		  </tr>
-		  <tr>
-			<td class="bio" colspan="3">
-		      <% if @user.profile.about.present? %>
-			    <strong>bio:</strong><br>
-		          <%= @user.profile.about %>
-		      <% else %>
-		      This person has not filled out their bio yet.
-	          <% end %>
-	        </td></tr><tr>
-		   
-	      </tr>
-	      <tr>
-		    <td class="padding" colspan="2"><br>
-		      <% if @user.authentications.present? %>
-		      connected through:<br/>
-		        <% @user.authentications.each do |auth| %>
-		          <%= link_to (image_tag "#{auth.provider}_64.png"), auth_link(auth), :class => "auth_provider" %>
-		        <% end %>
+					      <% end %>
+	
+		</h1>
+		<div style="float:right; height:106px; ">
+	    <div class="cred round">
+				cred: <%= cred_magic(@user.profile.cred) %>
+			</div></div><div style="font-size: 120%; text-align: center; clear: both;">
+		  <%= link_to "(edit your public profile)", edit_profile_path(@user) if @user == current_user %>
+		</div>
+        </div>
+		</div>
+		<div class="well" style="margin-bottom: 0px;"><br>
+			  <% if @user.profile.birthday.present? %>
+			  <div class="profile round" style="font-size:18px; padding: 20px;">
+			 
+		        <div class="left"><b>age: </b></div>
+		        <div class="right"><%= distance_in_years(@user.profile.birthday) %></div><br>
+		      <% if @user.profile.gender.present? %>
+		        <div class="left"><b>gender: </b></div>
+		        <div class="right"><%= @user.profile.gender %></div><br>
 		      <% end %>
-		    </td>
-		  </tr>
-		</table>
+		      <% if @user.profile.hometown.present? %>
+		        <div class="left"><b>current city: </b></div>
+		        <div><%= @user.profile.hometown %></div><br>
+		      <% end %>
+		      </div>
+              
+		      <% end %>
+		   
+	          <div class="profile round" style="padding:20px;">
+		      <% if @user.profile.about.present? %>
+			    <div class="round shadow" style="padding: 5px; color: white; font-size: 18px; width: 50%; float:left; text-align:right;background-color: #003366;">
+				bio: </div><br>
+		          <div class="content round" style="padding: 20px 10px 20px 100px; clear: both; font-size: 18px;"><%= @user.profile.about %></div>
+		      <% else %>
+		      <h4 class="center"><i>this person has not filled out a bio yet.</i></h4>
+	          <% end %>
+              </div><br><br>
+        </div>
+     
 		<% if @user == current_user %>
-		  <table class="tble shadow-down profile"><tr>	  
-		    <td><b>private profile:</b>
+		   <h3 class="heading">private profile</h3>
+	    <div class="well">
+		    <b>private profile:</b>
 		  <%= link_to "(edit)", edit_user_registration_path(@user) %>	  
 		  <br>
 		  <strong>name: </strong><%= "#{@user.firstname.titleize} #{@user.lastname.titleize}" %><br>
 		  <strong>email: </strong><%= "#{@user.email}"  %><br>
 		  <strong>birthday: </strong><%= @user.profile.birthday.strftime("%B %d, %Y") if @user.profile.birthday.present? %><br>
-		  </td></tr>
-		  </table>
-		  </p>
+		  </div>
 		<% else #not current_user %>
-		  <p></p>
 		<% end %>
 	</div>
-	<div class="span4 pull-right"><br>
+	<div class="span4">
    		  <% if current_user %>
 		      <% if @user == current_user %>
 		        <%= render 'my_messages', :user => @user %>
