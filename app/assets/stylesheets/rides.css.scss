@@ -7,6 +7,11 @@
   -moz-border-radius: $radius;
   -webkit-border-radius: $radius;
 }
+@mixin inset-shadow($color, $amount: 15%) {
+  -webkit-box-shadow: inset -3px -8px 15px darken($color, $amount);
+  -moz-box-shadow: inset -3px -8px 15px darken($color, $amount);
+  box-shadow: inset -3px -8px 15px darken($color, $amount);
+}
 
 .apple_pagination {
   width: 50%;
