@@ -1,21 +1,12 @@
 li {
   list-style: none;
 }
-
-
-
-@mixin rounded($radius: 10px) {
-  border-radius: $radius;
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
-}
-@mixin inset-shadow($color, $amount: 15%) {
-  -webkit-box-shadow: inset -3px -8px 15px darken($color, $amount);
-  -moz-box-shadow: inset -3px -8px 15px darken($color, $amount);
-  box-shadow: inset -3px -8px 15px darken($color, $amount);
-}
 .btn {
   @include inset-shadow(#555);
+}
+table.rides {
+  @include rounded;
+  @include inset-shadow(#ccc);
 }
 .shadow {
   @include inset-shadow(#003366);
@@ -24,6 +15,7 @@ li {
   @include rounded(20px);
 }
 .well { 
+  background-color: #eee;
   @include inset-shadow(#f5f5f5, 0%);
   @include rounded;
 }
