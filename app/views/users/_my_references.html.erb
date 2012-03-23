@@ -1,6 +1,10 @@
 <div class="heading">
 <h3 class="">references (<%= @user.references.count %>)</h3>
-<p>lorem...</div>
+<p>	Positive (<%= @user.references.positive_refs.count %>) | 
+	Neutral (<%= @user.references.neutral_refs.count %>) |
+	Negative (<%= @user.references.negative_refs.count %>)
+	
+</div>
 <div class="well">
 <% if @user != current_user %>
 <div class="center">

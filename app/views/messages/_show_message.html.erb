@@ -31,6 +31,9 @@
   <td></td>
   <% if msg.user == current_user %>
     <td style="text-align: right;">
+	  <% if msg.id == params[:id].to_i %>
+	    <% msg.read = true %><% msg.save %>
+	  <% end %>
     <%= form_for msg do |f| %>
       <% if msg.read == true %>
    	   	<%= f.hidden_field(:read, :value => false) %>
@@ -57,8 +60,5 @@
     </tr>	  
   <% end %>
   </div>
-  <% if msg.id == params[:id].to_i %>
-    <% msg.read = true %><% msg.save %>
-  <% end %>
   </table>    
   

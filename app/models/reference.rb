@@ -32,5 +32,16 @@ class Reference < ActiveRecord::Base
     return "sort of awk"  if positive == -1
     return "just OK"           if positive == 0
   end
+  
+  def self.positive_refs
+    ref = self.scoped
+    ref.where('positive > ?', 0)
+  end
+  def self.neutral_refs
+    self.where(:positive => 0)
+  end
+  def self.negative_refs
+    self.where('positive < ?', 0)
+  end
 
 end
