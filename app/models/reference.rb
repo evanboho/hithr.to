@@ -4,9 +4,8 @@ class Reference < ActiveRecord::Base
   
   attr_accessible :content, :positive
   
-  validates :user_id, :presence => true
-  validates :sender_id, :presence => true
-  validates :positive, :presence => true
+
+  validates_presence_of :user_id, :sender_id, :positive, :content
   
 
   def msg_time

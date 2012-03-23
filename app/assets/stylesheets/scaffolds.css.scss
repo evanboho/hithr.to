@@ -17,6 +17,11 @@
 // general
 //
 
+
+table.rides tbody tr:nth-child(odd) td, table tbody tr:nth-child(odd) th {
+  background-color: #e0e0e0;
+}
+
 .control-group.error input, .control-group.error select, .control-group.error textarea {
   color: #000;
 }
@@ -29,10 +34,11 @@ select,
 }
 
 .alert {
-  width: 20%;
+//  width: 20%;
   float: right;
-  margin-right: 36%;
+//  margin-right: 36%;
   text-align: center;
+  margin-bottom: 0px;
 }
 
 li {
@@ -269,9 +275,6 @@ div {
   &.field, &.actions {
     margin-bottom: 10px; } }
 
-#notice {
-  color: green; }
-
 .cred {
   font-size: 20px; 
   height: auto; 
@@ -300,13 +303,13 @@ a {
   border: 1px solid #bbb;
   padding: 4px 10px;
   border: 1px solid #999;
+}
   .pos {
-  background-color: green; }
+  background-color: #dff0d8; }
   .neut {
   background-color: yellow; }
   .neg {
   background-color: red; }
-}
 
 .btn {
   text-decoration: none;

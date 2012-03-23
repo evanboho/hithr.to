@@ -1,12 +1,13 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
 	<div class="container">
+		
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <%= link_to "hithr", root_path, :class => "brand", :style => "text-decoration: none;" %>
+      <%= link_to "hithr", root_path, :class => "brand", :style => "text-decoration: none; margin-left:40px;" %>
       <div class="nav-collapse">
         <ul class="nav nav-pills">
           <li class="divider-vertical"></li>
@@ -16,7 +17,8 @@
           <li><%= link_to "help", help_path %></li>
         </ul>
       </div>
-	  <div class="nav-collapse pull-right">
+	  <div class="nav-collapse" style="float:right; margin-right:40px;">
+		
 	    <ul class="nav nav-pills">
 	      <% if signed_in? %>
 		    <% if current_user.messages.unread.count > 0 %>
@@ -44,8 +46,10 @@
 	      </li>
 	    </ul>
 	  </div>
+	  <div style="float:right;">
+		<%= render 'shared/alerts' %>
+	</div>
       </div>
     </div>
   </div>
 </div>
-<%= render 'shared/alerts' %>
