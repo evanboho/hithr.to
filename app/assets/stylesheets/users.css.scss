@@ -11,8 +11,11 @@ td.bio {
 table.profile td {
   padding: 15px;
 }
-
-
+@mixin inset-shadow($color, $amount: 15%) {
+  -webkit-box-shadow: inset -3px -8px 15px darken($color, $amount);
+  -moz-box-shadow: inset -3px -8px 15px darken($color, $amount);
+  box-shadow: inset -3px -8px 15px darken($color, $amount);
+}
 .profile {
   border: 1px solid #bbb;
   background-color: white;
