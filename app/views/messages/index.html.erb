@@ -14,7 +14,7 @@
     <% else %>
 
       <% @messages.unread.each do |msg| %>
-	    <%= render 'message_stubs', :msg => msg, :user => msg.user %>
+	    <%= render 'message_stubs', :msg => msg %>
 	  <% end %>
     <% end %>
   </div>

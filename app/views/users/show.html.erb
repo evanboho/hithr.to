@@ -63,9 +63,7 @@
 		      <% if @user == current_user %>
 		        <%= render 'my_messages', :user => @user %>
 		      <% else %>
-		        <% if !@mutual_messages.empty? %>
-		  	      <%= render 'mutual_messages', :user => @user %>
-		        <% end %>
+		  	    <%= render 'mutual_messages', :user => @user %>
 		      <% end %>
 		  <% end %>
 		    <%= render 'my_references', :user => @user %>

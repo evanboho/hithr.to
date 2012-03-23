@@ -16,7 +16,7 @@
     <h3 class="heading">other messages between you</h3> 
 	<div class="well">
 	<% @mutual_messages.each do |msg| %>
-	  <%= render 'message_stubs', :user => msg.user, :msg => msg %>
+	  <%= render 'message_stubs', :msg => msg %>
 	<% end %>
 	</div>
 	<% end %>

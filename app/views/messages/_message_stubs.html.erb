@@ -1,8 +1,8 @@
 <ul>
   <li>
 	<b>
-	<%= gravatar_for user, :thumb, :size => 30 %>
-	<%= link_to user.username, user %>:</b>
+	<%= gravatar_for msg.sender, :thumb, :size => 30 %>
+	<%= link_to msg.sender.username, msg.sender %>:</b>
 	<%= link_to (msg.sujet ||= "subject"), msg %><br>
 	<div class="alt"><%= msg.msg_time %></div>
   </li>

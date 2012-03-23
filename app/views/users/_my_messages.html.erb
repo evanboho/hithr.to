@@ -4,7 +4,7 @@
 <div class="well">
 <% if current_user.messages.my_messages.present? %>
 	<% current_user.messages.my_messages.each do |msg| %>
-	  <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
+	  <%= render 'messages/message_stubs', :msg => msg %>
 	<% end %>
 <% else %>
 <div class="center"><%= link_to "go to inbox", user_messages_path(@user), :class => "btn btn-primary" %></div>

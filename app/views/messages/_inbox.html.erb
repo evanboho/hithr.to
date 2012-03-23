@@ -2,7 +2,7 @@
   <h3 class="heading">sent messages</h3> 
     <div class="well">
     <% @messages_sent.each do |msg| %>
-      <%= render 'messages/message_stubs', :user => msg.user, :msg => msg %>
+      <%= render 'messages/message_stubs', :msg => msg %>
     <% end %>
   <% else %>
     <br><h4 class="center"><i>no sent messages</i></h4><br>
@@ -14,7 +14,7 @@
 <div class="well">
   <% unless @messages.archived.empty? %>
     <% @messages.archived.each do |msg| %>
-      <%= render 'messages/message_stubs', :user => msg.sender, :msg => msg %>
+      <%= render 'messages/message_stubs', :msg => msg %>
     <% end %>
   <% else %>
   <br>
