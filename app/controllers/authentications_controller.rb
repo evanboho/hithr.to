@@ -23,24 +23,24 @@ class AuthenticationsController < ApplicationController
     info = request.env['omniauth.auth'].extra.raw_info
      authentication = Authentication.find_by_provider_and_uid(auth.provider, auth.uid)
      if authentication
-       flash[:notice] = "found already existing auth"
+       flash[:notice] = "signed in!"
        sign_in_and_redirect(:user, authentication.user)
      elsif current_user
        authentication = Authentication.new
        current_user.authentications.create!(:provider => auth.provider, :uid => auth.uid, :nickname => auth['info'].nickname)
-       flash[:notice] = "added auth to current user"
+       flash[:notice] = "connection established!"
        current_user.profile.cred += 1
        current_user.profile.save
        redirect_to current_user
      elsif user = User.find_by_email(auth['info'].email)
        user.authentications.create!(:provider => auth.provider, :uid => auth.uid)
-       flash[:notice] = "found user from email and created auth"
+       flash[:notice] = "found and connected!"
        user.profile.cred += 1
        user.profile.save
        sign_in_and_redirect(:user, user)
      elsif user = User.find_by_firstname_and_lastname(auth['info'].name.split.first, auth['info'].name.split.last)
        user.build_auth(auth)
-       flash[:notice] = "found user from name and created authentication"
+       flash[:notice] = "connection established and signed in!"
        user.profile.cred += 1
        user.profile.save
        sign_in_and_redirect(:user, user)
@@ -49,12 +49,12 @@ class AuthenticationsController < ApplicationController
                        :email => auth['info'].email, :password => Devise.friendly_token[0,20])
        if user.save
           user.build_auth(auth)
-          flash[:notice] = "created user and authentication"
+          flash[:notice] = "user created, connected and signed in!"
           user.profile.cred += 1
           user.profile.save
           sign_in_and_redirect(:user, user)
         else
-          flash[:notice] = "no success"
+          flash[:warning] = "Ooooops!"
           session['devise.omniauth'] = auth
           redirect_to user_edit_fields_path
         end
