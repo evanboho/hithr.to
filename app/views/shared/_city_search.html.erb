@@ -1,6 +1,10 @@
+<td colspan=2>
 <%= form_tag rides_path, :method => 'get', :class => "form-search" do %>
 	<% seed_city = request.location.city %>
 	<%= text_field_tag :search_origin, seed_city, 
 	                                          :placeholder => "(city, state)", :style => "" %> 
+	</td>
+	<td colspan=2>
 	<%= submit_tag "search rides", :name => nil, :class => "btn btn-primary" %>
+	</td>
 <% end %>

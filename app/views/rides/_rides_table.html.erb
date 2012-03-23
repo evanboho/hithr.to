@@ -5,19 +5,19 @@
 <% end %>
 <table class="table table-condensed rides round shadow">
 	<thead>
-	<tr class="round"><th colspan="2">
+	<tr class="round"><th colspan=2>
 		</th><th class="date">
 		On:
-		</th><th colspan="2">
+		</th><th colspan=2>
 		From:
-    	</th><th>
+    	</th><th colspan=2>
 	    To:
  		</th>
     </tr>
 	</thead>
-	<tr>
+	<tr style="height:40px;">
 	<% if params[:controller] == "pages" %>
-	  <td colspan=3></td><td colspan=4><%= render 'shared/city_search' %>
+	  <td colspan=3></td><%= render 'shared/city_search' %>
 	<% else %>  
 	  <%= render 'shared/ride_search' %>
 	<% end %>

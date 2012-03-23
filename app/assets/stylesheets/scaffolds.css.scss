@@ -18,8 +18,15 @@
 //
 
 
+.form-search {
+  height: 0px;
+}
+
 table.rides tbody tr:nth-child(odd) td, table tbody tr:nth-child(odd) th {
   background-color: #e0e0e0;
+}
+.table tbody tr:hover td, .table tbody tr:hover th {
+  background-color: #f0f0f0;
 }
 
 .control-group.error input, .control-group.error select, .control-group.error textarea {
@@ -134,9 +141,7 @@ td.avatar {
   margin-left: 0px;
 }
 
-.table tbody tr:hover td, .table tbody tr:hover th {
-  background-color: #ddd;
-}
+
 .small-container {
   width: 768px;
   margin-left: auto;

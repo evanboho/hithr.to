@@ -8,8 +8,8 @@
 <div class="small-container center well" style="padding: 20px 0 40px 0; margin-bottom: 0px;">
 <% if !current_user %>
    
-      <%= link_to "sign in", new_user_session_path, :class => "btn btn-primary" %>
-      <%= link_to "sign up", new_user_registration_path, :class => "btn" %><br><br><br>
+      <%= link_to "sign in", new_user_session_path, :class => "btn btn-primary btn-large" %>
+      <%= link_to "sign up", new_user_registration_path, :class => "btn btn-large" %><br><br><br>
     <h3>connect with:</h3>
     <%= render 'layouts/create_authentications' %><br>
   </div>
