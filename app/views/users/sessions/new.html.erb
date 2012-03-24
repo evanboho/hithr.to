@@ -1,20 +1,24 @@
-  <div class="hero-unit">
+<div class="hero-unit">
     <h1>sign in</h1>
   </div>
 </div>
+
+
 <div class="super-small-container shadow round">
 <br>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <%= f.input :email, :label => "email:", :required => false %>
-
   <%= f.input :password, :required => false, :label => "password:" %>
-
   <% if devise_mapping.rememberable? -%>
     <%= f.label :remember_me, "remember me: " %><%= f.check_box :remember_me %>
   <% end -%>
-  <br><br>
+  
+<br><br>
+
   <div class="center">
   <%= f.submit "sign in", :class => "btn btn-primary", :style => "width: 150px;" %>
 <% end %>
 <br>
 <%= render 'shared/links' %>
+</div>
+</div>

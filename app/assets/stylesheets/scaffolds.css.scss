@@ -39,6 +39,9 @@ select,
 .uneditable-input {
   width: 150px;
 }
+select {
+  vertical-align: top;
+}
 
 .alert {
 //  width: 20%;
@@ -59,7 +62,7 @@ table.rides {
   @include inset-shadow(#ccc);
 }
 .shadow {
-  @include inset-shadow(#003366);
+  @include inset-shadow(#003366, 15%);
 }
 .round {
   @include rounded(20px);
@@ -68,6 +71,12 @@ table.rides {
   background-color: #eee;
   @include inset-shadow(#f5f5f5, 0%);
   @include rounded;
+}
+.shadow {
+  @include inset-shadow(#003366, 15%);
+}
+.round {
+  @include rounded(20px);
 }
 .heading {
   border: 1px solid #ccc;
@@ -141,6 +150,18 @@ td.avatar {
   margin-left: 0px;
 }
 
+form.new_ride {
+  background-color: transparent;
+  .left {
+  float:left; 
+}
+  .right {
+  float: right;
+}
+}
+div.date {
+  width: auto;
+}
 
 .small-container {
   width: 768px;
@@ -148,11 +169,11 @@ td.avatar {
   margin-right: auto;
 }
 .super-small-container {
+  background-color: #f0f0f0;
   width: 505px;
   margin-left: auto;
   margin-right: auto;
 }
-
 .alt {
   color: #666;
   font-size: 100%;

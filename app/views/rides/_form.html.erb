@@ -1,40 +1,27 @@
-<%= form_for(@ride) do |f| %>
-  <% if @ride.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
-
-      <ul>
-      <% @ride.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
-<div class="row">
-	<div class="span3">
-    <%= f.label :start_city, "From:" %>
-    <%= f.text_field :start_city, :placeholder => "(city)", :class => "text_field span2" %> 
- <%= state_select(f, :start_state) %>
-  </div>
-  <div class="span3">
-    <%= f.label :end_city, "To:" %>
-    <%= f.text_field :end_city, :placeholder => "(city)", :class => "text_field span2"  %> 
- <%= state_select(f, :end_state) %><br/>
-  </div>
-</div>
-<div class="row">
-
-  <div class="span3">
-    <%= f.label :date, "On:" %>
-    <%= f.date_select:go_time,{ 
+<div class="well shadow round" style="padding: 40px; width: 76%; height: 200px; margin-left: auto; margin-right:auto;">
+<br><span style="">
+<%= simple_form_for @ride, :class=> "new_ride" do |f| %>
+	<div class="left"><b>from: </b><%= f.text_field :start_city, :placeholder => "(city)" %>
+    <%= state_select(f, :start_state) %></div>
+    
+    <div class="right"><b>to: </b><%= f.text_field :end_city, :placeholder => "(city)" %> 
+    <%= state_select(f, :end_state) %></div>
+<br style="clear:both;"><br>
+  
+   <div class="left" style=" width: 40px; text-align: right; padding-right: 5px;"><b>on: </b></div><div class="left">
+    <%= f.date_select :go_time,{ 
         					:order => [:month, :day], 
-      				    	:style => "width:60px" }, {:class => "auto"} %> 
-  </div>
-  <div class="span2">
-    <%= f.label :time, "At:" %>
-    <%= go_time_select(f, :go_time) %>
-    <%= go_time_min_select(f, :go_time) %> 
-  </div>
-</div>
+      				    	:style => "width:60px" }, {:class => "auto"} %> </div>
+    <div class="right" style="width: 240px; text-align: left;"><b>at: </b><%= go_time_select(f, :go_time) %>
+    <%= go_time_min_select(f, :go_time) %> </div><br style="clear:both;">
+    
+    <div class="center"><%= f.submit "continue", :class => "btn btn-warning" %></div>
+	<br>
+	<br>
+	<br>
+ 
 <% end %>
+
+</div>
+
+</div>
