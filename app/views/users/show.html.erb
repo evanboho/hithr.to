@@ -17,8 +17,19 @@
 	  </div></div>
 			
       <div style="clear:both; font-size: 120%;">
-        <div style="float: left; width: 106px;">
-          <%= link_to "edit photo", edit_profile_path(@user) if @user == current_user %>
+        <div style="float: left; width: 180px;">
+<div class="accordion-heading">
+<a class="accordion-toggle" data-toggle="collapse" data-parent="#acc" href="#edit-photo">edit photo</a>
+</div>
+<div id="edit-photo" class="accordion-body collapse" style="clear:both;">
+	<%= form_for current_user.profile do |f| %>
+	  <%= f.file_field :avatar, :label => nil %><br>
+	  <%= f.submit "upload", :class=>"btn btn-primary" %>
+	<% end %>
+</div>
+
+
+
 	    </div>
 	    <div style="float: left;">
 		  <%= link_to "edit public profile", edit_profile_path(@user) if @user == current_user %>
