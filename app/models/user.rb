@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :rides,            :dependent => :destroy
   
   after_save :initialize_profile
+  before_save :titleize_name
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and 
@@ -45,7 +46,12 @@ class User < ActiveRecord::Base
   end
   
   def username
-    "#{firstname.try(:humanize)} #{lastname.to(0).try(:humanize)}"
+    "#{firstname} #{lastname.to(0)}"
+  end
+  
+  def titleize_name
+    self.firstname = self.firstname.titleize
+    self.lastname = self.lastname.titleize  
   end
   
   

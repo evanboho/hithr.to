@@ -71,7 +71,7 @@ class RidesController < ApplicationController
   def create
     @ride = current_user.rides.build(params[:ride])
     if @ride.save
-      flash[:success] = "So far so good..."
+      flash[:notice] = "so far so good..."
       redirect_to new_ride_detail_path(@ride)
     else
       render 'new'
@@ -83,7 +83,7 @@ class RidesController < ApplicationController
   def update
     @ride = Ride.find(params[:id])
     if @ride.update_attributes(params[:ride])
-      flash[:success] = "So far so good..."
+      flash[:notice] = "So far so good..."
       unless @ride.detail.nil?
         redirect_to edit_detail_path(@ride)
       else

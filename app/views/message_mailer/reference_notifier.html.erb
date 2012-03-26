@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+	<br>
+    <table>
+    <tr><th colspan=2><%= "#{@ref.sender.username} left you a positive reference!" %><br><br>
+	<tr>
+	<th style="background-color: #ddd; cell-padding:10px;">from:</th>
+	<td style="font-size:16px; padding-left: 10px;"><%= gravatar_for(@ref.sender, :thumb, :size => 30) %>
+		<%= link_to @ref.sender.username, "hithr.herokuapp.com" + url_for(@ref.sender) %>
+    <tr>
+	<th style="background-color: #ddd; padding-right: 10px; padding-left: 10px;"> reference: </th>
+	<td style="font-size:16px; padding-left: 10px;"><br>
+      <% @ref.line_breaks.each do |r| %>
+        <%= r %><br>
+	  <% end %>
+	<br>
+    </td>
+    <tr>
+	<td></td>
+	<td>
+    </table>
+    <hr>
+    <p>Thanks! And enjoy the ride!</p>
+
+    <p>~hithr.to</p>	
+  </body>
+</html>

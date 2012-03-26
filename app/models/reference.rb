@@ -4,7 +4,6 @@ class Reference < ActiveRecord::Base
   
   attr_accessible :content, :positive
   
-
   validates_presence_of :user_id, :sender_id, :positive, :content
   
 
@@ -22,6 +21,10 @@ class Reference < ActiveRecord::Base
     else
       nil
     end
+  end
+  
+  def line_breaks
+    content.split("\n")
   end
   
   def positive_exp?

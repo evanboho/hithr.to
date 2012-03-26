@@ -2,12 +2,14 @@
 <div class="hero-unit"><h1>ride options</h1></div>
 
 <% @ride = Ride.find(params[:ride_id]) %>
+
+<div class="small-container well shadow">
 <%= form_for [@ride, @detail] do |f| %>
   <table class="options form round shadow_down">
     <%= render '/details/fields', :f => f %>
     <tr>
 	  <td align="right">
-        <%= f.submit "finish" %>
+        <%= f.submit "finish", :class => "btn btn-primary" %>
       </td>
     </tr>
   </table>

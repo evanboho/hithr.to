@@ -23,6 +23,9 @@ class ReferencesController < ApplicationController
       if @reference.save
         @user.profile.cred += @reference.positive
         @user.profile.save
+        if @reference.positive > 0
+          MessageMailer.reference_notifier(@reference).deliver
+        end
         flash[:notice] = "reference submitted!"
         redirect_to @user
       else

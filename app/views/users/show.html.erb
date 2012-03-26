@@ -1,51 +1,58 @@
 <div class="row">
-	<div class="span8">
-		<div class="hero-unit" style="margin-bottom: 0px; height: auto;">
-		  <div class="row">
-	      <h1 style="float: left;"><%= link_to (gravatar_for @user, :small, :size => 100), 
-						avatar_medium %><%= @user.username %>
-						<% if @user.authentications.present? %>
-					        <% @user.authentications.each do |auth| %>
-          <%= link_to (image_tag "#{auth.provider}_32.png"), auth_link(auth), :class => "auth_provider" %>
-					        <% end %>
-					      <% end %>
-	
-		</h1>
-		<div style="float:right; height:106px; ">
-	    <div class="cred round">
-				cred: <%= cred_magic(@user.profile.cred) %>
-			</div></div><div style="font-size: 120%; text-align: center; clear: both;">
-		  <%= link_to "(edit your public profile)", edit_profile_path(@user) if @user == current_user %>
+  <div class="span8">
+    <div class="hero-unit" style="margin-bottom: 0px; height: auto;">
+	<div class="row">
+	  <h1 style="float: left;">
+       <%= link_to (gravatar_for @user, :small, :size => 100), avatar_medium %>
+	     <%= @user.username %>
+	     <% if @user.authentications.present? %>
+           <% @user.authentications.each do |auth| %>
+             <%= link_to (image_tag "#{auth.provider}_32.png"), auth_link(auth), :class => "auth_provider" %>
+	   	   <% end %>
+	     <% end %>
+      </h1>
+
+      <div style="float:right; margin: 22px 0px 0 10px; height:106px; "><div class="cred round">
+	    cred: <%= cred_magic(@user.profile.cred) %>
+	  </div></div>
+			
+      <div style="clear:both; font-size: 120%;">
+        <div style="float: left; width: 106px;">
+          <%= link_to "edit photo", edit_profile_path(@user) if @user == current_user %>
+	    </div>
+	    <div style="float: left;">
+		  <%= link_to "edit public profile", edit_profile_path(@user) if @user == current_user %>
 		</div>
-        </div>
-		</div>
+	  </div>
+    </div>
+  </div><!-- end of hero-unit -->
+
 		<div class="well" style="margin-bottom: 0px;"><br>
 			  <% if @user.profile.birthday.present? %>
 			  <div class="profile round" style="font-size:18px; padding: 20px;">
 			 
 		        <div class="left"><b>age: </b></div>
 		        <div class="right"><%= distance_in_years(@user.profile.birthday) %></div><br>
-		      <% if @user.profile.gender.present? %>
 		        <div class="left"><b>gender: </b></div>
-		        <div class="right"><%= @user.profile.gender %></div><br>
-		      <% end %>
-		      <% if @user.profile.hometown.present? %>
+		        <div class="right">
+<%= best_in_place_if @user == current_user, @user.profile, :gender, :type => :select, :collection => 
+[[1, "woman"], [2, "man"], [3, "human"], [4, "traveller"], [5, "zombie"]], :style => "width: auto;" %>
+				
+		        </div><br>
 		        <div class="left"><b>current city: </b></div>
-		        <div><%= @user.profile.hometown %></div><br>
-		      <% end %>
+		        <div><%= best_in_place_if @user == current_user, @user.profile, :hometown %>
+		      </div><br>
 		      </div>
               
 		      <% end %>
 		   
 	          <div class="profile round" style="padding:20px;">
-		      <% if @user.profile.about.present? %>
-			    <div class="round shadow" style="padding: 5px; color: white; font-size: 18px; width: 50%; float:left; text-align:right;background-color: #003366;">
-				bio: </div><br>
-		          <div class="content round" style="padding: 20px 10px 20px 100px; clear: both; font-size: 18px;"><%= @user.profile.about %></div>
-		      <% else %>
-		      <h4 class="center"><i>this person has not filled out a bio yet.</i></h4>
-	          <% end %>
-              </div><br><br>
+<div class="round shadow" style="padding: 5px; color: white; font-size: 18px; width: 50%; float:left; text-align:right;background-color: #003366;">bio: </div><div class="content round" style="padding: 20px 10px 20px 100px; clear: both; font-size: 18px;">
+		    <% @user.profile.about = nil if @user.profile.about == "" %>
+		    <% @user.profile.about ||= "click here to create a bio" if @user == current_user %>
+		    <% @user.profile.about ||= "this person has not filled out a bio yet" if @user != current_user %>
+		    <%= best_in_place_if @user == current_user, @user.profile, :about, :type => :textarea %>
+          </div></div><br><br>
         </div>
      
 		<% if @user == current_user %>
@@ -54,9 +61,9 @@
 		    <b>private profile:</b>
 		  <%= link_to "(edit)", edit_user_registration_path(@user) %>	  
 		  <br>
-		  <strong>name: </strong><%= "#{@user.firstname.titleize} #{@user.lastname.titleize}" %><br>
-		  <strong>email: </strong><%= "#{@user.email}"  %><br>
-		  <strong>birthday: </strong><%= @user.profile.birthday.strftime("%B %d, %Y") if @user.profile.birthday.present? %><br>
+		  <strong>name: </strong><%= "#{@user.firstname} #{@user.lastname}" %><br>
+		  <strong>email: </strong><%= best_in_place @user, :email %><br>
+		  <strong>birthday: </strong><%= @user.profile.birthday %><%= best_in_place @user.profile, :birthday, :type => :date %><br>
 		  </div>
 		<% else #not current_user %>
 		<% end %>

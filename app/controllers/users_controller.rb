@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+ 
+  respond_to :html, :json
   
   # before_filter :authenticate_user!, :only => [:edit, :index, :update, :destroy]
   before_filter :current_user?, :except => [:new, :create]
@@ -26,6 +28,9 @@ class UsersController < ApplicationController
   end
   
   def update
+    @user = User.find(params[:id])
+    @user.update_attributes(params[:user])
+    respond_with @user
   end
   
   def destroy

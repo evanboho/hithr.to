@@ -14,7 +14,7 @@ class DetailsController < ApplicationController
     @ride = Ride.find(params[:ride_id])
     @detail = @ride.build_detail(params[:detail])
     if @detail.save
-      flash[:success] = "...all done!"
+      flash[:notice] = "...all done!"
       redirect_to @ride
     else
       render 'new'

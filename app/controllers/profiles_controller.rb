@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   
+  respond_to :html, :json
   
   def new
     @user = User.find(params[:user_id])
@@ -32,12 +33,9 @@ class ProfilesController < ApplicationController
   
   def update
     @profile = Profile.find(params[:id])
-    if @profile.update_attributes(params[:profile])
-      flash[:notice] = "success"
-      redirect_to @profile.user
-    else
-      render 'edit'
-    end
+    @profile.update_attributes(params[:profile])
+    flash[:notice] = "success"
+    respond_with @profile.user
   end
   
   def destroy
