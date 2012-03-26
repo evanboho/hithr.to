@@ -63,7 +63,7 @@
 		  <br>
 		  <strong>name: </strong><%= "#{@user.firstname} #{@user.lastname}" %><br>
 		  <strong>email: </strong><%= best_in_place @user, :email %><br>
-		  <strong>birthday: </strong><%= @user.profile.birthday %><%= best_in_place @user.profile, :birthday, :type => :date %><br>
+		  <strong>birthday: </strong><%= @user.profile.birthday %><br>
 		  </div>
 		<% else #not current_user %>
 		<% end %>
