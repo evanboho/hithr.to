@@ -4,12 +4,22 @@ class MessagesController < ApplicationController
   # before_filter :authenticate_user
 
   def get_inbox
-    @messages = current_user.messages.order('created_at DESC').limit(5)
-    @messages_sent = Message.sent(current_user).limit(5)  
+    @messages = current_user.messages.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+    @messages_sent = Message.sent(current_user).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
   end
   
   def index
     get_inbox
+  end
+  def sent
+    @messages_sent_all = Message.sent(current_user).paginate(:page => params[:page], :per_page => 10)
+    get_inbox
+    render 'index'
+  end
+  def all
+    @messages_all = Message.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 10)
+    get_inbox
+    render 'index'
   end
   
   def show

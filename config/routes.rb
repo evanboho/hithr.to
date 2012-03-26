@@ -23,6 +23,9 @@ Hithr::Application.routes.draw do
     resources :profiles
     resources :references
   end
+  get 'users/:user_id/messages/sent' => 'messages#sent', :as => "user_sent_messages"
+  get 'users/:user_id/messages/all' => 'messages#all', :as => "user_all_messages"
+  
   
   root :to => 'pages#home'
   # get "/about" => "pages#about"

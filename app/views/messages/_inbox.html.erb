@@ -1,4 +1,6 @@
-<h3 class="heading">sent messages</h3> 
+<h3 class="heading">
+<%= link_to "sent messages(#{@messages_sent.count})", user_sent_messages_path(current_user), :style => "color: #333;" %>
+</h3> 
 <div class="well">
  <% unless @messages_sent.empty? %>
    <% @messages_sent.each do |msg| %>
@@ -10,7 +12,7 @@
 </div>
 
 
-<h3 class="heading">read messages</h3>
+<h3 class="heading"><%= link_to "read messages (#{@messages.archived.count})", user_all_messages_path(current_user), :style => 'color: #333;' %></h3>
 <div class="well">
   <% unless @messages.archived.empty? %>
     <% @messages.archived.each do |msg| %>

@@ -49,8 +49,9 @@
   width: 100%;
   text-align: center;
   @include rounded(10px);
-  @include inset-shadow(#eee, 30%);
+  @include inset-shadow(#eee, 30%); 
 }
+
 .well { 
   background-color: #eee;
   @include inset-shadow(#f5f5f5, 0%);

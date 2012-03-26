@@ -4,20 +4,28 @@
 
 <div class="row">	
   <div class="span8"> 
-    <h3 class="heading">unread messages</h3>
+  <% if params[:action] == 'index' %>
+    <% msgs = @messages.unread %><% title = "unread messages(#{msgs.unread.count})"%>
+  <% elsif params[:action] == 'all' %>
+    <% msgs = @messages_all %><% title = "received messages" %>
+  <% else %>
+    <% msgs = @messages_sent_all %><% title = "sent messages" %>    
+  <% end %>
+    <h3 class="heading"><%= title %></h3>
     <div class="well">
-    <% if current_user.messages.unread.count == 0 %>
-
+    <% if msgs.count == 0 %>
 	    <br>
-        <h4 class="center"><i>no unread messages</i></h4>
+        <h4 class="center"><i>no messages</i></h4>
         <br>
     <% else %>
 
-      <% @messages.unread.each do |msg| %>
+      <% msgs.each do |msg| %>
 	    <%= render 'message_stubs', :msg => msg %>
 	  <% end %>
+	  <%= will_paginate msgs, :class => "apple_pagination" %>
+	
     <% end %>
-  </div>
+    </div>
   </div>
 
   <div class="span4">

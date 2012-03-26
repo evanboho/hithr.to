@@ -27,10 +27,10 @@
 	</td>
     </tr>
   <tr>
-  <td></td>
-  <td></td>
+
   <% if msg.user == current_user %>
-    <td style="text-align: right;">
+    <td></td>
+    <td colspan=3 style="text-align: left;">
 	  <% if msg.id == params[:id].to_i %>
 	    <% msg.read = true %><% msg.save %>
 	  <% end %>
@@ -43,12 +43,28 @@
         <%= f.submit "mark as read", :class => "btn btn-primary" %>
 	  <% end %>
     <% end %>
-    </td>      
-    <td>
-	<%= form_tag new_user_message_path(msg.sender), :method => 'get' do %>
-      <%= hidden_field_tag(:reply_from, msg.id) %>
-      <%= submit_tag "reply", :class => "btn btn-primary" %>
-    <% end %>
+   
+
+<!-- Reply field -->
+<div class="accordion-heading">
+  <a class="btn btn-primary accordion-toggle" data-toggle="collapse" href="#reply" style="float:left;">reply</a></tr>
+</div>
+    <tr><td colspan=4>
+	<div id="reply" class="accordion-body collapse"><div class="well">
+    <% @reply.sujet = msg.reply_sujet %>
+    <div style="float:left; text-align:right; height: 30px; vertical-align: bottom; width:159px;"><b>to:</b></div>
+<div style="float:left; padding-left: 12px;"><h4><%= msg.sender.username.titlecase %></h4></div><br><br>
+
+		<%= simple_form_for [current_user, @reply] do |f| %>
+		  <%= f.input :sujet, :label => "subject:", :required => false %>
+		  <%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
+		  <%= f.submit "send", :class => "btn btn-primary", :style=> "float:right; margin-right: 120px;"%>
+		<% end %>
+
+</div>
+</div>
+<!-- End reply -->
+
     </td>
   <% else %>
     <td style="text-align: right;">

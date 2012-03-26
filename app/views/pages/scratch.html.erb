@@ -68,6 +68,10 @@
     <%= f.submit "continue", :class => "btn btn-warning" %>
  
 <% end %>
-
-
 </div>
+
+<!-- WHat was once a reply -->
+<%= form_tag new_user_message_path(msg.sender), :method => 'get' do %>
+  <%= hidden_field_tag(:reply_from, msg.id) %>
+  <%= submit_tag "reply", :class => "btn btn-primary" %>
+<% end %>

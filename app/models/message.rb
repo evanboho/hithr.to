@@ -50,4 +50,12 @@ class Message < ActiveRecord::Base
     self.where(:read => true)
   end
   
+  def reply_sujet
+    unless sujet.split(":").first == "re"
+      self.sujet = "re: " + self.sujet 
+    else
+      self.sujet = self.sujet
+    end
+  end
+  
 end
