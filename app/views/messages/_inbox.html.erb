@@ -1,12 +1,12 @@
+<h3 class="heading">sent messages</h3> 
+<div class="well">
  <% unless @messages_sent.empty? %>
-  <h3 class="heading">sent messages</h3> 
-    <div class="well">
-    <% @messages_sent.each do |msg| %>
-      <%= render 'messages/message_stubs', :msg => msg %>
-    <% end %>
-  <% else %>
-    <br><h4 class="center"><i>no sent messages</i></h4><br>
-  <% end %>
+   <% @messages_sent.each do |msg| %>
+     <%= render 'messages/message_stubs', :msg => msg %>
+   <% end %>
+ <% else %>
+   <br><h4 class="center"><i>no sent messages</i></h4><br>
+ <% end %>
 </div>
 
 
