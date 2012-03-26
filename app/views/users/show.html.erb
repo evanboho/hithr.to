@@ -17,7 +17,8 @@
 	  </div></div>
 			
       <div style="clear:both; font-size: 120%;">
-        <div style="float: left; width: 180px;">
+    <% if @user == current_user %>
+<div style="float: left; width: 180px;">
 <div class="accordion-heading">
 <a class="accordion-toggle" data-toggle="collapse" data-parent="#acc" href="#edit-photo">edit photo</a>
 </div>
@@ -32,8 +33,10 @@
 
 	    </div>
 	    <div style="float: left;">
-		  <%= link_to "edit public profile", edit_profile_path(@user) if @user == current_user %>
+		  <%= link_to "edit public profile", edit_profile_path(@user) %>
 		</div>
+		<% end %>
+	  
 	  </div>
     </div>
   </div><!-- end of hero-unit -->
@@ -74,7 +77,7 @@
 		  <br>
 		  <strong>name: </strong><%= "#{@user.firstname} #{@user.lastname}" %><br>
 		  <strong>email: </strong><%= best_in_place @user, :email %><br>
-		  <strong>birthday: </strong><%= @user.profile.birthday %><br>
+		  <strong>birthday: </strong><%= @user.profile.birthday.strftime("%B %e, %Y") %><br>
 		  </div>
 		<% else #not current_user %>
 		<% end %>
