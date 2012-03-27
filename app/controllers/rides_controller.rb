@@ -2,6 +2,7 @@ class RidesController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy]
   before_filter :current_user?, :except => [:index, :show]
+  respond_to :html, :json
  
   def index
     @rides = Ride.search(make_criteria).reorder('go_time ASC').paginate(:page => params[:page], :per_page => 15).includes(:user)
@@ -82,16 +83,19 @@ class RidesController < ApplicationController
   # PUT /rides/1.json
   def update
     @ride = Ride.find(params[:id])
-    if @ride.update_attributes(params[:ride])
-      flash[:notice] = "So far so good..."
-      unless @ride.detail.nil?
-        redirect_to edit_detail_path(@ride)
-      else
-        redirect_to new_ride_detail_option_path(@ride)
-      end
-    else
-      render 'edit'
-    end
+    @ride.update_attributes(params[:ride])
+    respond_with @ride
+    
+    # if @ride.update_attributes(params[:ride])
+    #       flash[:notice] = "So far so good..."
+    #       unless @ride.detail.nil?
+    #         redirect_to edit_detail_path(@ride)
+    #       else
+    #         redirect_to new_ride_detail_option_path(@ride)
+    #       end
+    #     else
+    #       render 'edit'
+    # end
   end
 
   # DELETE /rides/1

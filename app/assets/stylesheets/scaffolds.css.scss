@@ -84,7 +84,7 @@ li {
 .content {
   border: 1px solid #bbb;
   background-color: white;
-  padding: 0px;
+  padding: 5px;
   @include inset-shadow(#fff);
 }
 .alt {

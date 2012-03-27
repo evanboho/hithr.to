@@ -21,5 +21,11 @@ module RidesHelper
     end
     [day, date, hour]
   end
+  
+  def ride_showtime(ride)
+    t = @ride.go_time.strftime("%A, %B %d at %I:%M")
+    return t + " am" if @ride.go_time.hour < 12
+    return t + " pm" if @ride.go_time.hour >= 12
+  end
 
 end

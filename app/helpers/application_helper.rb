@@ -39,5 +39,8 @@ module ApplicationHelper
   	form.select(attribute, state_list, {}, {class: "chzn-select", class:"auto"})
   end
   
+  def line_breaks(c)
+    c.split("\n")
+  end  
   
 end

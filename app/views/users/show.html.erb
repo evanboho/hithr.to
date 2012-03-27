@@ -77,7 +77,7 @@
 		  <br>
 		  <strong>name: </strong><%= "#{@user.firstname} #{@user.lastname}" %><br>
 		  <strong>email: </strong><%= best_in_place @user, :email %><br>
-		  <strong>birthday: </strong><%= @user.profile.birthday.strftime("%B %e, %Y") %><br>
+		  <strong>birthday: </strong><%= @user.profile.birthday.strftime("%B %e, %Y") if @user.profile.birthday.present? %><br>
 		  </div>
 		<% else #not current_user %>
 		<% end %>
