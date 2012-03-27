@@ -1,4 +1,4 @@
-<div class="super-small-container shadow round">
+<div class="super-small-container well shadow round" style="margin-bottom: 0px;">
 	<br>
 
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -14,12 +14,12 @@
   <%= f.input :password_confirmation, :label => "confirm password:", :required => false, :placeholder => "" %>
 
 <div class="center">
-
-  <%= f.submit "sign up", :class => "btn btn-primary", :style => "width: 150px;" %>
+  <% sub = "sign up" if params[:action] != 'edit' %>
+  <% sub ||= "update" %>
+  <%= f.submit sub, :class => "btn btn-primary", :style => "width: 150px;" %>
+  
 
 <% end %>
-<br>
-<%= render 'shared/links' %>
-
+<%= render 'shared/links' unless params[:action] == 'edit' %>
 </div>
 </div>

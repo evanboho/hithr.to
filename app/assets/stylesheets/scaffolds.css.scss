@@ -7,18 +7,12 @@
   -moz-border-radius: $radius;
   -webkit-border-radius: $radius;
 }
-.round {
-  @include rounded(20px);
-}
+
 @mixin inset-shadow($color, $amount: 15%) {
   -webkit-box-shadow: inset -3px -8px 15px darken($color, $amount);
   -moz-box-shadow: inset -3px -8px 15px darken($color, $amount);
   box-shadow: inset -3px -8px 15px darken($color, $amount);
 }
-.shadow {
-  @include inset-shadow(#003366, 15%);
-}
-
 
 
 
@@ -425,3 +419,10 @@ ul.dropdown-menu li a {
     color: black; }
   .apple_pagination a:hover, .apple_pagination a:focus {
       text-decoration: underline; }
+
+.shadow {
+  @include inset-shadow(#003366, 15%);
+}
+.round {
+  @include rounded(20px);
+}

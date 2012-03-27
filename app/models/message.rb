@@ -2,7 +2,7 @@ class Message < ActiveRecord::Base
   
   belongs_to :user
     
-  validates :content, :presence => true, :length => { :maximum => 200 }
+  validates :content, :presence => true, :length => { :maximum => 1000 }
   validates :sujet, :presence => true, :length => { :maximum => 40 }
   
 
