@@ -77,6 +77,7 @@ class MessagesController < ApplicationController
   def edit
     @message = Message.find(params[:id])
     @user = User.find(@message.user_id)
+    get_inbox
   end
   
   def destroy

@@ -4,10 +4,10 @@ class RidesController < ApplicationController
   before_filter :current_user?, :except => [:index, :show]
  
   def index
-    @rides = Ride.search(make_criteria).reorder('go_time ASC').page(params[:page]).per_page(15).includes(:user)
+    @rides = Ride.search(make_criteria).reorder('go_time ASC').paginate(:page => params[:page], :per_page => 15).includes(:user)
     #@rides = Ride.paginate(:page => params[:page], :per_page => 15).search(make_criteria).reorder('go_time ASC')
     if @rides.blank?
-      flash.now[:notice] = "No rides matched your results. Try increasing the search radius."    
+      flash.now[:notice] = "Sorry. Try increasing the search radius."    
     end
    end
    

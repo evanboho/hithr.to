@@ -79,7 +79,7 @@ class Ride < ActiveRecord::Base
       end 
       if criteria[:miles_radius].to_i > 1
        rides = @rides.search_near(criteria[:search_start_city], criteria[:search_start_state], criteria[:miles_radius])
-        if rides.count < 10
+        if rides.count < 5
                  criteria[:miles_radius] += 10
                  @rides = @rides.search_near(criteria[:search_start_city], criteria[:search_start_state], criteria[:miles_radius])
                else

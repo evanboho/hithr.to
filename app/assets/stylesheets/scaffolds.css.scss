@@ -202,7 +202,7 @@ td.msg {
 table.msg th {
   background-color: #ddd;
   text-align: right; 
-  padding-right: 5px; 
+  padding: 0 5px 0 10px; 
 }
 table.msg th.top {
   @include rounded(10px 10px 0px 0px);

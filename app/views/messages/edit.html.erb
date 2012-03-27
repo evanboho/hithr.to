@@ -1,10 +1,24 @@
-<h2>edit your message</h2>
-from <%= @message.sender.username %> to <%= link_to @message.user.username, @message.user  %><br>
+<div class="hero-unit shadow-down"><h1>edit message</h1>
+</div>
 
-<%= simple_form_for [@user, @message] do |f| %>
 
-<%= render 'fields', :f => f %>
-
-<%= f.submit "update" %>
-
-<% end %>
+<div class="row">
+  <div class="span8">
+    <table class="tble msg"><tr><td>
+	    <h4>
+		  <span style="margin-left: 138px; margin-right: 8px;">to: </span>
+		  <%= gravatar_for @user, :thumb, :size => 30 %> 
+	      <%= link_to @user.username, @user %>
+	    </h4><br>
+    
+	    <%= simple_form_for @message do |f| %>
+	      <%= f.input :sujet, :label => "subject:", :required => false %>
+	      <%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
+	      <%= f.submit "send", :class => "btn btn-primary", :style => "margin-left: 170px;" %>
+	    <% end %>
+    </table>
+  </div>
+  <div class="span4">
+    <%= render 'inbox' %>	
+  </div>
+</div>
