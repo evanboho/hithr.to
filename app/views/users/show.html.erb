@@ -1,49 +1,48 @@
 <div class="row">
-  <div class="span8">
-    <div class="hero-unit" style="margin-bottom: 0px; height: auto;">
-	<div class="row">
-	  <h1 style="float: left;">
-       <%= link_to (gravatar_for @user, :small, :size => 100), avatar_medium %>
-	     <%= @user.username %>
-	     <% if @user.authentications.present? %>
-           <% @user.authentications.each do |auth| %>
-             <%= link_to (image_tag "#{auth.provider}_32.png"), auth_link(auth), :class => "auth_provider" %>
-	   	   <% end %>
-	     <% end %>
-      </h1>
-
-      <div style="float:right; margin: 22px 0px 0 10px; height:106px; "><div class="cred round">
+	
+<div class="span8">
+  
+<div class="hero-unit" style="margin: 0 0px 0 0px; height: auto;">
+		
+<!-- cred -->
+      <div style="float:right; margin: 22px 0px 0 20px; height:106px;"><div class="cred round">
 	    cred: <%= cred_magic(@user.profile.cred) %>
 	  </div></div>
-			
-      <div style="clear:both; font-size: 120%;">
-    <% if @user == current_user %>
-<div style="float: left; width: 180px;">
-<div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#acc" href="#edit-photo">edit photo</a>
-</div>
-<div id="edit-photo" class="accordion-body collapse" style="clear:both;">
-	<%= form_for current_user.profile do |f| %>
-	  <%= f.file_field :avatar, :label => nil %><br>
-	  <%= f.submit "upload", :class=>"btn btn-primary" %>
-	<% end %>
-</div>
-
-
-
-	    </div>
-	    <div style="float: left;">
-		  <%= link_to "edit public profile", edit_profile_path(@user) %>
+	
+<!-- photo -->
+      <div style="float: left;">
+        <%= link_to (gravatar_for @user, :small, :size => 100), avatar_medium %>
+      </div>
+        <% if @user == current_user %>
+      <div style="clear:left;">
+		  <div class="accordion-heading">
+		    <a class="accordion-toggle" data-toggle="collapse" data-parent="#acc" href="#edit-photo">edit photo</a>
+		  </div>
+		  <div id="edit-photo" class="accordion-body collapse" style="clear:both;">
+		  <%= form_for current_user.profile do |f| %>
+		    <%= f.file_field :avatar, :label => nil %><br>
+			<%= f.submit "upload", :class=>"btn btn-primary" %>
+		  </div>
+		  <% end %>
 		</div>
 		<% end %>
-	  
-	  </div>
-    </div>
-  </div><!-- end of hero-unit -->
+		
+<!-- name/auth	 -->	
+	  <h1 style="clear:left;"><%= @user.username %></h1>
+	  <% if @user.authentications.present? %>
+        <% @user.authentications.each do |auth| %>
+          <%= link_to (image_tag "#{auth.provider}_32.png"), auth_link(auth), :class => "auth_provider" %>
+	    <% end %>
+	  <% end %>
+
+</div><!-- end of hero-unit -->
 
 		<div class="well" style="margin-bottom: 0px;"><br>
+			<div class="center">
+			    <%= link_to "edit public profile", edit_profile_path(@user) %>
+			  </div>
 			  <% if @user.profile.birthday.present? %>
-			  <div class="profile round" style="font-size:18px; padding: 20px;">
+			  <div class="profile round" style="font-size:110%; padding: 20px;">
 			 
 		        <div class="left"><b>age: </b></div>
 		        <div class="right"><%= distance_in_years(@user.profile.birthday) %></div><br>
@@ -61,7 +60,7 @@
 		      <% end %>
 		   
 	          <div class="profile round" style="padding:20px;">
-<div class="round shadow" style="padding: 5px; color: white; font-size: 18px; width: 50%; float:left; text-align:right;background-color: #003366;">bio: </div><div class="content round" style="padding: 20px 10px 20px 100px; clear: both; font-size: 18px;">
+<div class="round shadow bio" style="">bio: </div><div class="about content" style="">
 		    <% @user.profile.about = nil if @user.profile.about == "" %>
 		    <% @user.profile.about ||= "click here to create a bio" if @user == current_user %>
 		    <% @user.profile.about ||= "this person has not filled out a bio yet" if @user != current_user %>
@@ -92,4 +91,7 @@
 		  <% end %>
 		    <%= render 'my_references', :user => @user %>
 	</div>
+
+
+
 </div>

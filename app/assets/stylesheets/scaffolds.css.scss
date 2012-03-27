@@ -19,10 +19,24 @@
 //
 // general
 //
+body {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+@media (max-width: 767px) {
+  body {
+  font-size: 14px; }
+}
+@media (max-width: 480px) {
+  body {
+  font-size: 12px; }
+}
+
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
+  font-size: 90%;
+  line-height: 100%; }
 div {
   &.field, &.actions {
     margin-bottom: 10px; } }
@@ -41,6 +55,9 @@ div {
   padding-bottom: 25px;
   @include rounded(20px);
   @include inset-shadow(#eee, 50%);
+  h1 {
+    font-size: 400%;
+    letter-spacing: -6px; }
 }
 .heading {
   border: 1px solid #ccc;
@@ -214,20 +231,24 @@ table.msg th.bottom {
 
 td.avatar {
   width: 30px;
-
-}
-td.bio {
-  padding: 5% 15%;
-  background-color: #ddd;
-  border-radius: 10px;
-  line-height: 24px;
-  font-size:16px;
-  box-shadow: 0px 0px 10px #ccc;
-  width: 100%;
 }
 #about_content {
   width: 300px;
   height: 150px;
+}
+.bio {
+  padding: 5px; 
+  color: white; 
+  font-size: 120%;
+  width: 50%; 
+  float:left; 
+  text-align:right;
+  background-color: #003366;
+}
+.about {
+  padding: 20px 10px 20px 100px; 
+  clear: both; 
+  font-size: 110%;
 }
 
 
@@ -344,9 +365,6 @@ tr.gray {
   padding-top: 36px;
   margin-bottom: 0px;
 }
-.hero-unit h1 {
-  letter-spacing: -6px;
-}
 
 .tble-wide {
   width: 100%;
@@ -367,9 +385,9 @@ pre {
 
 
 .cred {
-  font-size: 20px; 
+  font-size: 120%; 
   height: auto; 
-  width: auto;
+  //width:;
   padding: 30px 20px;
   text-align: center; 
   background-color:#003366; 
