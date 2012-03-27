@@ -4,13 +4,8 @@
 <% @ride = Ride.find(params[:ride_id]) %>
 
 <div class="small-container well shadow">
-<%= form_for [@ride, @detail] do |f| %>
-  <table class="options form round shadow_down">
-    <%= render '/details/fields', :f => f %>
-    <tr>
-	  <td align="right">
-        <%= f.submit "finish", :class => "btn btn-primary" %>
-      </td>
-    </tr>
-  </table>
+	<div class="form-horizontal">
+<%= simple_form_for [@ride, @detail] do |f| %>
+   <%= render '/details/fields', :f => f %>
+   <div class="center"><%= f.submit "finish", :class => "btn btn-primary" %></div>
 <% end %>

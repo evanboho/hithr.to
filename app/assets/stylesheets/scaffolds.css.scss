@@ -90,10 +90,7 @@ h3 {
 .center {
   text-align: center;
 }
-.ctr {
-  margin-left:auto;
-  margin-right:auto;
-}
+
 li {
   list-style: none;
 }
@@ -258,13 +255,16 @@ td.avatar {
 // Forms
 //
 
-.simple_form label {
+.simple_form label, form label {
   float: left;
   width: 150px;
   text-align: right;
   margin: 2px 10px;
   font-size: 110%;
   font-weight: bold;
+}
+.new_detail label {
+  font-size:90%;
 }
 
 .simple_form input {
@@ -281,6 +281,9 @@ textarea,
 .simple_form select {
   width: auto;
 }
+select {
+  width: auto;
+}
 .control-group.error input, .control-group.error select, .control-group.error textarea {
   color: #000;
 }
@@ -294,8 +297,10 @@ select {
   vertical-align: top;
 }
 textarea {
-  width: auto;
+  width: 90%;
   height: 100px;
+  font-size: 110%;
+  
 }
 input[type="text"] {
   width: 150px;
@@ -437,4 +442,8 @@ ul.dropdown-menu li a {
 }
 .round {
   @include rounded(20px);
+}
+.ctr {
+  margin-left:auto;
+  margin-right:auto;
 }

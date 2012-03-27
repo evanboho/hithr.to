@@ -40,7 +40,7 @@
 				<% if @user == current_user %>
 			    <a class="accordion-toggle" data-toggle="collapse" href="#edit-profile">edit public profile</a></div>
 				  <div id="edit-profile" class="accordion-body collapse" style="clear:both;"><br>
-<div class="well">
+    <div class="well">
 			<%= simple_form_for current_user.profile do |f| %>
 			  <div class="control-group select">
 				 <%= f.label :birthday, "birthday:" %>
@@ -51,7 +51,7 @@
 			     <%= f.input :hometown, :label => "current city:" %>
 			     <div class="center"><%= f.submit "update", :class=>"btn btn-primary" %></div>
 		    <% end %>
-</div>
+    </div>
 			  </div>
 			  <% end %>
 			  <div class="profile round" style="font-size:110%; padding: 20px;">

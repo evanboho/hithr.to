@@ -1,27 +1,27 @@
-<div class="well shadow round" style="padding: 40px; width: 76%; height: 200px; margin-left: auto; margin-right:auto;">
-<br><span style="">
-<%= simple_form_for @ride, :class=> "new_ride" do |f| %>
-	<div class="left"><b>from: </b><%= f.text_field :start_city, :placeholder => "(city)" %>
-    <%= state_select(f, :start_state) %></div>
+<div class="well shadow round" style="padding: 20px 20px 70px 20px; width: 76%; height: 200px; margin-left: auto; margin-right:auto;">
+<br>
+<div class="super-small-container">
+<%= simple_form_for @ride, :class=> "form-inline" do |f| %>
+	<label>from: </label><%= f.text_field :start_city, :placeholder => "(city)" %>
+	<% f.input :start_city, :label => "from: ", :placeholder => "(city)", :required => false %>
+    <%= state_select(f, :start_state) %>
     
-    <div class="right"><b>to: </b><%= f.text_field :end_city, :placeholder => "(city)" %> 
-    <%= state_select(f, :end_state) %></div>
+    <label>to: </label><%= f.text_field :end_city, :placeholder => "(city)" %> 
+    <%= state_select(f, :end_state) %>
 <br style="clear:both;"><br>
-  
-   <div class="left" style=" width: 40px; text-align: right; padding-right: 5px;"><b>on: </b></div><div class="left">
-    <%= f.date_select :go_time,{ 
+	<label>on: </label><%= f.date_select :go_time,{ 
         					:order => [:month, :day], 
-      				    	:style => "width:60px" } %> </div>
-    <div class="right" style="width: 240px; text-align: left;"><b>at: </b><%= go_time_select(f, :go_time) %>
+      				    	:style => "width:60px" } %> <br>
+    <label> at: </label><%= go_time_select(f, :go_time) %>
     <%= go_time_min_select(f, :go_time) %> </div><br style="clear:both;">
     
     <div class="center"><%= f.submit "continue", :class => "btn btn-warning" %></div>
 	<br>
 	<br>
 	<br>
- 
+   <br>
 <% end %>
 
 </div>
-
+</div>
 </div>

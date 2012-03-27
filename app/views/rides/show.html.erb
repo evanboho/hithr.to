@@ -34,32 +34,28 @@
   
 <div class="super-small-container well shadow round">
 <div class="content round" style="padding: 10px; font-size:110%;">
-<% line_breaks(@ride.detail.message).each do |msg| %>
-  <%= msg  %><br>
-<% end %>
-<% if @user == current_user %>
- Make stuff happen
-<% end %>
-</div>	
+	
+	<% line_breaks(@ride.detail.message).each do |msg| %>
+	  <%= msg  %><br>
+	<% end %>
 
-	
-	
-	
-<table>
-  <tr>
-    <td colspan="3">
+	<% if @ride.user == current_user %>
+	  <a class="accordion-toggle" data-toggle="collapse" href="#edit-msg">edit</a></div>
+	  <div id="edit-msg" class="accordion-body collapse" style="clear:both;"><br>
+	  <div class="well">
+	  <%= simple_form_for @ride.detail do |f| %>
+	    <%= f.input :message, :label => "info: " %>
+	  <% end %>
+	  </div></div>
+	<% end %>
 	  Leaving on <%= @ride.go_time.strftime("%A, %B %d at #{@ride.go_time.strftime("%I").to_i}:%M") %>
       <% if @ride.go_time.hour < 12 %>
         am.
       <% else %>
         pm.
       <% end %>
-    </td>
-    <td colspan="2">Heading about <%= @ride.trip_distance.round %> miles 
+   Heading about <%= @ride.trip_distance.round %> miles 
       <%= compass_points(@ride.bearing) %>
-    </td>
-  </tr>
-
   <% unless @ride.detail.nil? %>
   <% end %>
    <tr>
