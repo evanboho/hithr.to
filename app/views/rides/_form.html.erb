@@ -11,7 +11,7 @@
    <div class="left" style=" width: 40px; text-align: right; padding-right: 5px;"><b>on: </b></div><div class="left">
     <%= f.date_select :go_time,{ 
         					:order => [:month, :day], 
-      				    	:style => "width:60px" }, {:class => "auto"} %> </div>
+      				    	:style => "width:60px" } %> </div>
     <div class="right" style="width: 240px; text-align: left;"><b>at: </b><%= go_time_select(f, :go_time) %>
     <%= go_time_min_select(f, :go_time) %> </div><br style="clear:both;">
     

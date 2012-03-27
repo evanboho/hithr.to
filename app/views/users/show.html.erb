@@ -15,15 +15,13 @@
       </div>
         <% if @user == current_user %>
       <div style="clear:left;">
-		  <div class="accordion-heading">
-		    <a class="accordion-toggle" data-toggle="collapse" data-parent="#acc" href="#edit-photo">edit photo</a>
-		  </div>
+		  <a class="accordion-toggle" data-toggle="collapse" data-parent="#acc" href="#edit-photo">edit photo</a>
 		  <div id="edit-photo" class="accordion-body collapse" style="clear:both;">
 		  <%= form_for current_user.profile do |f| %>
 		    <%= f.file_field :avatar, :label => nil %><br>
 			<%= f.submit "upload", :class=>"btn btn-primary" %>
-		  </div>
 		  <% end %>
+		</div> 
 		</div>
 		<% end %>
 		
@@ -39,25 +37,35 @@
 
 		<div class="well" style="margin-bottom: 0px;"><br>
 			<div class="center">
-			    <%= link_to "edit public profile", edit_profile_path(@user) %>
+				<% if @user == current_user %>
+			    <a class="accordion-toggle" data-toggle="collapse" href="#edit-profile">edit public profile</a></div>
+				  <div id="edit-profile" class="accordion-body collapse" style="clear:both;"><br>
+<div class="well">
+			<%= simple_form_for current_user.profile do |f| %>
+			  <div class="control-group select">
+				 <%= f.label :birthday, "birthday:" %>
+				 <%= f.date_select(:birthday, :order => [:month, :day, :year], :start_year => 1940, :end_year => 1994) %>
 			  </div>
-			  <% if @user.profile.birthday.present? %>
+				 <%= f.input :gender, :label => "gender:", 
+						:collection => [["woman"], ["man"], ["human"], ["traveller"], ["zombie"]] %>
+			     <%= f.input :hometown, :label => "current city:" %>
+			     <div class="center"><%= f.submit "update", :class=>"btn btn-primary" %></div>
+		    <% end %>
+</div>
+			  </div>
+			  <% end %>
 			  <div class="profile round" style="font-size:110%; padding: 20px;">
 			 
-		        <div class="left"><b>age: </b></div>
-		        <div class="right"><%= distance_in_years(@user.profile.birthday) %></div><br>
+		  <div class="left"><b>age: </b></div>
+		  <div class="right"><%= distance_in_years(@user.profile.birthday) if @user.profile.birthday.present? %></div><br>
 		        <div class="left"><b>gender: </b></div>
-		        <div class="right">
-<%= best_in_place_if @user == current_user, @user.profile, :gender, :type => :select, :collection => 
-[[1, "woman"], [2, "man"], [3, "human"], [4, "traveller"], [5, "zombie"]], :style => "width: auto;" %>
-				
-		        </div><br>
+		        <div class="right"><%= @user.profile.gender if @user.profile.gender.present? %>
+		  </div> <br>
 		        <div class="left"><b>current city: </b></div>
-		        <div><%= best_in_place_if @user == current_user, @user.profile, :hometown %>
+		        <div><%= @user.profile.hometown if @user.profile.hometown.present? %>
 		      </div><br>
 		      </div>
               
-		      <% end %>
 		   
 	          <div class="profile round" style="padding:20px;">
 <div class="round shadow bio" style="">bio: </div><div class="about content" style="">

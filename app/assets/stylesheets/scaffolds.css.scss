@@ -67,7 +67,9 @@ div {
   text-align: center;
   @include rounded(10px);
   @include inset-shadow(#eee, 30%); 
-}
+}  
+h3 {
+  font-size: 115%;}
 
 .well { 
   background-color: #eee;
@@ -106,7 +108,7 @@ li {
 }
 .alt {
   color: #666;
-  font-size: 100%;
+  font-size: 90%;
   font-family: "Warnock Pro", "Goudy Old Style","Palatino","Book Antiqua", Georgia, serif;
   font-style: italic;
   font-weight: normal;
@@ -239,7 +241,7 @@ td.avatar {
 .bio {
   padding: 5px; 
   color: white; 
-  font-size: 120%;
+  font-size: 115%;
   width: 50%; 
   float:left; 
   text-align:right;
@@ -264,14 +266,20 @@ td.avatar {
   font-size: 110%;
   font-weight: bold;
 }
+
+.simple_form input {
+  text-align: left;
+}
 span.label {
   padding: 3px 20px;
 }
 input,
 textarea,
-select,
 .uneditable-input {
   width: 150px;
+}
+.simple_form select {
+  width: auto;
 }
 .control-group.error input, .control-group.error select, .control-group.error textarea {
   color: #000;
@@ -292,11 +300,6 @@ textarea {
 input[type="text"] {
   width: 150px;
 }
-select.auto {
-  width: auto;
-  # font-size: 12px;
-  margin: 0px;
-}
 #message_content {
   height: 200px;
   width: 50%;
@@ -312,7 +315,10 @@ form.new_ride {
 div.date {
   width: auto;
 }
-
+.about .best_in_place textarea {
+  font-size: 110%;
+  width: 90%;
+}
 
 
 
@@ -371,24 +377,12 @@ tr.gray {
 }
 
 
-
-
-
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px; }
-
-
-
-
-
 .cred {
   font-size: 120%; 
   height: auto; 
   //width:;
   padding: 30px 20px;
+  margin: -10px 0px 0px 0;
   text-align: center; 
   background-color:#003366; 
   color: white;

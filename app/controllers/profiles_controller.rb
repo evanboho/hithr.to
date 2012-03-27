@@ -33,9 +33,11 @@ class ProfilesController < ApplicationController
   
   def update
     @profile = Profile.find(params[:id])
-    @profile.update_attributes(params[:profile])
-    flash[:notice] = "success"
-    respond_with @profile.user
+    unless params[:profile][:about] == "click here to create a bio"
+      @profile.update_attributes(params[:profile])
+      # flash[:notice] = "success"
+      respond_with @profile.user
+    end
   end
   
   def destroy
