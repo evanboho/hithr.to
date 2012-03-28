@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+	<br>
+    <table>
+    <tr><th colspan=2><%= "#{@msg[:from]} has made contact!" %><br><br>
+	<tr>
+	<th style="background-color: #ddd; cell-padding:10px;">from: </th>
+	<td style="font-size:16px; padding-left: 10px;"><%= @msg[:from]%>
+    <tr>
+	<th style="background-color: #ddd; cell-padding:10px;">subject: </th>
+	<td style="font-size:16px; padding-left: 10px;"><%= @msg[:subject]%>
+    <tr>
+	<th style="background-color: #ddd; padding-right: 10px; padding-left: 10px;"> message: </th>
+	<td style="font-size:16px; padding-left: 10px;"><br>
+      <% @msg[:message].split("\n").each do |r| %>
+        <%= r %><br>
+	  <% end %>
+	<br>
+    </td>
+    <tr>
+	<td></td>
+	<td>
+    </table>
+    <hr>
+    <p>Thanks! And enjoy the ride!</p>
+
+    <p>~hithr.to</p>	
+  </body>
+</html>

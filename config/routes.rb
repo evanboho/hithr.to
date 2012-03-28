@@ -32,6 +32,7 @@ Hithr::Application.routes.draw do
   get "/contact" => "pages#contact"
   get "/help" => "pages#help"
   get "/test" => "pages#test"
+  get "/send_contact" => "pages#send_contact", :as => "send_contact"
 
   get 'users/auth/failure' do # necessary?
     flash[:notice] = params[:message]

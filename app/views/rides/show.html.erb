@@ -81,7 +81,7 @@
   <% if @ride.user == current_user %>
     <%= best_in_place @ride.detail, :bikes, 
  		:type => :select, :collection => 
-		[[0, "No bikes"], ["1 bike in the trunk", "1 bike in the trunk"], 
+		[[0, "No bikes"], [1, "1 bike in the trunk"], 
 		[2, "1 bike on a rack"], [3, "2 bikes on a rack"], [4, "3 bikes on a rack"]] %>
   <% else %>
     <%= bikes_with(@ride.detail.bikes) %>

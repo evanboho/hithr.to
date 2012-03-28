@@ -11,5 +11,10 @@ class MessageMailer < ActionMailer::Base
     mail(:to => reference.user.email, :subject => "hithr.to: #{reference.sender.username} left you a reference!")
   end
   
+  def send_contact(params)
+    @msg = []
+    @msg = params
+    mail(:to => "hithr.to@gmail.com", :subject => @msg[:subject])
+  end
   
 end
