@@ -38,7 +38,7 @@ module RidesHelper
   
   def smoking_pref(smoking)
     return "No smoking" if smoking == 0
-    return "No smoking *in* the car" if smoking == 1
+    return "No smoking in the car" if smoking == 1
     return "OK to smoke in the car" if smoking == 2
     return "I smoke in the car" if smoking == 3
   end 

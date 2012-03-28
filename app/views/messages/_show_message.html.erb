@@ -11,7 +11,7 @@
 	
 	<tr style="padding-top: 0px; vertical-align: bottom;">
 	<th>subject: </th>
-	<td style="padding-bottom: 5px;"><strong> <%= link_to msg.sujet, msg %></strong>
+	<td style="padding-bottom: 5px;"><strong> <%= msg.sujet %></strong>
 	</td>
 	<td></td>
 	<td style="padding-bottom: 3px; vertical-align: bottom;"><b>sent: </b><span class="alt"><%= msg.msg_time %></div>
@@ -55,7 +55,7 @@
     <div style="float:left; text-align:right; height: 30px; vertical-align: bottom; width:159px;"><b>to:</b></div>
 <div style="float:left; padding-left: 12px;"><h4><%= msg.sender.username.titlecase %></h4></div><br><br>
 
-		<%= simple_form_for [current_user, @reply] do |f| %>
+		<%= simple_form_for [msg.sender, @reply] do |f| %>
 		  <%= f.input :sujet, :label => "subject:", :required => false %>
 		  <%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
 		  <%= f.submit "send", :class => "btn btn-primary", :style=> "float:right; margin-right: 120px;"%>
