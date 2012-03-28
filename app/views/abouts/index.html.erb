@@ -7,7 +7,7 @@
 <div class="row">
   <div class="span12 content round" style=""><br>
 	<% @about_graphs.each do |about| %>
-	  <div class="span4" style="margin-left: 0px; padding: 10px;">
+	  <div class="span4 about-section" style="margin-left: 0px; padding: 10px;">
 	  <h3><%= best_in_place_if current_user, about, :title %></h3>
 	  <p><%= best_in_place_if current_user, about, :content, type: :textarea %></p>
 	  </div>
@@ -21,7 +21,7 @@
   <div class="row">
   	<div class="span12 content round"><br>
    	<% @about_faqs.each do |about| %>
-   	  <div class="span6" style="margin: 0px; padding: 10px 0px 10px 10px;">
+   	  <div class="span6 about-section" style="margin: 0px; padding: 10px 0px 10px 10px;">
   	    <h3><%= best_in_place_if current_user, about, :title %></h3>
   	    <p><%= best_in_place_if current_user, about, :content, type: :textarea %></p>
   	  </div>

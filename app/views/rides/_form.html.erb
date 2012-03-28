@@ -1,4 +1,6 @@
-<div class="well shadow round" style="padding: 20px 20px 70px 20px; width: 76%; height: 200px; margin-left: auto; margin-right:auto;">
+<div class="small-container">
+
+<div class="well shadow round" style="padding: 20px 20px 70px 20px; width: 76%; height: auto; margin-left: auto; margin-right:auto;">
 <br>
 <div class="super-small-container">
 <%= simple_form_for @ride, :class=> "form-inline" do |f| %>
@@ -17,12 +19,9 @@
         					:order => [:month, :day], 
       				    	:style => "width:60px", :default => Date.today } %> <br>
     <label> at: </label><%= go_time_select(f, :go_time_hour) %>
-    <%= go_time_min_select(f, :go_time_min) %><br style="clear:both;">    
+    <%= go_time_min_select(f, :go_time_min) %><br style="clear:both;">  <br>  
     <div class="center"><%= f.submit "continue", :class => "btn btn-warning" %></div>
-	<br>
-	<br>
-	<br>
-   <br>
+
 <% end %>
 
 </div>
