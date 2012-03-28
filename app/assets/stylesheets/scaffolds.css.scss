@@ -467,6 +467,11 @@ ul.dropdown-menu li a {
   -moz-border-radius: 10px 10px 0 0;
   -webkit-border-radius: 10px 10px 0 0; 
 }
+.round-bottom {
+  border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -webkit-border-radius: 0 0 10px 10px;
+}
 .best_in_place {
   text-decoration: underline;  
 }

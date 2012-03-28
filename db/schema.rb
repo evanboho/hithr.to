@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120322190820) do
+ActiveRecord::Schema.define(:version => 20120327191445) do
 
   create_table "abouts", :force => true do |t|
     t.string   "genre"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20120322190820) do
   end
 
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.float    "lat"
+    t.float    "long"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "details", :force => true do |t|
     t.integer  "seats_available"

@@ -13,43 +13,62 @@ class Ride < ActiveRecord::Base
              :length => { :maximum => 20 }
   validates :end_state, :presence => true
   validates :go_time, :presence => true
+  validates_presence_of :latitude, :longitude, :end_lat, :end_long
   
   before_save :before_save_events
- 
+  # before_save :create_city
+  
+  def create_city
+    #start = start_city + ', ' + start_state
+    #City.find_or_create_by_name(start)
+  end
+  
   def before_save_events
     clean_up_cities
-    geocode_cities
+    #get_lat_long_both
     get_distance
     get_your_bearings
   end
   
-  geocoded_by :start_city_state
+  # geocoded_by :start_city_state
+  
+  def clean_up_cities
+    self.start_city = clean_up_city(self.start_city)
+    self.end_city = clean_up_city(self.end_city)
+  end
+  def clean_up_city(city)
+    c = city.split(',')
+    c = c.first
+    c.try(:titleize).try(:strip)
+  end
+  
+  def get_lat_long_both
+    lat_long = get_lat_long(self.start_city, self.start_state)
+    self.latitude = lat_long.first
+    self.longitude = lat_long.last
+    end_lat_long = get_lat_long(self.end_city, self.end_state)
+    self.end_lat = end_lat_long.first
+    self.end_long = end_lat_long.last
+  end
+  
+  def get_lat_long(city, state)
+    city_state = city + ", " + state
+    c = City.find_or_create_by_name(city_state)
+    # unless city = City.where(:name => city_state)
+    #    city = City.new
+    #    city.name = city_state
+    #    city.save
+    #  end
+    return [c.lat, c.long]
+  end
+  
   
   def start_city_state
     "#{start_city}, #{start_state}"
-  end
-  
-  def geocode_cities
-    latlong = geocode_city("#{start_city}, #{start_state}")
-    self.latitude = latlong.first
-    self.longitude = latlong.last
-    latlong = geocode_city("#{end_city}, #{end_state}")
-    self.end_lat = latlong.first
-    self.end_long = latlong.last
-  end
-  
-  def geocode_city(city_state)
-    Geocoder.coordinates(city_state)
-  end
-    
-    
+  end 
   
   def get_user_ip
     user_location = Geocoder.request
-  end
-  
-  def get_dest_lat_long
-    
   end
   
   def get_your_bearings
@@ -135,15 +154,9 @@ class Ride < ActiveRecord::Base
     @rides.where(:bearing => (search_bearing - 20)..(search_bearing + 20))
   end 
   
-  def clean_up_cities
-    self.start_city = clean_up_city(self.start_city)
-    self.end_city = clean_up_city(self.end_city)
-  end
   
-  def clean_up_city(city)
-    c = city.split(',')
-    c = c.first
-    c.try(:titleize).try(:strip)
-  end
+  
+  
+
   
 end

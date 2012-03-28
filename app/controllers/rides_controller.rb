@@ -72,16 +72,30 @@ class RidesController < ApplicationController
 
   def create
     @ride = current_user.rides.build(params[:ride])
+    find_or_create_cities
     @ride.go_time = @ride.go_time.change(:hour => params[:ride][:go_time_hour], :min => params[:ride][:go_time_min])
     if @ride.save
       flash[:notice] = "ride posted!"
-      @ride.detail = Detail.create(:seats_available => 1, :radio => 0, :bikes => 0, :smoking => 0)
+      @ride.detail = Detail.create(:cost => 0, :seats_available => "1", :radio => "Flexible", :bikes => 0, :smoking => 0)
       redirect_to @ride
     else
       render 'new'
     end
   end
 
+  def find_or_create_cities
+    s = find_or_create_city(@ride.start_city, @ride.start_state)
+    e = find_or_create_city(@ride.end_city, @ride.end_state)
+    @ride.latitude = s.lat
+    @ride.longitude = s.long
+    @ride.end_lat = e.lat
+    @ride.end_long = e.long
+  end
+  
+  def find_or_create_city(city, state)
+    City.find_or_create_by_name("#{city.try(:titleize).try(:strip)}, #{state.try(:upcase).try(:strip)}") 
+  end
+  
   # PUT /rides/1
   # PUT /rides/1.json
   def update

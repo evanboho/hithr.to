@@ -63,7 +63,7 @@
   <div style="float:left; padding: 10px 5px;">
     <%= best_in_place_if @ride.user == current_user, @ride.detail, :seats_available, 
  		:type => :select, :collection => 
-		[["1", 1], [2, "2"], [3, "3"], [4, "4"], 
+		[[1, "1"], [2, "2"], [3, "3"], [4, "4"], 
 		[5, "5"], [6, "6"], [7, "7"], [8, "8"]] %>
   </div><br>
 
@@ -79,7 +79,7 @@
   <div class="ride-detail"><b>bikes: </b></div> 
   <div style="float:left; padding: 10px 5px;">
   <% if @ride.user == current_user %>
-    <%= best_in_place_if @ride.user == current_user, @ride.detail, :bikes, 
+    <%= best_in_place @ride.detail, :bikes, 
  		:type => :select, :collection => 
 		[[0, "No bikes"], ["1 bike in the trunk", "1 bike in the trunk"], 
 		[2, "1 bike on a rack"], [3, "2 bikes on a rack"], [4, "3 bikes on a rack"]] %>
@@ -88,12 +88,12 @@
   <% end %>
   </div><br><br>
 
-  <div class="ride-detail"><b>smoking: </b></div> 
+  <div class="round-bottom ride-detail"><b>smoking: </b></div> 
   <div style="float:left; padding: 10px 5px;">
   <% if @ride.user == current_user %>
     <%= best_in_place @ride.detail, :smoking, 
 		:type => :select, :collection => 
-		[[0, "No smoking"], [1, "No smoking *in* the car"], 
+		[[0, "No smoking"], [1, "No smoking in the car"], 
 		[2, "OK to smoke in the car"], [3, "I smoke in the car"]] %>  
   <% else %>
     <%= smoking_pref(@ride.detail.smoking) %>
