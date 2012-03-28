@@ -40,7 +40,8 @@ module ApplicationHelper
   end
   
   def line_breaks(c)
-    c.split("\n")
+    return c.split("\n") if !c.nil?
+    return [] if c.nil?
   end  
   
 end

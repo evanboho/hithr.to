@@ -49,6 +49,7 @@ class RidesController < ApplicationController
    
   def show
     @ride = Ride.find(params[:id])
+    @ride.detail ||= Detail.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @ride }

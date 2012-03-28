@@ -14,9 +14,9 @@
 		</h3>
 		
 		<h2 class="pos content round" style="float:right;">
-		<% unless @ride.detail.nil? %>
-		  $<%= best_in_place_if @user == current_user, @ride.detail, :cost  %>
-	    <% end %>
+		  <% @ride.detail.cost ||= 0 %>
+		  <div class="cost">$<%= best_in_place_if @ride.user == current_user, @ride.detail, :cost %>
+		  </div>
     	</h2>
 		<h4 style="clear:left;"><%= ride_showtime(@ride)%></h4>
 		
@@ -31,53 +31,68 @@
 	</div>
   </div>
 </div>
-  
 <!-- ride detail -->
+<div class="row">
+<div class="span8">
+	<div class="well shadow round">
 
-<div class="super-small-container well shadow round">
-
-  <div class="content round" style="padding: 10px; font-size:110%;">	
+  <div class="content round" style="padding: 20px; font-size:110%;">	
 	<% line_breaks(@ride.detail.message).each do |msg| %>
 	  <%= msg %><br>
 	<% end %>
-
   <% if @ride.user == current_user %>
-	  <a class="accordion-toggle" data-toggle="collapse" href="#edit-msg">edit</a>
+      <div class="center">
+	  <a class="accordion-toggle" style="font-size:90%;" data-toggle="collapse" href="#edit-msg">
+	  	<%= "edit" if @ride.detail.message.present? %>
+		<%= "add a message" if !@ride.detail.message.present? %>
+	  </a>
+	  </div>
 	  <div id="edit-msg" class="accordion-body collapse" style="clear:both;">
-	  <div class="well"><br>
+	  <div class="center"><br>
 	  <%= simple_form_for @ride.detail do |f| %>
-	    <%= f.input :message, :label => "info: " %>
-	    <%= f.submit %>
+	    <%= f.input :message, :label => "info: ", :placeholder => "...what, where, how? etc" %>
+	    <%= f.submit "update", :class => "center btn" %>
 	  <% end %>
-	  </div></div>
+	  </div>
+	  </div>
   <% end %>
   </div><br>
+  <div style="float:left; padding-right: 5px; width:150px; text-align:right;">
+  <b>seats available: </b></div> 
+<%= best_in_place_if @ride.user == current_user, @ride.detail, :seats_available, 
+ 	:type => :select, :collection => [[1, "1"], [2, "2"], [3, "3"], [4, "4"], [5, "5"], [6, "6"], [7, "7"], [8, "8"]] %><br><br>
+  <div style="float:left; padding-right: 5px; width:150px; text-align:right;">
+  <b>radio: </b></div>
+<%= best_in_place_if @ride.user == current_user, @ride.detail, :radio,
+ 	:type => :select, :collection => [[1, "No bikes"], [2, "1 bike in the trunk"], [3, "1 bike on a rack"], [4, "2 bikes on a rack"], [5, "3 bikes on a rack"]] %><br><br>
+  <div style="float:left; padding-right: 5px; width:150px; text-align:right;">
+  <b>bikes: </b></div> 
+<%= best_in_place_if @ride.user == current_user, @ride.detail, :bikes, 
+ 	:type => :select, :collection => [[0, "No bikes"], [1, "1 bike in the trunk"], [2, "1 bike on a rack"], [3, "2 bikes on a rack"], [4, "3 bikes on a rack"]]%><br><br>
+  <div style="float:left; padding-right: 5px; width:150px; text-align:right;">
+  <b>smoking: </b></div> 
+<%= best_in_place_if @ride.user == current_user, @ride.detail, :smoking, :type => :select, 
+	:collection => [[0, "No smoking"], [1, "No smoking *in* the car"], [2, "OK to smoke in the car"], [3, "I smoke in the car"]]%>  
+
+
+</div>
+</div>
 
 
 
-
-	  Leaving on <%= @ride.go_time.strftime("%A, %B %d at #{@ride.go_time.strftime("%I").to_i}:%M") %>
-      <% if @ride.go_time.hour < 12 %>
-        am.
-      <% else %>
-        pm.
-      <% end %>
-   Heading about <%= @ride.trip_distance.round %> miles 
+<div class="span4">
+	<div class="well round shadow">
+   <p class="heading">Heading ~<%= @ride.trip_distance.round %> miles 
       <%= compass_points(@ride.bearing) %>
-  <% unless @ride.detail.nil? %>
-  <% end %>
-   <tr>
-    <td colspan="2">Start<br/>
+   </p>
+    from:<br/>
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=225x150&sensor=false&zoom=7&markers=#{@ride.latitude}%2C#{@ride.longitude}" %>
-    </td>
-   
-    <td colspan="2">End<br/>
+    <br><br>to: <br/>
     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=225x150&sensor=false&zoom=7&markers=#{@ride.end_lat}%2C#{@ride.end_long}" %>
-    </td>
-  </tr>
-  <tr>
-  <td colspan="5">
+<br><br>
   <% map_link = 'http://maps.google.com/maps?saddr=' + @ride.start_city + ',+' + @ride.start_state + '&daddr=' + @ride.end_city + ',+' + @ride.end_state %>
-  <%= link_to "See route on Google Maps", map_link %>
+  <p class="heading"><%= link_to "See route on Google Maps", map_link %></p>
   </tr>
 </table>
+
+</div>

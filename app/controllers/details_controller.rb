@@ -30,7 +30,8 @@ class DetailsController < ApplicationController
     @detail = Detail.find(params[:id])
     @ride = @detail.ride
     if @detail.update_attributes(params[:detail])
-      flash[:notice] = "success"
+      flash[:notice] = "Roger that." unless @ride.user.firstname == "Roger"
+      flash[:notice] = "Roger, roger." if @ride.user.firstname == "Roger"
       redirect_to @ride
     else
       render 'edit'

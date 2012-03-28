@@ -12,7 +12,7 @@
 			@detail.smoking) %>
 		  <br><br>
       <label  style="clear:both;">radio preferences:</label>
-      <%= f.select :radio, options_for_select(["", "Music", "NPR", "Talk radio", "I'm flexible.", "Nothing."], @detail.radio) %>
+      <%= f.select :radio, options_for_select(["I'm flexible.", "Music", "NPR", "Talk radio", "Nothing."], @detail.radio) %>
 	  <br><br>
 	 <label style="clear:both;">Space for bikes:</label>
 
@@ -20,7 +20,7 @@
 	  <br><br>
 	  <label style="clear:both;">How much?</label>
 
-	  $<%= f.select(:cost, options_for_select([["$0", 0], ["$5", 5], ["$10", 10], ["$15", 15], ["$20", 20]], @detail.cost))%>
+	  <%= f.select(:cost, options_for_select([["$ 0", 0], ["$ 5", 5], ["$ 10", 10], ["$ 15", 15], ["$ 20", 20]], @detail.cost))%>
 	  <br><br>
 
 	  <label style="clear:both;">Additional Info:</label>
