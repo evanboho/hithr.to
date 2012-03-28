@@ -13,9 +13,10 @@
 			<%= best_in_place_if @ride.user == current_user, @ride, :end_state %>
 		</h3>
 		
-		<h2 class="pos content round" style="float:right;">
+		<h2 class="content pos round" style="float:right; padding: 10px;">
 		  <% @ride.detail.cost ||= 0 %>
-		  <div class="cost">$<%= best_in_place_if @ride.user == current_user, @ride.detail, :cost %>
+		  <div class="cost">$ <%= best_in_place_if @ride.user == current_user, @ride.detail, :cost, 
+		 	:type => :select, :collection => [[0, " 0"], [5, " 5"], [10, " 10"], [15, " 15"], [20, " 20"]] %>
 		  </div>
     	</h2>
 		<h4 style="clear:left;"><%= ride_showtime(@ride)%></h4>
@@ -29,11 +30,11 @@
 	      <% end %>
 	</p>
 	</div>
-  </div>
+  </div><div class="center"><i><%= "click the underlined fields to edit" if @ride.user == current_user %></i></div>
 </div>
 <!-- ride detail -->
 <div class="row">
-<div class="span8">
+<div class="span8" style="">
 	<div class="well shadow round">
 
   <div class="content round" style="padding: 20px; font-size:110%;">	
@@ -57,30 +58,54 @@
 	  </div>
   <% end %>
   </div><br>
-  <div style="float:left; padding-right: 5px; width:150px; text-align:right;">
-  <b>seats available: </b></div> 
-<%= best_in_place_if @ride.user == current_user, @ride.detail, :seats_available, 
- 	:type => :select, :collection => [[1, "1"], [2, "2"], [3, "3"], [4, "4"], [5, "5"], [6, "6"], [7, "7"], [8, "8"]] %><br><br>
-  <div style="float:left; padding-right: 5px; width:150px; text-align:right;">
-  <b>radio: </b></div>
-<%= best_in_place_if @ride.user == current_user, @ride.detail, :radio,
- 	:type => :select, :collection => [[1, "No bikes"], [2, "1 bike in the trunk"], [3, "1 bike on a rack"], [4, "2 bikes on a rack"], [5, "3 bikes on a rack"]] %><br><br>
-  <div style="float:left; padding-right: 5px; width:150px; text-align:right;">
-  <b>bikes: </b></div> 
-<%= best_in_place_if @ride.user == current_user, @ride.detail, :bikes, 
- 	:type => :select, :collection => [[0, "No bikes"], [1, "1 bike in the trunk"], [2, "1 bike on a rack"], [3, "2 bikes on a rack"], [4, "3 bikes on a rack"]]%><br><br>
-  <div style="float:left; padding-right: 5px; width:150px; text-align:right;">
-  <b>smoking: </b></div> 
-<%= best_in_place_if @ride.user == current_user, @ride.detail, :smoking, :type => :select, 
-	:collection => [[0, "No smoking"], [1, "No smoking *in* the car"], [2, "OK to smoke in the car"], [3, "I smoke in the car"]]%>  
+  <div class="round-top ride-detail">
+  <b>seats available: </b></div>
+  <div style="float:left; padding: 10px 5px;">
+    <%= best_in_place_if @ride.user == current_user, @ride.detail, :seats_available, 
+ 		:type => :select, :collection => 
+		[["1", 1], [2, "2"], [3, "3"], [4, "4"], 
+		[5, "5"], [6, "6"], [7, "7"], [8, "8"]] %>
+  </div><br>
 
+  <div class="ride-detail"><b>radio: </b></div>
+  <div style="float:left; padding: 10px 5px;">
+    <%= best_in_place_if @ride.user == current_user, @ride.detail, :radio,
+ 		:type => :select, collection: 
+		[["flexible", "flexible"], ["Music", "Music"], 
+		["NPR", "NPR"], ["Talk radio", "Talk radio"], ["Nothing", "Nothing"]] %>
+  </div><br><br>
+
+
+  <div class="ride-detail"><b>bikes: </b></div> 
+  <div style="float:left; padding: 10px 5px;">
+  <% if @ride.user == current_user %>
+    <%= best_in_place_if @ride.user == current_user, @ride.detail, :bikes, 
+ 		:type => :select, :collection => 
+		[[0, "No bikes"], ["1 bike in the trunk", "1 bike in the trunk"], 
+		[2, "1 bike on a rack"], [3, "2 bikes on a rack"], [4, "3 bikes on a rack"]] %>
+  <% else %>
+    <%= bikes_with(@ride.detail.bikes) %>
+  <% end %>
+  </div><br><br>
+
+  <div class="ride-detail"><b>smoking: </b></div> 
+  <div style="float:left; padding: 10px 5px;">
+  <% if @ride.user == current_user %>
+    <%= best_in_place @ride.detail, :smoking, 
+		:type => :select, :collection => 
+		[[0, "No smoking"], [1, "No smoking *in* the car"], 
+		[2, "OK to smoke in the car"], [3, "I smoke in the car"]] %>  
+  <% else %>
+    <%= smoking_pref(@ride.detail.smoking) %>
+  <% end%>
+</div><br><br><br><br><br>
 
 </div>
 </div>
 
 
 
-<div class="span4">
+<div class="span4" style="margin-left:0px; margin-right:0px;">
 	<div class="well round shadow">
    <p class="heading">Heading ~<%= @ride.trip_distance.round %> miles 
       <%= compass_points(@ride.bearing) %>

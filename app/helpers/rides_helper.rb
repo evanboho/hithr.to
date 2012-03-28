@@ -27,5 +27,20 @@ module RidesHelper
     return t + " am" if @ride.go_time.hour < 12
     return t + " pm" if @ride.go_time.hour >= 12
   end
-
+  
+  def bikes_with(count)
+    return "No room for bikes" if count == 0
+    return "1 bike in the trunk" if count == 1
+    return "1 bike on a rack" if count == 2
+    return "2 bikes on a rack" if count == 3
+    return "3 bikes on a rack" if count == 4
+  end
+  
+  def smoking_pref(smoking)
+    return "No smoking" if smoking == 0
+    return "No smoking *in* the car" if smoking == 1
+    return "OK to smoke in the car" if smoking == 2
+    return "I smoke in the car" if smoking == 3
+  end 
+    
 end

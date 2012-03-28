@@ -75,8 +75,9 @@ class RidesController < ApplicationController
     # gt = @ride.go_time
     # @ride.go_time = "#{gt.year}-#{gt.day}-#{gt.month} #{params[:go_time_hour]}:#{params[:go_time_min]}".to_time
     if @ride.save
-      flash[:notice] = "so far so good..."
-      redirect_to new_ride_detail_path(@ride)
+      flash[:notice] = "ride posted!"
+      @ride.detail = Detail.create(:seats_available => 1, :radio => 0, :bikes => 0, :smoking => 0)
+      redirect_to @ride
     else
       render 'new'
     end

@@ -342,7 +342,7 @@ td.gray {
   padding: 4px 10px;
   border: 1px solid #999; }
   .pos {
-  background-color: #dff0d8; }
+  background-color: #dff0d8; } //#dff0d8
   .neut {
   background-color: yellow; }
   .neg {
@@ -453,4 +453,23 @@ ul.dropdown-menu li a {
 }
 .cost .best_in_place input {
   width: 30px;
+}
+.ride-detail {
+  clear:left; 
+  float:left; 
+  width:11em; 
+  text-align:right;
+  padding: 10px 5px;
+  background-color: #ccc;
+}
+.round-top {
+  border-radius: 10px 10px 0 0;
+  -moz-border-radius: 10px 10px 0 0;
+  -webkit-border-radius: 10px 10px 0 0; 
+}
+.best_in_place {
+  text-decoration: underline;  
+}
+.cost .best_in_place select {
+  font-size: .75em;
 }
