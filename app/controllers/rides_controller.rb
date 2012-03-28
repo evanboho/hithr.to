@@ -72,8 +72,7 @@ class RidesController < ApplicationController
 
   def create
     @ride = current_user.rides.build(params[:ride])
-    # gt = @ride.go_time
-    # @ride.go_time = "#{gt.year}-#{gt.day}-#{gt.month} #{params[:go_time_hour]}:#{params[:go_time_min]}".to_time
+    @ride.go_time = @ride.go_time.change(:hour => params[:ride][:go_time_hour], :min => params[:ride][:go_time_min])
     if @ride.save
       flash[:notice] = "ride posted!"
       @ride.detail = Detail.create(:seats_available => 1, :radio => 0, :bikes => 0, :smoking => 0)

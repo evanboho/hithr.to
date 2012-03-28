@@ -22,8 +22,9 @@ module ApplicationHelper
   end
   
   def go_time_select(form, attribute)
-  	hour_list = [['12 am', 0], '1 am', '2 am', '3 am', '4 am', '5 am', '6 am', '7 am', '8 am', '9 am','10 am', '11 am', 
-  	      '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm', '9 pm','10 pm', '11 pm']
+  	hour_list =   [['12 am', 0], ['1 am', 1], ['2 am', 2], ['3 am', 3], ['4 am', 4], ['5 am', 5], ['6 am', 6], ['7 am', 7], ['8 am', 8], 
+  	              ['9 am', 9],['10 am', 10], ['11 am', 11], ['12 pm', 12], ['1 pm', 13], ['2 pm', 14], ['3 pm', 15], ['4 pm', 16], 
+  	              ['5 pm', 17], ['6 pm', 18], ['7 pm', 19], ['8 pm', 20], ['9 pm', 21],['10 pm', 22], ['11 pm', 23]]
   	form.select(attribute, hour_list, {})    
   end 
   
