@@ -13,9 +13,5 @@ module MessageMailerHelper
             :gravatar => options) 
     end
 	end
-	
-	def line_breaks
-	  split("\n")
-	end
-	
+		
 end
