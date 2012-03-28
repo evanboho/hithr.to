@@ -1,3 +1,5 @@
+<div class="super-small-container">
+
       <label>seats available: </label>
       <%= f.select :seats_available, options_for_select([1, 2, 3, 4, 5, 6, 7, ['8, really?', 8]], @detail.seats_available) %> 
   <br><br>
@@ -23,4 +25,5 @@
 
 	  <label style="clear:both;">Additional Info:</label>
 	  <%= f.text_area :message, :class => 'text_area', :placeholder => "Why are you going? etc." %>
-<br>
+<br><br>
+</div>

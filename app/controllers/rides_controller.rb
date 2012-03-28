@@ -61,7 +61,7 @@ class RidesController < ApplicationController
     @ride.start_city = loc.city
     @ride.start_state = loc.state_code
     @ride.end_state = loc.state_code
-    @ride.go_time = Date.tomorrow + 9.hours
+    @ride.go_time = Date.tomorrow
   end
 
   # GET /rides/1/edit
@@ -71,6 +71,8 @@ class RidesController < ApplicationController
 
   def create
     @ride = current_user.rides.build(params[:ride])
+    gt = @ride.go_time
+    @ride.go_time = "#{gt.year}-#{gt.day}-#{gt.month} #{params[:go_time_hour]}:#{params[:go_time_min]}".to_time
     if @ride.save
       flash[:notice] = "so far so good..."
       redirect_to new_ride_detail_path(@ride)
