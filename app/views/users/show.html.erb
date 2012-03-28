@@ -35,56 +35,54 @@
 
 </div><!-- end of hero-unit -->
 
-		<div class="well" style="margin-bottom: 0px;"><br>
-			<div class="center">
-				<% if @user == current_user %>
-			    <a class="accordion-toggle" data-toggle="collapse" href="#edit-profile">edit public profile</a></div>
-				  <div id="edit-profile" class="accordion-body collapse" style="clear:both;"><br>
-    <div class="well">
-			<%= simple_form_for current_user.profile do |f| %>
-			  <div class="control-group select">
-				 <%= f.label :birthday, "birthday:" %>
-				 <%= f.date_select(:birthday, :order => [:month, :day, :year], :start_year => 1940, :end_year => 1994) %>
-			  </div>
-				 <%= f.input :gender, :label => "gender:", 
-						:collection => [["woman"], ["man"], ["human"], ["traveller"], ["zombie"]] %>
-			     <%= f.input :hometown, :label => "current city:" %>
-			     <div class="center"><%= f.submit "update", :class=>"btn btn-primary" %></div>
-		    <% end %>
-    </div>
-			  </div>
-			  <% end %>
-			  <div class="profile round" style="font-size:110%; padding: 20px;">
-			 
-		  <div class="left"><b>age: </b></div>
-		  <div class="right"><%= distance_in_years(@user.profile.birthday) if @user.profile.birthday.present? %></div><br>
-		        <div class="left"><b>gender: </b></div>
-		        <div class="right"><%= @user.profile.gender if @user.profile.gender.present? %>
-		  </div> <br>
-		        <div class="left"><b>current city: </b></div>
-		        <div><%= @user.profile.hometown if @user.profile.hometown.present? %>
-		      </div><br>
-		      </div>
-              
-		   
-	          <div class="profile round" style="padding:20px;">
-<div class="round shadow bio" style="">bio: </div><div class="about content" style="">
+  <div class="well" style="margin-bottom: 0px;"><br>
+    <div class="center">
+      <% if @user == current_user %>
+        <a class="accordion-toggle" data-toggle="collapse" href="#edit-profile">edit public profile</a>
+        <div id="edit-profile" class="accordion-body collapse" style="clear:both;"><br>
+        <div class="well">
+        <%= simple_form_for current_user.profile do |f| %>
+          <div class="control-group select">
+          <%= f.label :birthday, "birthday:" %>
+          <%= f.date_select(:birthday, :order => [:month, :day, :year], :start_year => 1940, :end_year => 1994) %>
+          </div>
+          <%= f.input 	:gender, :label => "gender:", 
+ 						:collection => [["woman"], ["man"], ["human"], ["traveller"], ["zombie"]] %>
+          <%= f.input :hometown, :label => "current city:" %>
+          <div class="center"><%= f.submit "update", :class=>"btn btn-primary" %></div>
+        <% end %>
+        </div>
+        </div>
+      <% end %>
+</div>
+      <div class="profile round" style="font-size:110%; padding: 20px;">
+        <div class="left"><b>age: </b></div>
+        <div class="right"><%= distance_in_years(@user.profile.birthday) if @user.profile.birthday.present? %></div><br>
+        <div class="left"><b>gender: </b></div>
+        <div class="right"><%= @user.profile.gender if @user.profile.gender.present? %></div> <br>
+        <div class="left"><b>current city: </b></div>
+        <div><%= @user.profile.hometown if @user.profile.hometown.present? %></div><br>
+      </div>
+              	   
+	  <div class="profile round" style="padding:20px;">
+        <div class="round shadow bio" style="">bio: </div>
+        <div class="about content" style="">
 		    <% @user.profile.about = nil if @user.profile.about == "" %>
 		    <% @user.profile.about ||= "click here to create a bio" if @user == current_user %>
 		    <% @user.profile.about ||= "this person has not filled out a bio yet" if @user != current_user %>
 		    <%= best_in_place_if @user == current_user, @user.profile, :about, :type => :textarea %>
-          </div></div><br><br>
         </div>
+      </div><br><br>
+    </div>
      
 		<% if @user == current_user %>
-		   <h3 class="heading">private profile</h3>
-	    <div class="well">
+		  <h3 class="heading">private profile</h3>
+	      <div class="well">
 		    <b>private profile:</b>
-		  <%= link_to "(edit)", edit_user_registration_path(@user) %>	  
-		  <br>
-		  <strong>name: </strong><%= "#{@user.firstname} #{@user.lastname}" %><br>
-		  <strong>email: </strong><%= best_in_place @user, :email %><br>
-		  <strong>birthday: </strong><%= @user.profile.birthday.strftime("%B %e, %Y") if @user.profile.birthday.present? %><br>
+		    <%= link_to "(edit)", edit_user_registration_path(@user) %><br>
+		    <strong>name: </strong><%= "#{@user.firstname} #{@user.lastname}" %><br>
+		    <strong>email: </strong><%= best_in_place @user, :email %><br>
+		    <strong>birthday: </strong><%= @user.profile.birthday.strftime("%B %e, %Y") if @user.profile.birthday.present? %><br>
 		  </div>
 		<% else #not current_user %>
 		<% end %>
