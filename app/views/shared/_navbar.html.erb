@@ -11,7 +11,13 @@
       <div class="nav-collapse">
         <ul class="nav nav-pills">
           <li class="divider-vertical"></li>
-          <li><%= link_to "rides", rides_path %>
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown">rides <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+			  <li><%= link_to "post ride", new_ride_path %></li>
+              <li><%= link_to "see rides", rides_path %></li>
+			</ul>
+		</li>
           <li><%= link_to "about", abouts_path %></li> 
           <li><%= link_to "contact", contact_path %></li>
           <li><% link_to "help", help_path %></li>
@@ -27,17 +33,12 @@
 			<% end %>
 	      <li class="dropdown">
 	        <a class="dropdown-toggle" data-toggle="dropdown">
-	          <%= current_user.username %>
-	          <b class="caret"></b>
-	         <ul class="dropdown-menu">
+	          <%= current_user.username %> <b class="caret"></b></a>
+	        <ul class="dropdown-menu">
 		      <li><%= link_to "messages", user_messages_path(current_user) %></li> 
-		      <li><%= link_to "post ride", new_ride_path %></li>
 		      <li><%= link_to "see profile", current_user %></li>
-		      <li><%= link_to "sign out", sign_out_path %></li>
-		       
-		       <li class="divider"></li>
+		      <li><%= link_to "sign out", sign_out_path %></li>  
 		    </ul>
-	        </a>
 	      <% else %>
 	      <li><%= link_to "sign up", sign_up_path %></li>
 	      <li><%= link_to "sign in", sign_in_path %></li> 
