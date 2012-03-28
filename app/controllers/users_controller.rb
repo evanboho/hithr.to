@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
   
   def create
-    
+    Profile.create(:user_id => params[:id])
   end
   
   def edit_fields

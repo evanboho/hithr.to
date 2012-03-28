@@ -45,10 +45,11 @@
         <%= simple_form_for current_user.profile do |f| %>
           <div class="control-group select">
           <%= f.label :birthday, "birthday:" %>
-          <%= f.date_select(:birthday, :order => [:month, :day, :year], :start_year => 1940, :end_year => 1994) %>
-          </div>
+  		  <% bd = @user.profile.birthday %><% bd ||= Date.today %><% bd = bd.change(:year => 1980) %>
+          <%= f.date_select(:birthday, :order => [:month, :day, :year], :start_year => 1940, :end_year => 1994, :default => bd) %>
+          </div><% gen = @user.profile.gender %><% gen ||= "human" %>
           <%= f.input 	:gender, :label => "gender:", 
- 						:collection => [["woman"], ["man"], ["human"], ["traveller"], ["zombie"]] %>
+ 						:collection => [["traveller"], ["woman"], ["human"], ["man"], ["zombie"]], :selected => gen %>
           <%= f.input :hometown, :label => "current city:" %>
           <div class="center"><%= f.submit "update", :class=>"btn btn-primary" %></div>
         <% end %>
