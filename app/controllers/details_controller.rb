@@ -28,9 +28,10 @@ class DetailsController < ApplicationController
   
   def update
     @detail = Detail.find(params[:id])
+    @ride = @detail.ride
     if @detail.update_attributes(params[:detail])
       flash[:notice] = "success"
-      redirect_to 
+      redirect_to @ride
     else
       render 'edit'
     end

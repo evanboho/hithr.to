@@ -21,8 +21,8 @@
 		<h4 style="clear:left;"><%= ride_showtime(@ride)%></h4>
 		
     </div>
-	<div class="span2"><p>
-		<%= link_to "all rides", rides_path %><br/>
+	<div class="span2">
+	<p>
 	      <% if @ride.user == current_user %>
 	        <%= link_to "edit", edit_ride_path(@ride) %><br/>
 		    <%= link_to "delete", @ride, :confirm => "Are you sure?", :method => :delete %>
@@ -32,22 +32,30 @@
   </div>
 </div>
   
+<!-- ride detail -->
+
 <div class="super-small-container well shadow round">
-<div class="content round" style="padding: 10px; font-size:110%;">
-	
+
+  <div class="content round" style="padding: 10px; font-size:110%;">	
 	<% line_breaks(@ride.detail.message).each do |msg| %>
-	  <%= msg  %><br>
+	  <%= msg %><br>
 	<% end %>
 
-	<% if @ride.user == current_user %>
-	  <a class="accordion-toggle" data-toggle="collapse" href="#edit-msg">edit</a></div>
-	  <div id="edit-msg" class="accordion-body collapse" style="clear:both;"><br>
-	  <div class="well">
+  <% if @ride.user == current_user %>
+	  <a class="accordion-toggle" data-toggle="collapse" href="#edit-msg">edit</a>
+	  <div id="edit-msg" class="accordion-body collapse" style="clear:both;">
+	  <div class="well"><br>
 	  <%= simple_form_for @ride.detail do |f| %>
 	    <%= f.input :message, :label => "info: " %>
+	    <%= f.submit %>
 	  <% end %>
 	  </div></div>
-	<% end %>
+  <% end %>
+  </div><br>
+
+
+
+
 	  Leaving on <%= @ride.go_time.strftime("%A, %B %d at #{@ride.go_time.strftime("%I").to_i}:%M") %>
       <% if @ride.go_time.hour < 12 %>
         am.

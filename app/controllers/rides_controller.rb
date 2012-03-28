@@ -71,8 +71,8 @@ class RidesController < ApplicationController
 
   def create
     @ride = current_user.rides.build(params[:ride])
-    gt = @ride.go_time
-    @ride.go_time = "#{gt.year}-#{gt.day}-#{gt.month} #{params[:go_time_hour]}:#{params[:go_time_min]}".to_time
+    # gt = @ride.go_time
+    # @ride.go_time = "#{gt.year}-#{gt.day}-#{gt.month} #{params[:go_time_hour]}:#{params[:go_time_min]}".to_time
     if @ride.save
       flash[:notice] = "so far so good..."
       redirect_to new_ride_detail_path(@ride)
