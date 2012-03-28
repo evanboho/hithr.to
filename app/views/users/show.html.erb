@@ -35,11 +35,12 @@
 
 </div><!-- end of hero-unit -->
 
-  <div class="well" style="margin-bottom: 0px;"><br>
-    <div class="center">
+  <div class="well" style="margin-bottom: 0px;">
       <% if @user == current_user %>
-        <a class="accordion-toggle" data-toggle="collapse" href="#edit-profile">edit public profile</a>
-        <div id="edit-profile" class="accordion-body collapse" style="clear:both;"><br>
+        <div class="center">
+          <a class="accordion-toggle" data-toggle="collapse" href="#edit-profile">edit public profile</a>
+		</div>
+        <div id="edit-profile" class="accordion-body collapse" style="clear:both;">
         <div class="well">
         <%= simple_form_for current_user.profile do |f| %>
           <div class="control-group select">
@@ -54,7 +55,6 @@
         </div>
         </div>
       <% end %>
-</div>
       <div class="profile round" style="font-size:110%; padding: 20px;">
         <div class="left"><b>age: </b></div>
         <div class="right"><%= distance_in_years(@user.profile.birthday) if @user.profile.birthday.present? %></div><br>
