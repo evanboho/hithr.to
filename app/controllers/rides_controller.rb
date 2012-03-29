@@ -10,7 +10,12 @@ class RidesController < ApplicationController
     if @rides.blank?
       flash.now[:notice] = "Sorry. Try increasing the search radius."    
     end
-   end
+  end
+   
+  def user
+    @rides = current_user.rides.paginate(:page => params[:page], :per_page => 10)
+    render 'index'
+  end 
    
   def make_criteria
     criteria = {}

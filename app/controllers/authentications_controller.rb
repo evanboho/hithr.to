@@ -28,7 +28,7 @@ class AuthenticationsController < ApplicationController
      elsif current_user
        authentication = Authentication.new
        current_user.authentications.create!(:provider => auth.provider, :uid => auth.uid, :nickname => auth['info'].nickname)
-       flash[:notice] = "connection established!"
+       flash[:notice] = "connected!"
        current_user.profile.cred += 1
        current_user.profile.save
        redirect_to current_user
@@ -40,7 +40,7 @@ class AuthenticationsController < ApplicationController
        sign_in_and_redirect(:user, user)
      elsif user = User.find_by_firstname_and_lastname(auth['info'].name.split.first, auth['info'].name.split.last)
        user.build_auth(auth)
-       flash[:notice] = "connection established and signed in!"
+       flash[:notice] = "connected and signed in!"
        user.profile.cred += 1
        user.profile.save
        sign_in_and_redirect(:user, user)
@@ -49,7 +49,7 @@ class AuthenticationsController < ApplicationController
                        :email => auth['info'].email, :password => Devise.friendly_token[0,20])
        if user.save
           user.build_auth(auth)
-          flash[:notice] = "user created, connected and signed in!"
+          flash[:notice] = "created, connected and signed in!"
           user.profile.cred += 1
           user.profile.save
           sign_in_and_redirect(:user, user)

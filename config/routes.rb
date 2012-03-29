@@ -3,6 +3,7 @@ Hithr::Application.routes.draw do
   resources :rides, :shallow => true do
     resources :details
   end
+  get "/user_rides" => "rides#user", :as => "user_rides"
   
   resources :abouts, :except => [:destroy]
   # match 'about' => 'abouts#index'
