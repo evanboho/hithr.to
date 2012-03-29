@@ -37,7 +37,9 @@ class User < ActiveRecord::Base
   
   
   def initialize_profile
-    profile = Profile.find_or_create_by_user_id(:user_id => id, :cred => 0)
+    profile = Profile.find_or_create_by_user_id(:user_id => id)
+    profile.cred ||= 0
+    profile.about ||= ""
     profile.save
   end
   

@@ -18,14 +18,12 @@ module UsersHelper
     return "" if auth.provider == "google_oauth2"
   end
 
-  def cred_magic(cred)
-    cred ||= 0
-    cred += 1 if @user.profile.avatar_file_name.present?
-    if @user.profile.about.present?
-      cred += 1 if @user.profile.about.length > 20
-    end
+  def cred_magic
+    cred = @user.profile.cred
+    cred += 1 if @user.profile.avatar_file_name.present? 
+    cred += 1 if @user.profile.about.length > 20
     cred += 1 if @user.profile.hometown.present?
-    # cred += @user.authentications.count
+    cred
   end
 
 end
