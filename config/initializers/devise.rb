@@ -228,8 +228,8 @@ Devise.setup do |config|
   
   config.omniauth :facebook, ENV['FB_KEY'], ENV['FB_SECRET'], 
                   {:scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-  config.omniauth :twitter, "aZ0Nj0wcqk2qQIFAZPcw", "VctsmoEvJV3jodmYWFm04PoGhXbAGnm2ELV77QePo"      
-  config.omniauth :google_oauth2, "577587829346-s9deidv5ncqp8lhl5i3kgp5mjv759td0.apps.googleusercontent.com", "ijv9i50Yu42eRjEewxCozcIl", {}
+  config.omniauth :twitter, ENV['TW_KEY'], ENV['TW_SECRET']      
+  config.omniauth :google_oauth2, ENV['GOO_KEY'], ENV['GOO_SECRET'], {}
   
   
   # ==> Warden configuration
