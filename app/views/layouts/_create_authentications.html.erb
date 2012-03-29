@@ -2,13 +2,13 @@
 <% if !current_user %>
   <% show = true %>
 <% else %>
-  <% unless current_user.authentications.count == 3 %>
   <% show_fb = true if current_user.authentications.where(:provider => "facebook").empty? %>
   <% show_tw = true if current_user.authentications.where(:provider => "twitter").empty? %>
   <% show_goo = true if current_user.authentications.where(:provider => "google_oauth2").empty? %>
-  <% end %>
+  <% show_any = falst if current_user.authentications.count == 3 %>
 <% end %>
 
+<% unless show_any == false%>
 <h3 class="center">connect with: <br>
 <a href="users/auth/facebook" class="auth_provider">
 <%= image_tag "facebook_64.png", :size => "64x64", 
@@ -21,6 +21,7 @@
 <%= image_tag "google_oauth2_64.png", :size => "64x64", :alt => "google" if show || show_goo == true %>
 </a>
 </h3>
+<% end %>
 
 
 <!-- <a href="users/auth/yahoo" class="auth_provider"> -->
