@@ -84,6 +84,8 @@
 		    <strong>name: </strong><%= "#{@user.firstname} #{@user.lastname}" %><br>
 		    <strong>email: </strong><%= best_in_place @user, :email %><br>
 		    <strong>birthday: </strong><%= @user.profile.birthday.strftime("%B %e, %Y") if @user.profile.birthday.present? %><br>
+		    <br>
+		    <%= render 'layouts/create_authentications' %>
 		  </div>
 		<% else #not current_user %>
 		<% end %>

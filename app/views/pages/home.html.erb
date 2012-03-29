@@ -10,10 +10,9 @@
    
       <%= link_to "sign in", new_user_session_path, :class => "btn btn-primary btn-large" %>
       <%= link_to "sign up", new_user_registration_path, :class => "btn btn-large" %><br><br><br>
-    <h3>connect with:</h3>
-    <%= render 'layouts/create_authentications' %><br>
-  </div>
-<% else %>
+<% end %>    
+<%= render 'layouts/create_authentications' %><br>
+<% if current_user %>
   <br><%= link_to "find a ride", rides_path, :class => "btn btn-large btn-primary" %>
   <%= link_to "post a ride", new_ride_path, :class => "btn btn-large" if current_user %>
   </div>
