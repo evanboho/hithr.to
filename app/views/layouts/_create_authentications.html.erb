@@ -2,9 +2,11 @@
 <% if !current_user %>
   <% show = true %>
 <% else %>
+  <% unless current_user.authentications.count == 3 %>
   <% show_fb = true if current_user.authentications.where(:provider => "facebook").empty? %>
   <% show_tw = true if current_user.authentications.where(:provider => "twitter").empty? %>
   <% show_goo = true if current_user.authentications.where(:provider => "google_oauth2").empty? %>
+  <% end %>
 <% end %>
 
 <h3 class="center">connect with: <br>
