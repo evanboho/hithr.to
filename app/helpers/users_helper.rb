@@ -25,7 +25,7 @@ module UsersHelper
       cred += 1 if @user.profile.about.length > 20
     end
     cred += 1 if @user.profile.hometown.present?
-    cred += @user.authentications.count
+    # cred += @user.authentications.count
   end
 
 end
