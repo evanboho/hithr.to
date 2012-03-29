@@ -6,5 +6,5 @@ development:
   secret_access_key: DirO6N+KhFybfHOK1OA0Xpbk+9ug5zBfZJspLhU5
  
 production: 
-  access_key_id: AKIAJ4PCXCFUIFXK3LFQ
-  secret_access_key: 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
+  access_key_id: ENV['S3_KEY']
+  secret_access_key: ENV['S3_SECRET']

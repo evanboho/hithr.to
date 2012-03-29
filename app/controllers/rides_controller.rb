@@ -13,10 +13,62 @@ class RidesController < ApplicationController
   end
    
   def user
-    @rides = current_user.rides.paginate(:page => params[:page], :per_page => 10)
+    @rides = current_user.rides.reorder('created_at DESC').paginate(:page => params[:page], :per_page => 10)
     render 'index'
   end 
-   
+  
+  def show
+    @ride = Ride.find(params[:id])
+    @ride.detail ||= Detail.new
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @ride }
+    end
+  end
+  
+  def new
+    @ride = Ride.new
+    loc = get_user_ip
+    @ride.start_city = loc.city
+    @ride.start_state = loc.state_code
+    @ride.end_state = loc.state_code
+    @ride.go_time = Date.tomorrow
+  end
+  
+  def create
+    @ride = current_user.rides.build(params[:ride])
+    find_or_create_cities
+    @ride.go_time = @ride.go_time.change(:hour => params[:ride][:go_time_hour], :min => params[:ride][:go_time_min])
+    if @ride.save
+      flash[:notice] = "ride posted!"
+      @ride.detail = Detail.create(:cost => 0, :seats_available => "1", :radio => "Flexible", :bikes => 0, :smoking => 0)
+      redirect_to @ride
+    else
+      render 'new'
+    end
+  end
+  
+  def edit
+    @ride = Ride.find(params[:id])
+  end 
+  
+  def update
+    @ride = Ride.find(params[:id])
+    @ride.update_attributes(params[:ride])
+    respond_with @ride
+  end
+  
+  def destroy
+    @ride = Ride.find(params[:id])
+    @ride.destroy
+    respond_to do |format|
+      format.html { redirect_to rides_url }
+      format.json { head :no_content }
+    end
+  end
+  
+  
+  
   def make_criteria
     criteria = {}
     if params[:date].present?
@@ -51,42 +103,6 @@ class RidesController < ApplicationController
     split_result = input_string.split(',')
     split_result.length > 1 ? split_result[1].strip.upcase : nil
   end
-   
-  def show
-    @ride = Ride.find(params[:id])
-    @ride.detail ||= Detail.new
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @ride }
-    end
-  end
-
-  def new
-    @ride = Ride.new
-    loc = get_user_ip
-    @ride.start_city = loc.city
-    @ride.start_state = loc.state_code
-    @ride.end_state = loc.state_code
-    @ride.go_time = Date.tomorrow
-  end
-
-  # GET /rides/1/edit
-  def edit
-    @ride = Ride.find(params[:id])
-  end
-
-  def create
-    @ride = current_user.rides.build(params[:ride])
-    find_or_create_cities
-    @ride.go_time = @ride.go_time.change(:hour => params[:ride][:go_time_hour], :min => params[:ride][:go_time_min])
-    if @ride.save
-      flash[:notice] = "ride posted!"
-      @ride.detail = Detail.create(:cost => 0, :seats_available => "1", :radio => "Flexible", :bikes => 0, :smoking => 0)
-      redirect_to @ride
-    else
-      render 'new'
-    end
-  end
 
   def find_or_create_cities
     s = find_or_create_city(@ride.start_city, @ride.start_state)
@@ -101,34 +117,4 @@ class RidesController < ApplicationController
     City.find_or_create_by_name("#{city.try(:titleize).try(:strip)}, #{state.try(:upcase).try(:strip)}") 
   end
   
-  # PUT /rides/1
-  # PUT /rides/1.json
-  def update
-    @ride = Ride.find(params[:id])
-    @ride.update_attributes(params[:ride])
-    respond_with @ride
-    
-    # if @ride.update_attributes(params[:ride])
-    #       flash[:notice] = "So far so good..."
-    #       unless @ride.detail.nil?
-    #         redirect_to edit_detail_path(@ride)
-    #       else
-    #         redirect_to new_ride_detail_option_path(@ride)
-    #       end
-    #     else
-    #       render 'edit'
-    # end
-  end
-
-  # DELETE /rides/1
-  # DELETE /rides/1.json
-  def destroy
-    @ride = Ride.find(params[:id])
-    @ride.destroy
-
-    respond_to do |format|
-      format.html { redirect_to rides_url }
-      format.json { head :no_content }
-    end
-  end
 end
