@@ -82,7 +82,6 @@ class Ride < ActiveRecord::Base
     self.trip_distance = ((crow_flies / 100 * 1.12).round(0)) * 100
   end
   
-  
   # SEARCH(es)
   
   def self.search(criteria)

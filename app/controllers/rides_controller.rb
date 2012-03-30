@@ -41,7 +41,9 @@ class RidesController < ApplicationController
     @ride.go_time = @ride.go_time.change(:hour => params[:ride][:go_time_hour], :min => params[:ride][:go_time_min])
     if @ride.save
       flash[:notice] = "ride posted!"
-      @ride.detail = Detail.create(:cost => 0, :seats_available => "1", :radio => "Flexible", :bikes => 0, :smoking => 0)
+      @ride.detail = Detail.create(:cost => (@ride.trip_distance / 10), 
+                                    :seats_available => "1", :radio => "Flexible", 
+                                    :bikes => 0, :smoking => 0)
       redirect_to @ride
     else
       render 'new'

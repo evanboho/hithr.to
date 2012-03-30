@@ -15,8 +15,7 @@
 		
 		<h2 class="content pos round" style="float:right; padding: 10px;">
 		  <% @ride.detail.cost ||= 0 %>
-		  <div class="cost">$ <%= best_in_place_if @ride.user == current_user, @ride.detail, :cost, 
-		 	:type => :select, :collection => [[0, " 0"], [5, " 5"], [10, " 10"], [15, " 15"], [20, " 20"]] %>
+		  <div class="cost">$ <%= best_in_place_if @ride.user == current_user, @ride.detail, :cost %>
 		  </div>
     	</h2>
 		<h4 style="clear:left;"><%= ride_showtime(@ride)%></h4>
