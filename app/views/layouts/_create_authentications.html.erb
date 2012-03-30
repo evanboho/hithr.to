@@ -8,7 +8,7 @@
   <% show_any = false if current_user.authentications.count == 3 %>
 <% end %>
 
-<% unless show_any == false%>
+<% unless show_any == false %>
 <h3 class="center">connect with: <br>
 <a href="users/auth/facebook" class="auth_provider">
 <%= image_tag "facebook_64.png", :size => "64x64", 
