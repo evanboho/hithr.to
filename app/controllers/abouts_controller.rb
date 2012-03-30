@@ -3,8 +3,8 @@ class AboutsController < ApplicationController
   respond_to :html, :json
  
   def index
-    @about_graphs = About.where(:genre => "paragraph")
-    @about_faqs = About.where(:genre => "FAQ")    
+    @about_graphs = About.where(:genre => "paragraph").reorder('created_at ASC')
+    @about_faqs = About.where(:genre => "FAQ").reorder('created_at ASC')
     @about = About.new
   end
   
