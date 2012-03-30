@@ -5,8 +5,8 @@ class Profile < ActiveRecord::Base
                     :storage => :s3,
                     :bucket => 'hithr.to',
                     :s3_credentials => {
-                      :access_key_id => 'AKIAJ4PCXCFUIFXK3LFQ',
-                      :secret_access_key => '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'
+                      :access_key_id => ENV['S3_KEY'],
+                      :secret_access_key => ENV['S3_SECRET']
                     }  
   validates :user_id, :presence => true, :uniqueness => true
   

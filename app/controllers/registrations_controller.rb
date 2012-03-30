@@ -1,5 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-
   
   def new
     resource = build_resource({})
@@ -19,23 +18,8 @@ class RegistrationsController < Devise::RegistrationsController
     respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
   end
   
-  # def update
-  #   # @user = User.find(params[:id])
-  #   if @user.update_attributes(params[:user])
-  #     flash[:notice] = "success updating profile"
-  #     redirect_to @user
-  #   else
-  #     render 'edit'
-  #   end
-  # end
-  
-  private
-  
-  
-  # def build_resource(*args)
-  #     super
-  #     if session['devise.omniauth']
-  #       @user.apply_omniauth(session['devise.omniauth'])
-  #     end
-  #   end
+  def after_update_path_for(resource)
+    resource
+  end
+
 end
