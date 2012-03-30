@@ -31,7 +31,6 @@ class RidesController < ApplicationController
     loc = get_user_ip
     @ride.start_city = loc.city
     @ride.start_state = loc.state_code
-    @ride.end_state = loc.state_code
     @ride.go_time = Date.tomorrow
   end
   
