@@ -407,39 +407,6 @@ ul.dropdown-menu li a {
   text-decoration: none;
 }
 
-.apple_pagination {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  background: #eee;
-  border: 1px solid #ccc;
-  font-size: 110%;
-  text-align: center;
-  padding: 1em;
-  @include rounded(20px);
-  @include inset-shadow(#aaa);
-  cursor: default; }
-  .apple_pagination a, .apple_pagination span {
-    padding: 0.2em 0.3em; }
-  .apple_pagination .disabled {
-    color: #aaaaaa; }
-  .apple_pagination .current {
-    font-style: normal;
-    font-weight: normal;
-    color: #f0f0f0;
-    background-color: #003366;
-    display: inline-block;
-    width: 1.4em;
-    height: 1.4em;
-    line-height: 1.3;
-    @include rounded(1em);
-    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
-  .apple_pagination a {
-    text-decoration: none;
-    color: black; }
-  .apple_pagination a:hover, .apple_pagination a:focus {
-      text-decoration: underline; }
-
 .shadow {
   @include inset-shadow(#003366, 15%);
 }
@@ -496,3 +463,7 @@ ul.dropdown-menu li a {
   color: #111;
   &:visited {
   color: #111; }}
+
+.current_user, .not_current_user {
+  display:none;
+}

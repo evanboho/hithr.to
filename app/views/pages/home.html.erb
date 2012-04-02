@@ -6,17 +6,13 @@
 </div>
 
 <div class="small-container center well" style="padding: 20px 0 40px 0; margin-bottom: 0px;">
-<% if !current_user %>
-   
-      <%= link_to "sign in", new_user_session_path, :class => "btn btn-primary btn-large" %>
-      <%= link_to "sign up", new_user_registration_path, :class => "btn btn-large" %><br><br><br>
-<% end %>    
+	<%= link_to "sign in", new_user_session_path, :class => "not_current_user btn btn-primary btn-large" %>
+    <%= link_to "sign up", new_user_registration_path, :class => "not_current_user btn btn-large" %>
+    
 <%= render 'layouts/create_authentications' %><br>
-<% if current_user %>
-  <br><%= link_to "find a ride", rides_path, :class => "btn btn-large btn-primary" %>
-  <%= link_to "post a ride", new_ride_path, :class => "btn btn-large" if current_user %>
+  <br><%= link_to "find a ride", rides_path, :class => "current_user btn btn-large btn-primary" %>
+  <%= link_to "post a ride", new_ride_path, :class => "current_user btn btn-large" %>
   </div>
-<% end %>
 </div>
 
 

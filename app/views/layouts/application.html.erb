@@ -19,9 +19,12 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
+<% if current_user %>
+<div id="current_user"></div>
+<% else %>
+<div id="not_current_user"></div>
+<% end %>
 
-
-	
 <%= yield %>
 </div>
 <br><br><br>

@@ -18,9 +18,9 @@ class AuthenticationsController < ApplicationController
     
 
   def create
-    auth = request.env['omniauth.auth'].except('extra')  #.extra.raw_info
-    # render :text => auth['info']
     info = request.env['omniauth.auth'].extra.raw_info
+    auth = request.env['omniauth.auth'].except('extra')
+    # render :text => auth['info']
      authentication = Authentication.find_by_provider_and_uid(auth.provider, auth.uid)
      if authentication
        flash[:notice] = "signed in!"
@@ -54,9 +54,9 @@ class AuthenticationsController < ApplicationController
           user.profile.save
           sign_in_and_redirect(:user, user)
         else
-          flash[:warning] = "Ooooops!"
+          flash[:warning] = "Sorry! You can't create an account with Twitter."
           session['devise.omniauth'] = auth
-          redirect_to user_edit_fields_path
+          redirect_to sign_up_path
         end
      end
   end

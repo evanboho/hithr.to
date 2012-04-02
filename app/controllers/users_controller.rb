@@ -2,7 +2,7 @@ class UsersController < ApplicationController
  
   respond_to :html, :json
   
-  # before_filter :authenticate_user!, :only => [:edit, :index, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
   before_filter :current_user?, :except => [:new, :create]
   
   def index

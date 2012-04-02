@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 
   before_filter :current_user?
-  # before_filter :authenticate_user
+  before_filter :authenticate_user!
 
   def get_inbox
     @messages = current_user.messages.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
     @message.sender_id = current_user.id
     @message.read = false
     if @message.save
-      MessageMailer.send_message(@message).deliver
+      # MessageMailer.send_message(@message).deliver
       flash[:notice] = "Message sent"
       redirect_to @message
     else
