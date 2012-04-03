@@ -24,6 +24,7 @@ body {
   line-height: 18px;
 }
 
+
 @media (max-width: 767px) {
   body {
   font-size: 14px; }
@@ -466,4 +467,9 @@ ul.dropdown-menu li a {
 
 .current_user, .not_current_user {
   display:none;
+}
+.hero-unit h1 {
+  font-family: 'Chango'; //, cursive;
+  color: #222;
+  font-size: 450%;
 }
