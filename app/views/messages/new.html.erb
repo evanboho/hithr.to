@@ -13,6 +13,7 @@
     
 	    <%= simple_form_for [@user, @message] do |f| %>
 	      <%= f.input :sujet, :label => "subject:", :required => false %>
+	      <%= f.input :sender_email, :label => "from:", :placeholder => "(email)" %>
 	      <%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
 	      <%= f.submit "send", :class => "btn btn-primary", :style => "margin-left: 170px;" %>
 	    <% end %>
@@ -22,6 +23,6 @@
 	<% end %>
   </div>
   <div class="span4">
-    <%= render 'inbox' %>	
+    <%= render 'inbox' if current_user %>	
   </div>
 </div>

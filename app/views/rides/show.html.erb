@@ -32,8 +32,18 @@
 	<div class="span2">
 	<p>
 	      <% if @ride.user == current_user %>
-	        <%= link_to "edit", edit_ride_path(@ride) %><br/>
-		    <%= link_to "delete", @ride, :confirm => "Are you sure?", :method => :delete %>
+	        <div>
+	        <%= link_to "edit", edit_ride_path(@ride), :class => "btn btn-warning" %><br/>
+		    <%= link_to "delete", @ride, :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %>
+		    </div>
+		  <% else %>
+		    <div>
+		    <%= form_tag new_user_message_path(@ride.user), :method => :get do %>
+		      <%= hidden_field_tag(:subject, "#{@ride.start_city} to #{@ride.end_city}") %>
+		      <%= submit_tag "send a message", :class => "btn btn-primary" %>
+		    <% end %>
+		    <%= link_to "msg", new_user_message_path(@ride.user)%>
+		    </div>
 	      <% end %>
 	</p>
 	</div>

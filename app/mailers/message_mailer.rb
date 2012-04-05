@@ -6,6 +6,11 @@ class MessageMailer < ActionMailer::Base
     mail(:to => message.user.email, :subject => "hithr.to: Message from #{message.sender.username} - #{message.sujet}")
   end
   
+  def send_message_anon(message)
+    @msg = message
+    mail(:to => message.user.email, :subject => "hithr.to: Message from #{message.sender_email}")
+  end
+  
   def reference_notifier(reference)
     @ref = reference 
     mail(:to => reference.user.email, :subject => "hithr.to: #{reference.sender.username} left you a reference!")

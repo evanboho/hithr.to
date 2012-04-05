@@ -1,11 +1,13 @@
 class MessagesController < ApplicationController
 
-  before_filter :current_user?
-  before_filter :authenticate_user!
+  before_filter :current_user?, :except => [:new, :create]
+  before_filter :authenticate_user!, :except => [:new, :create]
 
   def get_inbox
-    @messages = current_user.messages.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
-    @messages_sent = Message.sent(current_user).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+    if current_user 
+      @messages = current_user.messages.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+      @messages_sent = Message.sent(current_user).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+    end
   end
   
   def index
@@ -46,16 +48,18 @@ class MessagesController < ApplicationController
         @message.sujet = @reply_from.sujet
       end
     end
+    @message.sujet ||= params[:subject]
   end
   
   def create
     get_inbox
     @user = User.find(params[:user_id])
     @message = @user.messages.build(params[:message])
-    @message.sender_id = current_user.id
+    @message.sender_id = current_user.id if current_user
     @message.read = false
     if @message.save
-      # MessageMailer.send_message(@message).deliver
+      MessageMailer.send_message(@message).deliver if @message.sender_id.present?
+      MessageMailer.send_message_anon(@message).deliver if !@message.sender_id.present?
       flash[:notice] = "Message sent"
       redirect_to @message
     else

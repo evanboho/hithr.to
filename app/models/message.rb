@@ -4,6 +4,9 @@ class Message < ActiveRecord::Base
     
   validates :content, :presence => true, :length => { :maximum => 1000 }
   validates :sujet, :presence => true, :length => { :maximum => 40 }
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  
+  validates :sender_email, :format => { :with => email_regex }
   
 
   def sender
