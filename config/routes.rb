@@ -1,18 +1,22 @@
 Hithr::Application.routes.draw do
-  
+
+
+  match "/rides/user" => "rides#user", :as => "user_rides"
   resources :rides, :shallow => true do
     resources :details
   end
-  get "/user_rides" => "rides#user", :as => "user_rides"
-  
-  resources :abouts, :except => [:destroy]
+
+  # match "/about" => "abouts#index", :as => :about  
+  resources :abouts, :except => [:destroy], :path => "/about"
   # match 'about' => 'abouts#index'
 
   
   resources :authentications, :only => [:new, :create, :destroy]
   match 'users/auth/:provider/callback/' => 'authentications#create'
    
-  devise_for :users, :controllers => { :registrations => 'registrations', :sessions => 'users/sessions', :passwords => 'users/passwords' } do
+  devise_for :users, :controllers => {  :registrations => 'registrations', 
+                                        :sessions => 'users/sessions', 
+                                        :passwords => 'users/passwords' } do
     match "/sign_in" => "users/sessions#new"
     match "/sign_out" => "devise/sessions#destroy" 
     match "/sign_up" => "registrations#new" 
@@ -29,7 +33,6 @@ Hithr::Application.routes.draw do
   
   
   root :to => 'pages#home'
-  # get "/about" => "pages#about"
   get "/contact" => "pages#contact"
   get "/help" => "pages#help"
   get "/test" => "pages#test"
