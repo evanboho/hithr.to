@@ -6,7 +6,7 @@
   <%= f.input :firstname, :label => "first name:", :placeholder => "", :required => false %>
   <%= f.input :lastname, :label => "last name:", :placeholder => "", :required => false %>
   <%= f.input :email, :label => "email:", :required => false, :placeholder => ""%>
-  <% if params[:action] == "edit" %>
+  <% if current_user %>
   <%= f.input :current_password, :label => "current password:", :required => false %>
   <h5 class="center">change password? (optional)</h5>
   <% end %>
