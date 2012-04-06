@@ -8,7 +8,7 @@
   <%= f.input :email, :label => "email:", :required => false, :placeholder => ""%>
   <% if params[:action] == "edit" %>
   <%= f.input :current_password, :label => "current password:", :required => false %>
-  <h5>change password?</h5>
+  <h5 class="center">change password? (optional)</h5>
   <% end %>
   <%= f.input :password, :label => "password:", :required => false, :placeholder => "" %>
   <%= f.input :password_confirmation, :label => "confirm password:", :required => false, :placeholder => "" %>

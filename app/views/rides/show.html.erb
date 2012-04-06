@@ -75,7 +75,7 @@
   <% end %>
   </div>
   <div class="round-top ride-detail">
-  <b>seats available: </b></div>
+  <% @ride.offered ? seats = 'available' : seats = 'wanted' %><b>seats <%= seats %>: </b></div>
   <div style="float:left; padding: 10px 5px 0 5px;">
     <%= best_in_place_if @ride.user == current_user, @ride.detail, :seats_available, 
  		:type => :select, :collection => 
