@@ -70,7 +70,7 @@ div {
   @include inset-shadow(#eee, 50%);
   h1 {
     font-size: 400%;
-    letter-spacing: -6px; }
+    letter-spacing: 6px; }
 }
 .heading {
   border: 0px solid #ccc;
@@ -485,7 +485,8 @@ ul.dropdown-menu li a {
   display:none;
 }
 .hero-unit h1 {
-  font-family: 'Chango'; //, cursive;
+  font-family: 'Happy Monkey', cursive;
   color: #222;
   font-size: 450%;
+  text-shadow: 0em .05em 0.05em #666;
 }
