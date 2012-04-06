@@ -20,7 +20,7 @@ module UsersHelper
 
   def cred_magic
     cred = @user.profile.cred
-    cred += 1 if @user.profile.avatar_file_name.present? 
+    cred += 1 if @user.profile.avatar_file_name.present?
     cred += 1 if @user.profile.about.length > 20
     cred += 1 if @user.profile.hometown.present?
     cred

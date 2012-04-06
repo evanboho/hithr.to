@@ -6,10 +6,7 @@ Hithr::Application.routes.draw do
     resources :details
   end
 
-  # match "/about" => "abouts#index", :as => :about  
   resources :abouts, :except => [:destroy], :path => "/about"
-  # match 'about' => 'abouts#index'
-
   
   resources :authentications, :only => [:new, :create, :destroy]
   match 'users/auth/:provider/callback/' => 'authentications#create'

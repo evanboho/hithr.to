@@ -1,11 +1,12 @@
 <div class="hero-unit">
 	<h1>contact</h1>
 </div>
+<% email = current_user.email if current_user %>
 
 <div class="super-small-container round shadow" style="padding: 30px 0 30px 0;">
 <%= form_tag send_contact_path, :method => :get do %>
     <%= label_tag :from, "from: " %>
-    <%= text_field_tag :from, "", :placeholder=> "(email)" %><br>
+    <%= text_field_tag :from, email, :placeholder=> "(email)" %><br>
     <%= label_tag :subject, "subject: "%>
     <%= text_field_tag :subject %><br>
     <%= label_tag :message, "message:" %>

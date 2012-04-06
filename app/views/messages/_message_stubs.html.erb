@@ -1,8 +1,13 @@
 <ul style="margin: 0px 10px;">
   <li>
-	<b>
-	<%= gravatar_for msg.sender, :thumb, :size => 30 %>
-	<%= link_to msg.sender.username, msg.sender %>:</b>
+    <% if msg.sender.present? %>
+      <b>
+	  <%= gravatar_for msg.sender, :thumb, :size => 30 %>
+	  <%= link_to msg.sender.username, msg.sender %>:
+	  </b>
+	<% else %>
+	  <b><%= msg.sender_email.truncate(10) %>:</b>
+	<% end %>
     <% if msg.sender != current_user && msg.read == false %><b><% end %>
 	<%= link_to (msg.sujet ||= "subject"), msg %></b><br>
 	<div class="alt"><%= msg.msg_time %></div>

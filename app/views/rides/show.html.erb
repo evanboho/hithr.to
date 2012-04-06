@@ -42,7 +42,6 @@
 		      <%= hidden_field_tag(:subject, "#{@ride.start_city} to #{@ride.end_city}") %>
 		      <%= submit_tag "send a message", :class => "btn btn-primary" %>
 		    <% end %>
-		    <%= link_to "msg", new_user_message_path(@ride.user)%>
 		    </div>
 	      <% end %>
 	</p>

@@ -5,8 +5,8 @@ class MessagesController < ApplicationController
 
   def get_inbox
     if current_user 
-      @messages = current_user.messages.order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
-      @messages_sent = Message.sent(current_user).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+      @messages = current_user.messages.order('created_at DESC').paginate(:page => params[:page], :per_page => 5).includes(:user)
+      @messages_sent = Message.sent(current_user).order('created_at DESC').paginate(:page => params[:page], :per_page => 5).includes(:user)
     end
   end
   
@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
     render 'index'
   end
   def all
-    @messages_all = Message.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 10)
+    @messages_all = Message.where(:user_id => current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
     get_inbox
     render 'index'
   end
@@ -27,8 +27,10 @@ class MessagesController < ApplicationController
   def show
     get_inbox
     @message = Message.find(params[:id])
-    @mutual_messages = Message.where('id <> ?', @message.id).mutual_messages(@message.user, @message.sender)
-    @reply = current_user.messages.new
+    if current_user
+      @mutual_messages = Message.where('id <> ?', @message.id).includes(:user).mutual_messages(@message.user, @message.sender)
+      @reply = current_user.messages.new 
+    end
   end
   
   def reply
@@ -74,7 +76,7 @@ class MessagesController < ApplicationController
       redirect_to user_messages_path(current_user)
     else
       flash[:error] = "oops"
-      render 'edit'
+      redirect_to user_messages_path(current_user)
     end
   end
   

@@ -14,6 +14,12 @@
   box-shadow: inset -3px -8px 15px darken($color, $amount);
 }
 
+@mixin shadow($color: #003366, $amount: 15%) {
+  -webkit-box-shadow: 0px 0px 20px darken($color, $amount);
+  -moz-box-shadow:  0px 0px 20px darken($color, $amount);
+  box-shadow: 0px 0px 20px darken($color, $amount);
+}
+
 
 
 //
@@ -22,6 +28,10 @@
 body {
   font-size: 15px;
   line-height: 18px;
+  background-color: lighten(#003366, 50%);
+  -webkit-box-shadow: inset 0px 50px 250px darken(#003366, 20%);
+  -moz-box-shadow: inset 0px 50px 250px darken(#003366, 20%);
+  box-shadow: inset 0px 50px 250px darken(#003366, 0%);
 }
 
 
@@ -63,7 +73,7 @@ div {
     letter-spacing: -6px; }
 }
 .heading {
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   padding: 3px 0px;
   background-color: #eee;
   width: 100%;
@@ -76,7 +86,9 @@ h3 {
 
 .well { 
   background-color: #eee;
-  @include inset-shadow(#f5f5f5, 0%);
+  border: 0;
+  @include shadow;
+  @include inset-shadow(#f5f5f5, 30%);
   @include rounded;
 }
 .small-container {
@@ -136,9 +148,15 @@ a {
 a.btn-primary { &:visited {
   color: white;}
 }
+.shade {
+  box-shadow: 0px 5px 20px #003366;
+}
 
 
 
+table {
+  background-color: white;
+}
 
 
 
@@ -210,11 +228,9 @@ table.tble td {
   padding: 15px;
 }
 .msg {
-  border-color: black;
-  border: 1px;
-  margin-top: 0px;
-  @include inset-shadow(#fff);
+  @include inset-shadow(#ccc);
   @include rounded();
+  border-top: 1px solid #999;
 }
 td.msg {
   padding: 20px 40px;

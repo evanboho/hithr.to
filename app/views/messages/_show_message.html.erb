@@ -1,12 +1,24 @@
 <table border=0 class="tble msg">
 	<tr>
 	<th class="top">from: </th>
-	<td><%= gravatar_for msg.sender, :thumb, :size => 30 %> <%= link_to msg.sender.username, msg.sender %><br></td>
+	<td><% if msg.sender.present? %>
+		  <%= gravatar_for msg.sender, :thumb, :size => 30 %> 
+		  <%= link_to msg.sender.username, msg.sender %>
+		<% else %>
+		  <%= msg.sender_email %>
+		<% end %><br>
+	</td>
     </tr>
 
     <tr>
 	<th>to: </th>
-	<td><%= gravatar_for msg.user, :thumb, :size => 30 %> <%= link_to msg.user.username, msg.user %></td>
+	<td>
+	  <% if msg.user == current_user %>
+	    <h4>You!</h4>
+	  <% else %>
+	    <%= gravatar_for msg.user, :thumb, :size => 30 %> <%= link_to msg.user.username, msg.user %>
+	  <% end %>
+	</td>
 	</tr>
 	
 	<tr style="padding-top: 0px; vertical-align: bottom;">
@@ -19,8 +31,7 @@
 	
 	<tr>
 	<th class="bottom">message: </th>
-	<td colspan=3 border=1 class="msg" style="background-color: white; font-size:16px;">
-	  <div="alt"></div>
+	<td colspan=3 class="msg" style="background-color: white; font-size:120%;">
 	  <% msg.line_breaks.each do |m| %>
 	    <%= m %><br>
 	  <% end %>
@@ -46,6 +57,7 @@
    
 
 <!-- Reply field -->
+<% if msg.sender.present? %>
 <div class="accordion-heading">
   <a class="btn btn-primary accordion-toggle" data-toggle="collapse" href="#reply" style="float:left;">reply</a></tr>
 </div>
@@ -60,10 +72,15 @@
 		  <%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
 		  <%= f.submit "send", :class => "btn btn-primary", :style=> "float:right; margin-right: 120px;"%>
 		<% end %>
-
+		
 </div>
 </div>
+<% else %>
+<p>This person does not have an account. Reply to their email if you find them believable.<br>
+If this sounds like spam, please <%= link_to "report", contact_path %>!</p>	  
+<% end %>
 <!-- End reply -->
+
 
     </td>
   <% else %>
@@ -73,7 +90,7 @@
     <td>
     <%= link_to "delete", message_path(msg), :class => "btn btn-danger", :method => :delete  %>
     </td>
-    </tr>	  
+    </tr>
   <% end %>
   </div>
   </table>    
