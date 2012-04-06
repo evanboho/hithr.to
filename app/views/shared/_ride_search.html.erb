@@ -1,5 +1,10 @@
 <td colspan="2">
-<%= form_tag rides_path, :method => 'get', :class => "form-search" do %>
+<% if params[:action] == 'index' %>
+<% path = rides_path %>
+<% else %>
+<% path = rides_wanted_path %>
+<% end %>
+<%= form_tag path, :method => 'get', :class => "form-search" do %>
 <%= select_tag(:miles_radius, options_for_select([['search radius', 0], ['10 miles', 10], ['20 miles', 20], ['30 miles', 30], ['40 miles', 40]], params[:miles_radius]), :class => "auto") %>
 <td class="auto", style="width:155px;">
 <% @search_date = get_search_date %>

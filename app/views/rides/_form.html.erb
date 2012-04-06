@@ -4,6 +4,7 @@
 <br>
 <div class="super-small-container">
 <%= simple_form_for @ride, :class=> "form-inline" do |f| %>
+    <%= f.input :offered, :label => "ride:", :as => :select, :collection => [['offered', true], ['wanted', false]], :default => true %>
 	<label>from: </label><%= f.text_field :start_city, :placeholder => "(city)" %>
 	<% f.input :start_city, :label => "from: ", :placeholder => "(city)", :required => false %>
     <%= state_select(f, :start_state) %>

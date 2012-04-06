@@ -5,16 +5,24 @@ class RidesController < ApplicationController
   respond_to :html, :json
  
   def index
-    @rides = Ride.search(make_criteria).reorder('go_time ASC').paginate(:page => params[:page], :per_page => 15).includes(:user)
+    @rides = Ride.where(:offered => true).search(make_criteria).reorder('go_time ASC').paginate(:page => params[:page], :per_page => 15).includes(:user)
     #@rides = Ride.paginate(:page => params[:page], :per_page => 15).search(make_criteria).reorder('go_time ASC')
     if @rides.blank?
       flash.now[:notice] = "Sorry. Try increasing the search radius."    
     end
   end
+  
+  def index_wanted
+    @rides = Ride.where('offered <> ?', true)
+    @rides = @rides.search(make_criteria).reorder('go_time ASC').paginate(:page => params[:page], :per_page => 15).includes(:user)
+    if @rides.blank?
+      flash.now[:notice] = "Sorry. Try increasing the search radius."
+    end
+  end
    
   def user
     @rides = current_user.rides.reorder('created_at DESC').paginate(:page => params[:page], :per_page => 10)
-    render 'index'
+    render 'user_rides'
   end 
   
   def show

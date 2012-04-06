@@ -1,7 +1,8 @@
 Hithr::Application.routes.draw do
 
 
-  match "/rides/user" => "rides#user", :as => "user_rides"
+  match "/my_rides" => "rides#user", :as => "user_rides"
+  get "rides/wanted" => "rides#index_wanted", :as => "rides_wanted"
   resources :rides, :shallow => true do
     resources :details
   end
@@ -19,7 +20,7 @@ Hithr::Application.routes.draw do
     match "/sign_up" => "registrations#new" 
     # match "/users/password/new" => "users/passwords#new"
   end
-
+  
   resources :users, :shallow => true do
     resources :messages
     resources :profiles

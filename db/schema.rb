@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120327191445) do
+ActiveRecord::Schema.define(:version => 20120406140647) do
 
   create_table "abouts", :force => true do |t|
     t.string   "genre"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20120327191445) do
     t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.boolean  "offered"
   end
 
   add_index "rides", ["user_id"], :name => "index_rides_on_user_id"
