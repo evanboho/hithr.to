@@ -30,7 +30,7 @@ class Ride < ActiveRecord::Base
     get_your_bearings
   end
   
-  # geocoded_by :start_city_state
+  geocoded_by :start_city_state
   
   def clean_up_cities
     self.start_city = clean_up_city(self.start_city)
