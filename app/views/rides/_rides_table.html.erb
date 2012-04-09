@@ -1,10 +1,10 @@
 <% unless params[:controller].parameterize == "rides" %>
 <div class="center">
-<h3 class="heading">recent rides</h3>
+<h3 class="heading top">recent rides</h3>
 </div>
 <% end %>
 <div class="shade round">
-<table class="table table-condensed rides round shadow">
+<table class="table table-condensed rides bottom shadow">
 	<thead>
 	<tr class="round"><th colspan=2>
 		</th><th class="date">
@@ -30,5 +30,8 @@
     <% else %>
 	  <tr><td colspan="7"><h3 align="center">no rides matched your search</h3>	
 	<% end %>
+<tr><td id="pagination" colspan=7><%= will_paginate @rides, :class => "apple_pagination" unless controller_name == "pages" %></tr>
+<tr><td id="last-row" colspan=7>last row</tr>
+
 </table>
-<%= will_paginate @rides, :class => "apple_pagination" unless controller_name == "pages" %>
+</div>

@@ -77,8 +77,8 @@
     </div>
      
 		<% if @user == current_user %>
-		  <h3 class="heading">private profile</h3>
-	      <div class="well">
+		  <h3 class="heading top">private profile</h3>
+	      <div class="well bottom">
 		    <b>private profile:</b>
 		    <%= link_to "(edit)", edit_user_registration_path(@user) %><br>
 		    <strong>name: </strong><%= "#{@user.firstname} #{@user.lastname}" %><br>

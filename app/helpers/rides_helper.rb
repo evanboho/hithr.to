@@ -28,19 +28,33 @@ module RidesHelper
     return t + " pm" if @ride.go_time.hour >= 12
   end
   
-  def bikes_with(count)
-    return "No room for bikes" if count == 0
-    return "1 bike in the trunk" if count == 1
-    return "1 bike on a rack" if count == 2
-    return "2 bikes on a rack" if count == 3
-    return "3 bikes on a rack" if count == 4
+  def bikes_with(count, offered)
+    if offered
+      return "No room for bikes" if count == 0
+      return "1 bike in the trunk" if count == 1
+      return "1 bike on a rack" if count == 2
+      return "2 bikes on a rack" if count == 3
+      return "3 bikes on a rack" if count == 4
+    else 
+      return "No bike" if count == 0
+      return "1 bikes" if count == 1
+      return "2 bikes" if count == 2
+      return "3 bikes" if count == 3
+    end
   end
   
-  def smoking_pref(smoking)
-    return "No smoking" if smoking == 0
-    return "No smoking in the car" if smoking == 1
-    return "OK to smoke in the car" if smoking == 2
-    return "I smoke in the car" if smoking == 3
+  def smoking_pref(smoking, offered)
+    if offered
+      return "No smoking" if smoking == 0
+      return "No smoking in the car" if smoking == 1
+      return "OK to smoke in the car" if smoking == 2
+      return "I smoke in the car" if smoking == 3
+    else 
+      return "Non-smoker" if smoking == 0
+      return "Occasional smoker" if smoking == 1
+      return "Smoker" if smoking == 2
+      return "Heavy smoker" if smoking == 3
+    end
   end 
     
 end

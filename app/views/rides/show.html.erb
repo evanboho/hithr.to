@@ -11,12 +11,12 @@
 			<%= best_in_place_if @ride.user == current_user, @ride, :end_city %>, 
 			<%= best_in_place_if @ride.user == current_user, @ride, :end_state %>
 		</h3>
-		
-		<h2 class="content pos round" style="float:right; padding: 10px;">
+	
+		<div class="content pos round" style="float:right; padding: 10px;">
 		  <% @ride.detail.cost ||= 0 %>
-		  <div class="cost">$ <%= best_in_place_if @ride.user == current_user, @ride.detail, :cost %>
-		  </div>
-    	</h2>
+		  <h2 class="cost">$ <%= best_in_place_if @ride.user == current_user, @ride.detail, :cost %>
+		  </h2>
+    	</div>
 		<h4 style="clear:left;"><%= ride_showtime(@ride)%></h4>
 		<div><br><a href="https://twitter.com/share" class="twitter-share-button" data-via="hithrto">Tweet</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
@@ -95,24 +95,38 @@
   <div class="ride-detail"><b>bikes: </b></div> 
   <div style="float:left; padding: 10px 5px 0 5px;">
   <% if @ride.user == current_user %>
+    <% if @ride.offered == true %>
     <%= best_in_place @ride.detail, :bikes, 
  		:type => :select, :collection => 
 		[[0, "No bikes"], [1, "1 bike in the trunk"], 
 		[2, "1 bike on a rack"], [3, "2 bikes on a rack"], [4, "3 bikes on a rack"]] %>
+	<% else %>
+	<%= best_in_place @ride.detail, :bikes, 
+ 		:type => :select, :collection => 
+		[[0, "No bike"], [1, "1 bike"], 
+		[2, "2 bikes"], [3, "3 bikes"]] %>
+	<% end %>
   <% else %>
-    <%= bikes_with(@ride.detail.bikes) %>
+    <%= bikes_with(@ride.detail.bikes, @ride.offered) %>
   <% end %>
   </div><br><br>
 
   <div class="round-bottom ride-detail"><b>smoking: </b></div> 
   <div style="float:left; padding: 10px 5px;">
   <% if @ride.user == current_user %>
-    <%= best_in_place @ride.detail, :smoking, 
+    <% if @ride.offered %>
+      <%= best_in_place @ride.detail, :smoking, 
 		:type => :select, :collection => 
 		[[0, "No smoking"], [1, "No smoking in the car"], 
 		[2, "OK to smoke in the car"], [3, "I smoke in the car"]] %>  
+	<% else %>
+	  <%= best_in_place @ride.detail, :smoking, 
+		:type => :select, :collection => 
+		[[0, "Non-smoker"], [1, "Occasional smoker"], 
+		[2, "Smoker"], [3, "Heavy smoker"]] %>
+	<% end %>
   <% else %>
-    <%= smoking_pref(@ride.detail.smoking) %>
+    <%= smoking_pref(@ride.detail.smoking, @ride.offered) %>
   <% end%>
 </div><br><br><br><br><br><br>
 

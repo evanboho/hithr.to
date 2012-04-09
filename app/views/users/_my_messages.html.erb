@@ -1,7 +1,7 @@
-<h3 class="heading">
+<h3 class="heading top">
 <%= link_to "unread messages (#{current_user.messages.unread.count})", user_messages_path(current_user) %>
 </h3>
-<div class="well" style="margin-bottom:0px;">
+<div class="well bottom" style="margin-bottom:0px;">
 <% if current_user.messages.my_messages.present? %>
 	<% current_user.messages.my_messages.each do |msg| %>
 	  <%= render 'messages/message_stubs', :msg => msg %>

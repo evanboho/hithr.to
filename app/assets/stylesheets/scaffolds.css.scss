@@ -2,10 +2,10 @@
 // mixins
 //
 
-@mixin rounded($radius: 10px) {
-  border-radius: $radius;
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
+@mixin rounded($TL: 10px, $TR: 10px, $BR: 10px, $BL: 10px) {
+  border-radius: $TL $TR $BR $BL;
+  -moz-border-radius: $TL $TR $BR $BL;
+  -webkit-border-radius: $TL $TR $BR $BL;
 }
 
 @mixin inset-shadow($color, $amount: 15%) {
@@ -66,7 +66,7 @@ div {
   margin-bottom: 0px;
   padding-top: 25px;
   padding-bottom: 25px;
-  @include rounded(20px);
+  @include rounded(20px, 20px, 20px, 20px);
   @include inset-shadow(#eee, 50%);
   h1 {
     font-size: 400%;
@@ -85,10 +85,10 @@ h3 {
   font-size: 115%;}
 
 .well { 
-  background-color: #eee;
+  background-color: #f0f0f0;
   border: 0;
   @include shadow;
-  @include inset-shadow(#f5f5f5, 30%);
+  @include inset-shadow(#f0f0f0, 15%);
   @include rounded;
 }
 .small-container {
@@ -205,9 +205,11 @@ table.shadow {
 
 
 table.rides {
-  @include rounded;
+  //@include rounded;
   @include inset-shadow(#ccc);
 }
+
+
 
 
 
@@ -428,7 +430,7 @@ ul.dropdown-menu li a {
   @include inset-shadow(#003366, 15%);
 }
 .round {
-  @include rounded(20px);
+  @include rounded(20px, 20px, 20px, 20px);
 }
 .ctr {
   margin-left:auto;
@@ -494,4 +496,21 @@ ul.dropdown-menu li a {
 #ride_offered {
   width: 150px;
   font-size: 110%;
+}
+.top {
+  @include rounded(10px, 10px, 0px, 0px); 
+}
+.bottom {
+  @include rounded(0px, 0px, 10px, 10px); 
+}
+#last-row {
+  background-color: transparent;
+  color: transparent;
+  //@include rounded();
+  &:hover {
+  display:none; }
+}
+#pagination {
+  background-color: transparent;
+  
 }
