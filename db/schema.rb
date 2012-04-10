@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120406140647) do
+ActiveRecord::Schema.define(:version => 20120410170945) do
 
   create_table "abouts", :force => true do |t|
     t.string   "genre"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(:version => 20120406140647) do
     t.string   "name"
     t.float    "lat"
     t.float    "long"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "user"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -70,6 +77,14 @@ ActiveRecord::Schema.define(:version => 20120406140647) do
 
   add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"
   add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
+
+  create_table "posts", :force => true do |t|
+    t.string   "subject"
+    t.text     "content"
+    t.integer  "user"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "profiles", :force => true do |t|
     t.date     "birthday"

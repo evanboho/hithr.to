@@ -7,10 +7,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <%= link_to "hithr.to", root_path, :class => "brand", 
-				:style => "text-decoration: none; margin-left:80px;" if request.subdomain != "blog" %>
 	  <%= link_to "blog.hithr.to", root_url(subdomain: "blog"), :class => "brand", 
-				:style => "text-decoration: none; margin-left:80px;" if request.subdomain == "blog" %>
+				:style => "text-decoration: none; margin-left:80px;" %>
       <div class="nav-collapse">
         <ul class="nav nav-pills">
           <li class="divider-vertical"></li>
@@ -22,7 +20,7 @@
  			  <li><%= link_to "rides wanted", rides_wanted_path %></li>
 			</ul>
 		</li>
-          <li><%= link_to "about", abouts_path %></li> 
+          <li><%= link_to "rides", rides_url(subdomain: false) %></li> 
           <li><%= link_to "blog", root_url(subdomain: "blog")%>
           <li><%= link_to "contact", contact_url(subdomain: false) %></li>
           <li><% link_to "help", help_path %></li>
