@@ -16,8 +16,7 @@
 
 <body>
 	
-<%= render 'shared/navbar' unless request.subdomain == "blog" %>
-<%= render 'shared/blog_navbar' if request.subdomain == "blog" %>
+<%= render 'shared/navbar' %>
 
 <div class="container">
 <% if current_user %>

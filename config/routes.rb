@@ -1,13 +1,14 @@
 Hithr::Application.routes.draw do
   
   # match '', to: 'posts#index', constraints: { subdomain: "blog" }
-  constraints(subdomain: "blog") do
+  #constraints(subdomain: "blog") do
     resources :posts, :shallow => true do
       resources :comments
     end
-    root :to => 'posts#index'
-  end
-    
+    #root :to => 'posts#index'
+  #end
+  match "blog" => "posts#index"
+  
   match "/my_rides" => "rides#user", :as => "user_rides"
   get "rides/wanted" => "rides#index_wanted", :as => "rides_wanted"
   resources :rides, :shallow => true do

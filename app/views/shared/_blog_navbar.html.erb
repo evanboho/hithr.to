@@ -13,15 +13,14 @@
         <ul class="nav nav-pills">
           <li class="divider-vertical"></li>
 		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown">rides <b class="caret"></b></a>
+			<a class="dropdown-toggle" data-toggle="dropdown">blog <b class="caret"></b></a>
 			<ul class="dropdown-menu">
-			  <li><%= link_to "post ride", new_ride_path %></li>
+			  <li><%= link_to "new post", new_post_path %></li>
               <li><%= link_to "rides offered", rides_path %></li>
  			  <li><%= link_to "rides wanted", rides_wanted_path %></li>
 			</ul>
 		</li>
-          <li><%= link_to "rides", rides_url(subdomain: false) %></li> 
-          <li><%= link_to "blog", root_url(subdomain: "blog")%>
+          <li><%= link_to "hithr.to", root_url(subdomain: false) %></li> 
           <li><%= link_to "contact", contact_url(subdomain: false) %></li>
           <li><% link_to "help", help_path %></li>
         </ul>
