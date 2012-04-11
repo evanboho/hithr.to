@@ -12,8 +12,9 @@
 </td>
 
 <td colspan="2">
-
-<% seed_city = params[:search_start] ||= request.location.city %>
+<% loc = request.location %>
+<% seed_city = params[:search_start] request.location.city %>
+<% seed_city ||= loc.city if loc.present? %>
 <%= text_field_tag :search_start, seed_city, 
                                           :placeholder => "(city, state)", :class => "span2" %>
 
