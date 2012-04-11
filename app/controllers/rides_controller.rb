@@ -37,8 +37,8 @@ class RidesController < ApplicationController
   def new
     @ride = Ride.new
     loc = get_user_ip
-    @ride.start_city = loc.city
-    @ride.start_state = loc.state_code
+    @ride.start_city = loc.city if loc.present?
+    @ride.start_state = loc.state_code if loc.present?
     @ride.go_time = Date.tomorrow
   end
   

@@ -192,7 +192,7 @@ DEPENDENCIES
   best_in_place
   coffee-rails (~> 3.2.1)
   devise
-  geocoder
+  geocoder (~> 1.1.1)
   gravatar_image_tag (= 1.0.0.pre2)
   jquery-rails
   omniauth-facebook

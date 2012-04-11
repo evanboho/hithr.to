@@ -17,7 +17,7 @@ gem "omniauth-yahoo", "~> 0.0.3"
 gem 'aws-sdk'
 gem "paperclip", "~> 2.7"
 
-gem 'geocoder'
+gem 'geocoder', "~> 1.1.1"
 gem 'best_in_place'
 gem 'thin'
 

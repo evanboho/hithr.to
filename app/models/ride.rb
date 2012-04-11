@@ -4,7 +4,6 @@ class Ride < ActiveRecord::Base
   has_one :detail, :dependent => :destroy
   attr_accessor :go_time_hour, :go_time_min
   
-  
   validates :user_id, :presence => true
   validates :start_city, :presence => true, 
              :length => { :maximum => 20 }
@@ -16,16 +15,9 @@ class Ride < ActiveRecord::Base
   validates_presence_of :latitude, :longitude, :end_lat, :end_long
   
   before_save :before_save_events
-  # before_save :create_city
-  
-  def create_city
-    #start = start_city + ', ' + start_state
-    #City.find_or_create_by_name(start)
-  end
   
   def before_save_events
     clean_up_cities
-    #get_lat_long_both
     get_distance
     get_your_bearings
   end
