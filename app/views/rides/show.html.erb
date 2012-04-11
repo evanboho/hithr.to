@@ -7,9 +7,9 @@
     <div class="well span6">
 		<h3 style="float: left;">
 			<%= best_in_place_if @ride.user == current_user, @ride, :start_city %>, 
-			<%= best_in_place_if @ride.user == current_user, @ride,:start_state %> to 
+			<%= best_in_place_if @ride.user == current_user, @ride,:start_state, :type => :select, :collection => best_state_list %> to 
 			<%= best_in_place_if @ride.user == current_user, @ride, :end_city %>, 
-			<%= best_in_place_if @ride.user == current_user, @ride, :end_state %>
+			<%= best_in_place_if @ride.user == current_user, @ride, :end_state, :type => :select, :collection => best_state_list %>
 		</h3>
 	
 		<div class="content pos round" style="float:right; padding: 10px;">

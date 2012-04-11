@@ -7,7 +7,7 @@ Hithr::Application.routes.draw do
     end
     root :to => 'posts#index'
   end
-  match "blog" => "posts#index"
+  # match "blog" => "posts#index"
   
   match "/my_rides" => "rides#user", :as => "user_rides"
   get "rides/wanted" => "rides#index_wanted", :as => "rides_wanted"

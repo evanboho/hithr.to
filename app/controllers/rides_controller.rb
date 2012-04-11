@@ -44,7 +44,7 @@ class RidesController < ApplicationController
   
   def create
     @ride = current_user.rides.build(params[:ride])
-    find_or_create_cities
+    #find_or_create_cities
     @ride.go_time = @ride.go_time.change(:hour => params[:ride][:go_time_hour], :min => params[:ride][:go_time_min])
     if @ride.save
       flash[:notice] = "ride posted!"
@@ -111,19 +111,6 @@ class RidesController < ApplicationController
   def get_state(input_string)
     split_result = input_string.split(',')
     split_result.length > 1 ? split_result[1].strip.upcase : nil
-  end
-
-  def find_or_create_cities
-    s = find_or_create_city(@ride.start_city, @ride.start_state)
-    e = find_or_create_city(@ride.end_city, @ride.end_state)
-    @ride.latitude = s.lat
-    @ride.longitude = s.long
-    @ride.end_lat = e.lat
-    @ride.end_long = e.long
-  end
-  
-  def find_or_create_city(city, state)
-    City.find_or_create_by_name("#{city.try(:titleize).try(:strip)}, #{state.try(:upcase).try(:strip)}") 
   end
   
 end

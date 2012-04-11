@@ -56,5 +56,5 @@ module RidesHelper
       return "Heavy smoker" if smoking == 3
     end
   end 
-    
+  
 end

@@ -18,6 +18,7 @@ class Ride < ActiveRecord::Base
   
   def before_save_events
     clean_up_cities
+    find_or_create_cities
     get_distance
     get_your_bearings
   end
@@ -32,6 +33,18 @@ class Ride < ActiveRecord::Base
     c = city.split(',')
     c = c.first
     c.try(:titleize).try(:strip)
+  end
+  
+  def find_or_create_cities
+    s = find_or_create_city(self.start_city, self.start_state)
+    e = find_or_create_city(self.end_city, self.end_state)
+    self.latitude = s.lat
+    self.longitude = s.long
+    self.end_lat = e.lat
+    self.end_long = e.long
+  end
+  def find_or_create_city(city, state)
+    City.find_or_create_by_name("#{city.try(:titleize).try(:strip)}, #{state.try(:upcase).try(:strip)}") 
   end
   
   def get_lat_long_both
