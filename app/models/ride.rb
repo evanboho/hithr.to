@@ -14,7 +14,8 @@ class Ride < ActiveRecord::Base
   validates :go_time, :presence => true
   validates_presence_of :latitude, :longitude, :end_lat, :end_long
   
-  before_save :before_save_events
+  before_validation :before_save_events
+  
   
   def before_save_events
     clean_up_cities

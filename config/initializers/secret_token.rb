@@ -5,4 +5,4 @@
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
 Hithr::Application.config.secret_token = ENV['SECRET_TOKEN']
-# Hithr::Application.config.secret_token = "fEkjfoOdkfjwl34khpolkjJsldkjfmzlkjsoWslkdjjklSdlfkjaSsP"
+# Hithr::Application.config.secret_token = "fEkjfoOdkfjsdfwewl34khpolkjJsldkjfmzlkjsoWslkdjjklSdlfkjaSsP"
