@@ -34,14 +34,14 @@ module ApplicationHelper
   end
     
   def state_select(form, attribute)
-    state_list = ['', 'AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN',
+    state_list = ['', 'AL','AK','AZ','AR','CA','Canada','CO','CT','DE','FL','GA','HI','ID','IL','IN',
    					'IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY',
    					'NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
   	form.select(attribute, state_list, {})
   end
   
   def best_state_list
-    [['', ''], ['AL', 'AL'],['AK', 'AK'],['AZ', 'AZ'],['AR', 'AR'],['CA', 'CA'],['CO', 'CO'],['CT', 'CT'],['DE', 'DE'],['FL', 'FL'],
+    [['', ''], ['AL', 'AL'],['AK', 'AK'],['AZ', 'AZ'],['AR', 'AR'],['CA', 'CA'],['Canada','Canada'],['CO', 'CO'],['CT', 'CT'],['DE', 'DE'],['FL', 'FL'],
     ['GA', 'GA'],['HI', 'HI'],['ID', 'ID'],['IL', 'IL'],['IN', 'IN'],
    	['IA', 'IA'],['KS', 'KS'],['KY', 'KY'],['LA', 'LA'],['ME', 'ME'],['MD','MD'],
    	['MA', 'MA'],['MI', 'MI'],['MN', 'MN'],['MS', 'MS'],['MO', 'MO'],['MT','MT'],['NE','NE'],['NV','NV'],['NH','NH'],['NJ','NJ'],
