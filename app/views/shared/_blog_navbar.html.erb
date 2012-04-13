@@ -33,16 +33,16 @@
 			
 	           <b class="caret"></b></a>
 	        <ul class="dropdown-menu">
-		      <li><%= link_to "messages", user_messages_path(current_user) %></li> 
-		      <li><%= link_to "my rides", user_rides_path %></li>
-		      <li><%= link_to "see profile", current_user %></li>
-		      <li><%= link_to "sign out", sign_out_path %></li>  
+		      <li><%= link_to "messages", user_messages_url(current_user, subdomain: false) %></li> 
+		      <li><%= link_to "my rides", user_rides_url(subdomain: false) %></li>
+		      <li><%= link_to "see profile", user_url(current_user, subdomain: false) %></li>
+		      <li><%= link_to "sign out", sign_out_url(subdomain: false) %></li>  
 		    </ul>
 		  </li>
 	    
 	      <% else %>
-	      <li><%= link_to "sign up", sign_up_path %></li>
-	      <li><%= link_to "sign in", sign_in_path %></li> 
+	      <li><%= link_to "sign up", sign_up_url(subdomain: false) %></li>
+	      <li><%= link_to "sign in", sign_in_url(subdomain: false) %></li> 
 	      <% end %>
 	        
 	    </ul>
