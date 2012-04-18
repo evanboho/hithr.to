@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_one :profile,           :dependent => :destroy
   has_many :references,       :dependent => :destroy
   has_many :rides,            :dependent => :destroy
+  has_many :comments,         :dependent => :destroy
   
   after_save :initialize_profile
   before_save :titleize_name

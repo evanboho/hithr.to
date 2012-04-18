@@ -1,0 +1,7 @@
+<h4 class="heading center">recent posts</h4><br>
+<ul>
+	<% @recent_posts.each do |f| %>
+		<li><%= link_to f.subject, f %> 
+			<div class="alt">posted <%= time_ago_in_words(f.created_at) %> ago</div></li>
+	<% end %>
+</ul>

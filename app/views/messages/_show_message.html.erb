@@ -66,13 +66,13 @@
     <% @reply.sujet = msg.reply_sujet %>
     <div style="float:left; text-align:right; height: 30px; vertical-align: bottom; width:159px;"><b>to:</b></div>
 <div style="float:left; padding-left: 12px;"><h4><%= msg.sender.username.titlecase %></h4></div><br><br>
-
+<div style="clear:both;">
 		<%= simple_form_for [msg.sender, @reply] do |f| %>
 		  <%= f.input :sujet, :label => "subject:", :required => false %>
 		  <%= f.input :content, :as => :text, :label => "message:" , :class => "text_area", :required => false %>
 		  <%= f.submit "send", :class => "btn btn-primary", :style=> "float:right; margin-right: 120px;"%>
 		<% end %>
-		
+</div>		
 </div>
 </div>
 <% else %>

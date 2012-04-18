@@ -17,6 +17,11 @@ class ApplicationController < ActionController::Base
    def mobile_device?
      request.user_agent =~ /Mobile|webOS/
    end
-   helper_method :mobile_device?
    
+   def admin
+     User.find(2)
+   end
+   
+   helper_method :mobile_device?
+   helper_method :admin
 end

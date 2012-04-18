@@ -1,0 +1,12 @@
+<div class="hero-unit">
+	<h1>new post</h1><br>
+</div>
+<div class="small-container">
+	<div class="well">
+      <%= simple_form_for @post do |f| %>
+	    <b style="float: left;">subject: </b><%= f.input :subject, :label => false %>
+		<%= f.input :content, :label => false, :as => :text, :class => "text-area" %>
+		<%= f.submit %>
+      <% end %>	
+    </div>
+</div>

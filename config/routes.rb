@@ -7,7 +7,7 @@ Hithr::Application.routes.draw do
     root :to => 'posts#index'
   end
   
-  constraints(subdomain: "") do
+  constraints(subdomain: !"blog" ) do
   
   
   match "/my_rides" => "rides#user", :as => "user_rides"

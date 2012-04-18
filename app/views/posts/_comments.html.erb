@@ -1,0 +1,12 @@
+<% comments.each do |comment| %>
+  <h4 style="float:left;"><%= gravatar_for(comment.user, :thumb, :size => "20") %> <%= comment.user.username %></h4>
+  <div class="alt" style="float:right"><%= comment.created_at.strftime("%b %e, %Y")%></div>
+  <p class="well" style="clear:both; padding-left: 30px; padding-right: 30px;">
+  <% line_breaks(comment.content).each do |msg| %>
+    <%= msg %><br>
+  <% end %>
+  </p>
+<% end %>
+<% unless current_user %>
+  <h3 class="center">please log in to leave a comment </h3>
+<% end %>

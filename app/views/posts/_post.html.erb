@@ -1,0 +1,35 @@
+<h3 class="heading">
+  <u><%= link_to post.created_at.strftime("%b %e, %Y"), post, :class=>"", :style => "padding: 10px;" %></u>
+</h3>
+<div class="content round" style="padding: 0px 10px;">
+<h3 style="float:left; padding: 10px 20px 0px 20px;"><%= post.subject %><br></h3>
+<hr style="border-top: 1px solid #666; width: 100%;">
+<p class="" style="clear:both;margin: 20px; padding: 10px; width: 100%;">
+  <% line_breaks(post.content).each do |msg| %>
+  <%= msg %><br>
+  <% end %>
+<p>
+	<hr style="border-top: 1px solid #666; width: 100%;">
+ 	
+<div style="padding-left: 20px;">
+<p>
+<a class="accordion-toggle" href="#show-comments<%= post.id %>" data-toggle="collapse"><%= "comments (#{post.comments.size})"%></a> 
+<br>
+</p>
+<div id="show-comments<%= post.id %>" class="accordion-body collapse">
+	<br>
+  	<%= render "comments", :comments => post.comments if post.comments.present? %>
+   
+  <% if current_user %>
+    <p style="margin-left: 0px;"><b><%= gravatar_for(current_user, :small, :size => "20") %> <%= current_user.username %></b></p>
+    <%= simple_form_for [post, @comment] do |f| %>
+	  <%= f.input :content, :label => false %>
+	  <%= f.hidden_field :user_id, :value => current_user.id %>
+	  <%= f.hidden_field :post_id, :value => post.id %>
+	  <%= f.submit "leave comment", :class=> "btn" %>
+    <% end %>
+  <% end %>
+</div><br>
+</div>
+</div>
+<br><br>

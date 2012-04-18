@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
   
   belongs_to :user
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :small => "100x100>", :thumb => "30x30#" },
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :small => "100x100>", :thumb => "20x20#" },
                     :storage => :s3,
                     :bucket => 'hithr.to',
                     :s3_credentials => {

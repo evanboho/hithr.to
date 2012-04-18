@@ -12,7 +12,11 @@
       <div class="nav-collapse">
         <ul class="nav nav-pills">
           <li class="divider-vertical"></li>
-          <li><%= link_to "home", root_url(subdomain: false) %></li> 
+        <% if current_user == admin %>
+		  <li><%= link_to "new post", new_post_url %></li>
+		  <% end %>
+          <li><%= link_to "hithr.to", root_url(subdomain: false) %></li> 
+  
           <li><%= link_to "about", abouts_url(subdomain: false) %></li>
           <li><%= link_to "contact", contact_url(subdomain: false) %></li>
         </ul>

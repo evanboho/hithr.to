@@ -53,6 +53,7 @@ class RidesController < ApplicationController
                                     :bikes => 0, :smoking => 0)
       redirect_to @ride
     else
+      flash[:notice] = "something went wrong :("
       render 'new'
     end
   end
