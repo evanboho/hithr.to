@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
    end
    
    def admin
-     User.find(2)
+     User.find(23)
    end
    
    helper_method :mobile_device?
