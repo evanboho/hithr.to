@@ -4,6 +4,8 @@
 <div class="content round" style="padding: 0px 10px;">
 <h3 style="float:left; padding: 10px 20px 0px 20px;"><%= post.subject %><br></h3>
 
+
+
 <span style="float:right; margin-top: 8px;">
 	<a href="https://twitter.com/share" class="twitter-share-button" data-via="hithrto">Tweet</a>
 </span>
@@ -28,6 +30,13 @@
  	
 <div style="padding-left: 20px;">
 <p>
+	<% if admin? %>
+	<span style="clear:right; float:right;">
+	<%= link_to "edit", edit_post_path(post), :class => "btn btn-warning" %>
+	<%= link_to "delete", post, :method => :delete, :class => "btn btn-danger", :confirm => "are you sure?" %>
+	</span>
+	<% end %>
+	
 <a class="accordion-toggle" href="#show-comments<%= post.id %>" data-toggle="collapse"><%= "comments (#{post.comments.size})"%></a> 
 <br>
 </p>

@@ -114,6 +114,9 @@ h3 {
 li {
   list-style: none;
 }
+li.recent_posts {
+  list-style: disc;
+}
 .btn {
   @include inset-shadow(#555);
 }

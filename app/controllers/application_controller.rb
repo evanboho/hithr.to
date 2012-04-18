@@ -19,9 +19,14 @@ class ApplicationController < ActionController::Base
    end
    
    def admin
-     User.find(2)
+     User.find(23)
    end
    
+   def admin?
+     current_user == admin
+   end 
+   
+   helper_method :admin?
    helper_method :mobile_device?
    helper_method :admin
 end

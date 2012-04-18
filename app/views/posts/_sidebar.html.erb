@@ -1,7 +1,7 @@
 <h4 class="heading center">recent posts</h4><br>
-<ul>
+<ul style="margin-left: 40px;">
 	<% @recent_posts.each do |f| %>
-		<li><%= link_to f.subject, f %> 
+		<li class="recent_posts"><%= link_to f.subject, f %> 
 			<div class="alt">posted <%= time_ago_in_words(f.created_at) %> ago</div></li>
 	<% end %>
 </ul>
