@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
    end
    
    def admin
-     User.find(23)
+     User.where(:email => "evan.kuchar@gmail.com").first
    end
    
    def admin?
