@@ -26,7 +26,7 @@
 		<% end %>
 		
 <!-- name/auth	 -->	
-	  <h1 style="clear:left;"><%= @user.username %></h1>
+	  <h1 style="clear:left; font-size:3em;"><%= @user.username %></h1>
 	  <% if @user.authentications.present? %>
 	  
         <% @user.authentications.each do |auth| %>
@@ -70,10 +70,12 @@
 	  <div class="profile round" style="padding:20px;">
         <div class="round shadow bio" style="">bio: </div>
         <div class="about content" style="">
+	    <p>
 		    <% @user.profile.about = nil if @user.profile.about == "" %>
 		    <% @user.profile.about ||= "click here to create a bio" if @user == current_user %>
 		    <% @user.profile.about ||= "this person has not filled out a bio yet" if @user != current_user %>
 		    <%= best_in_place_if @user == current_user, @user.profile, :about, :type => :textarea %>
+		</p>
         </div>
       </div><br><br>
     </div>
