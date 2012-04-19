@@ -1,5 +1,5 @@
 jQuery -> 
-  $('.alert').delay(2000).fadeOut(500)
+  $('.alert').delay(3000).fadeOut(500)
   if $('#current_user').length
     $('.current_user').show()
   else

@@ -28,8 +28,10 @@
 <!-- name/auth	 -->	
 	  <h1 style="clear:left;"><%= @user.username %></h1>
 	  <% if @user.authentications.present? %>
+	  
         <% @user.authentications.each do |auth| %>
-          <%= link_to (image_tag "#{auth.provider}_32.png"), auth_link(auth), :class => "auth_provider" %>
+          <%= link_to (image_tag "#{auth.provider}_32.png"), auth_link(auth), :class => "auth_provider" if current_user %>
+ 	      <%= image_tag "#{auth.provider}_32.png" if !current_user %>
 	    <% end %>
 	  <% end %>
 

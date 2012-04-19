@@ -43,9 +43,11 @@
 <div id="show-comments<%= post.id %>" class="accordion-body collapse">
 	<br>
   	<%= render "comments", :comments => post.comments if post.comments.present? %>
-   
+   	<% unless current_user %>
+	  <h3 class="center">please log in to leave a comment </h3>
+	<% end %>
   <% if current_user %>
-    <p style="margin-left: 0px;"><b><%= gravatar_for(current_user, :small, :size => "20") %> <%= current_user.username %></b></p>
+    <p style="margin-left: 0px;"><b><%= gravatar_for(current_user, :thumb, :size => "20") %> <%= current_user.username %></b></p>
     <%= simple_form_for [post, @comment] do |f| %>
 	  <%= f.input :content, :label => false %>
 	  <%= f.hidden_field :user_id, :value => current_user.id %>
