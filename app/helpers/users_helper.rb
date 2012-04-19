@@ -15,7 +15,7 @@ module UsersHelper
   def auth_link(auth)
     return "http://www.twitter.com/" + @user.authentications.where(:provider => "twitter").first.nickname if auth.provider == "twitter"
     return "http://www.facebook.com/" + @user.authentications.where(:provider => "facebook").first.uid if auth.provider == "facebook"
-    return "" if auth.provider == "google_oauth2"
+    return "https://plus.google.com/" + @user.authentications.where(:provider => "google_oauth2").first.uid if auth.provider == "google_oauth2"
   end
 
   def cred_magic
