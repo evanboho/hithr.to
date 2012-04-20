@@ -4,14 +4,12 @@ one:
   user_id: 1
   provider: MyString
   uid: MyString
-  index: MyString
-  create: MyString
-  destroy: MyString
+  nickname: MyString
+  photo_url: MyString
 
 two:
   user_id: 1
   provider: MyString
   uid: MyString
-  index: MyString
-  create: MyString
-  destroy: MyString
+  nickname: MyString
+  photo_url: MyString

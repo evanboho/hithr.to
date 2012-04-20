@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  type: 
+  genre: "FAQ"
   title: MyString
   content: MyText
 
 two:
-  type: 
+  genre: "paragraph" 
   title: MyString
   content: MyText

@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
    end
    
    def admin
-     User.where(:email => "hithrto@gmail.com").first
+     User.where(:email => "hithr.to@gmail.com").first
    end
    
    def admin?
