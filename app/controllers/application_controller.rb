@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
     true
   end
   
+  def local_request?
+    if admin?
+      true
+    else
+      false
+    end
+  end
+  
   def current_user?
      if !current_user
        flash[:error] = "you must be signed in to do that."
