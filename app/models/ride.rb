@@ -78,7 +78,7 @@ class Ride < ActiveRecord::Base
   end
   
   def get_your_bearings
-    dest = end_city + ', ' + end_state
+    # dest = end_city + ', ' + end_state
     # destcoords = Geocoder.coordinates(dest)
     self.bearing = Geocoder::Calculations.bearing_between([latitude, longitude], [end_lat, end_long])
   end

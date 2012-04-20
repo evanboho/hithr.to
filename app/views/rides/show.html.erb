@@ -136,6 +136,9 @@
   <% end%>
 </div><br><br><br><br><br><br>
 
+<% if @ride.user == current_user %><br>
+<div class="center"><%= link_to "Create Return Trip", return_trip_path(@ride), :class => "btn btn-primary" %><br><br></div>
+<% end %>
 </div>
 </div>
 

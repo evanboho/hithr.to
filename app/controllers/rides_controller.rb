@@ -44,7 +44,6 @@ class RidesController < ApplicationController
   
   def create
     @ride = current_user.rides.build(params[:ride])
-    #find_or_create_cities
     @ride.go_time = @ride.go_time.change(:hour => params[:ride][:go_time_hour], :min => params[:ride][:go_time_min])
     if @ride.save
       flash[:notice] = "ride posted!"
@@ -79,7 +78,21 @@ class RidesController < ApplicationController
     end
   end
   
-  
+  def return
+    @ride = Ride.find(params[:id])
+    go_time = @ride.go_time
+    day = go_time.day + 2
+    go_time = go_time.change(:day => day)
+    return_trip = current_user.rides.build( :start_city => @ride.end_city, :start_state => @ride.end_state,
+                        :end_city => @ride.start_city, :end_state => @ride.start_state,
+                        :go_time => go_time)
+    return_trip.save
+    return_trip.detail = Detail.create(:cost => (return_trip.trip_distance / 10), 
+                                  :seats_available => @ride.detail.seats_available, :radio => @ride.detail.radio, 
+                                  :bikes => @ride.detail.bikes, :smoking => @ride.detail.smoking)
+    @ride = return_trip
+    redirect_to edit_ride_path(@ride)
+  end
   
   def make_criteria
     criteria = {}

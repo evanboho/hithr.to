@@ -30,7 +30,7 @@ module ApplicationHelper
   
   def go_time_min_select(form, attribute, default)
     min_list = ['00', '15', '30', '45']
-  	form.select(attribute, min_list, { :selected => default })    
+  	form.select(attribute, min_list, { :selected => default } )    
   end
     
   def state_select(form, attribute)
