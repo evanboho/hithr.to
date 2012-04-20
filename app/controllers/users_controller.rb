@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   
   before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
   before_filter :current_user?, :except => [:new, :create, :show]
-  before_filter :admin_index, :only => [:index]
+  # before_filter :admin_index, :only => [:index]
   
   def admin_index
     unless admin?
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all
+    @users = User.order('firstname ASC').all
   end
   
   def show

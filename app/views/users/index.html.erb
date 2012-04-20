@@ -1,8 +1,22 @@
 <div class="hero-unit">
 <h1>users</h1>
+</div>
+<div class="super-small-container">
+	<br>
+<table style="margin-left:15%;">
+	<thead>
+		<th style="width: 100px;">id</th>
+		<th style="width: 100px; text-align:center;">username</th>
+		<th style="width: 100px; text-align:center;">ride count</th>
+	</thead>
+	<tbody>
 <% @users.each do |user| %>
-	<ul>
-		<li><%= link_to user.username, user %></li>
-    </ul>
+	<tr>
+		<td style="text-align: center;"><%= user.id %></td>
+		<td style="padding-left: 20px;"><%= link_to user.username, user %></td> 
+		<td style="text-align: center"><%= user.rides.size %></td>
+	</tr>
 <% end %>
+</table>
+<br>
 </div>
