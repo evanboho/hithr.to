@@ -57,6 +57,11 @@ class User < ActiveRecord::Base
     self.lastname = self.lastname.titleize  
   end
   
-  
-  
+  def self.search(search)
+    if search
+      where('firstname LIKE ?', "%#{search.titleize}%")
+    else
+      scoped
+    end
+  end
 end

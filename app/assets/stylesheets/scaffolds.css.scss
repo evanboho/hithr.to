@@ -552,3 +552,21 @@ ul.dropdown-menu li a {
 .navbar .brand {
   padding-top: 10px;
 }
+
+.users_index th .current {
+  padding-right: 14px;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+
+th .asc {
+  background-size: 12px 12px;
+  background-image: url(/up_arrow.png);
+}
+
+th .desc {
+  background-size: 12px 12px;
+  background-image: url(/down_arrow.png);
+}
+

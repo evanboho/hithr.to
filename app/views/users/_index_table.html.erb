@@ -1,0 +1,18 @@
+<table class="users_index" style="margin-left:5%;">
+	<thead>
+		<th style="width: 100px;">						<%= sortable "id", "id" %>  </th>
+		<th style="width: 150px; text-align:center;">	<%= sortable "firstname", "username" %>  </th>
+		<th style="width: 150px; text-align:center;">ride count</th>
+		<th style="width: 400px; text-align:center;">	<%= sortable "last_sign_in_at", "last sign in" %>  </th>
+	</thead>
+	<tbody>
+<% @users.each do |user| %>
+	<tr>
+		<td style="text-align: center;"><%= user.id %></td>
+		<td style="padding-left: 2.2em;"><%= link_to user.username, user %></td> 
+		<td style="text-align: center;"><%= user.rides.size %></td>
+		<td style="text-align: center;"><%= user.last_sign_in_at.strftime("%b %d '%y at %I:%M %P") %></td>
+	</tr>
+<% end %>
+</table>
+<%= will_paginate @users, :class => "apple_pagination" %>

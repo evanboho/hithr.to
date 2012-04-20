@@ -3,20 +3,19 @@
 </div>
 <div class="super-small-container">
 	<br>
-<table style="margin-left:15%;">
-	<thead>
-		<th style="width: 100px;">id</th>
-		<th style="width: 100px; text-align:center;">username</th>
-		<th style="width: 100px; text-align:center;">ride count</th>
-	</thead>
-	<tbody>
-<% @users.each do |user| %>
-	<tr>
-		<td style="text-align: center;"><%= user.id %></td>
-		<td style="padding-left: 20px;"><%= link_to user.username, user %></td> 
-		<td style="text-align: center"><%= user.rides.size %></td>
-	</tr>
-<% end %>
-</table>
+	<div class="center">
+	<p>Search by first names:</p>
+	<%= form_tag users_path, :method => :get, :id => "name_search" do %>
+	  <%= hidden_field_tag :direction, params[:direction] %>
+	  <%= hidden_field_tag :sort, params[:sort] %>
+	  <%= text_field_tag :name_search, params[:name_search] %>
+	  <%= submit_tag "submit"%>
+	<% end %>
+	<% link_to "all users", users_path %>
+	</div>
+
+<div id="index_table">
+<%= render 'index_table'%>
+</div>
 <br>
 </div>
