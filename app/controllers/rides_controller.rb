@@ -65,6 +65,8 @@ class RidesController < ApplicationController
   def update
     @ride = Ride.find(params[:id])
     @ride.update_attributes(params[:ride])
+    @ride.go_time = @ride.go_time.change(:hour => params[:ride][:go_time_hour], :min => params[:ride][:go_time_min])
+    @ride.save
     respond_with @ride
   end
   

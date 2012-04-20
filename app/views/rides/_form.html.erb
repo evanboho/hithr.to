@@ -19,8 +19,11 @@
 	<label>on: </label><%= f.date_select :go_time,{ 
         					:order => [:month, :day], 
       				    	:style => "width:60px", :default => Date.today } %> <br>
-    <label> at: </label><%= go_time_select(f, :go_time_hour) %>
-    <%= go_time_min_select(f, :go_time_min) %><br style="clear:both;">  <br>  
+    <% hour = @ride.go_time.hour ||= 9 %><% min = @ride.go_time.min ||= 0 %>
+    <label> at: </label>
+    <%= go_time_select(f, :go_time_hour, hour) %>
+    <%= go_time_min_select(f, :go_time_min, min) %>
+    <br style="clear:both;">  <br>  
     <div class="center"><%= f.submit "continue", :class => "btn btn-warning" %></div>
 
 <% end %>

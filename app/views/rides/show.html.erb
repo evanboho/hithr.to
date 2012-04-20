@@ -57,10 +57,12 @@
 <div class="span8" style="">
 	<div class="well shadow round">
 
-  <div class="content round" style="padding: 20px; font-size:110%;">	
+  <div class="content round" style="padding: 20px; font-size:110%;">
+	<p>	
 	<% line_breaks(@ride.detail.message).each do |msg| %>
 	  <%= msg %><br>
 	<% end %>
+	</p>
   <% if @ride.user == current_user %>
       <div class="center">
 	  <a class="accordion-toggle" style="font-size:90%;" data-toggle="collapse" href="#edit-msg">
