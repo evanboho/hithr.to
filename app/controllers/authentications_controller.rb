@@ -38,12 +38,14 @@ class AuthenticationsController < ApplicationController
        user.profile.cred += 1
        user.profile.save
        sign_in_and_redirect(:user, user)
-     elsif user = User.find_by_firstname_and_lastname(auth['info'].name.split.first, auth['info'].name.split.last)
-       user.build_auth(auth)
-       flash[:notice] = "connected and signed in!"
-       user.profile.cred += 1
-       user.profile.save
-       sign_in_and_redirect(:user, user)
+     # 
+     # elsif user = User.find_by_firstname_and_lastname(auth['info'].name.split.first, auth['info'].name.split.last)
+     #   user.build_auth(auth)
+     #   flash[:notice] = "connected and signed in!"
+     #   user.profile.cred += 1
+     #   user.profile.save
+     #   sign_in_and_redirect(:user, user)
+     #
      else
        user = User.new(:firstname => auth['info'].name.split.first, :lastname => auth['info'].name.split.last, 
                        :email => auth['info'].email, :password => Devise.friendly_token[0,20])
@@ -55,7 +57,7 @@ class AuthenticationsController < ApplicationController
           sign_in_and_redirect(:user, user)
         else
           flash[:warning] = "Sorry! You can't create an account with Twitter."
-          session['devise.omniauth'] = auth
+          # session['devise.omniauth'] = auth
           redirect_to sign_up_path
         end
      end

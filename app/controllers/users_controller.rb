@@ -4,6 +4,14 @@ class UsersController < ApplicationController
   
   before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
   before_filter :current_user?, :except => [:new, :create, :show]
+  before_filter :admin_index, :only => [:index]
+  
+  def admin_index
+    unless admin?
+      flash[:notice] = "you do not have access."
+      redirect_to root_path
+    end
+  end
   
   def index
     @users = User.all
