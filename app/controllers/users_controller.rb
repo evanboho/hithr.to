@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   respond_to :html, :json
   
   before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
-  # before_filter :current_user?, :except => [:new, :create, :show]
+  before_filter :current_user?, :except => [:new, :create, :show]
   # before_filter :admin_index, :only => [:index]
   
   helper_method :sort_column, :sort_direction  
