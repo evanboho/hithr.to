@@ -43,4 +43,6 @@ Hithr::Application.configure do
     
   config.action_mailer.delivery_method = :letter_opener
   
+  config.session_store :cookie_store, key: "_hithr_session", :domain => "lvh.me"
+    
 end

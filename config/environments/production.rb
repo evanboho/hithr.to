@@ -69,5 +69,7 @@ Hithr::Application.configure do
   config.middleware.use ExceptionNotifier,
     sender_address: 'hithrto@gmail.com',
     exception_recipients: 'hithrto@gmail.com'
+    
+  config.session_store :cookie_store, key: '_hithr_session', :domain => "hithr.to"
   
 end

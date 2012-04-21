@@ -3,22 +3,22 @@
 <h3 class="heading top">recent rides</h3>
 </div>
 <% end %>
-<div class="shade round">
-<table class="table table-condensed rides bottom shadow">
+<div class="shade round ride_container">
+<table class="table table-condensed rides round_bottom shadow">
 	<thead>
-	<tr class="round"><th colspan=2>
-		</th><th class="date">
-		On:
-		</th><th colspan=2>
-		From:
-    	</th><th colspan=2>
-	    To:
- 		</th>
+	<tr class="round">
+		<th colspan=2> </th>
+		<th> On <% link_to "On", "#" %> </th>
+		<th colspan=1> From <% link_to "From", "#" %> </th>
+		<th> </th>
+    	<th colspan=1> To <% link_to "To", "#" %> </th>
+        <th class="ride_hide_small"> </th>
     </tr>
 	</thead>
 	<tr style="height:40px;">
 	<% if params[:controller] == "pages" %>
-	  <td colspan=3></td><%= render 'shared/city_search' %>
+	  <td colspan=3> </td>
+	  <%= render 'shared/city_search' %>
 	<% else %>  
 	  <%= render 'shared/ride_search' %>
 	<% end %>
