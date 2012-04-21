@@ -39,9 +39,9 @@ gem 'simple_form'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 
 gem 'exception_notification'
-gem 'letter_opener', group: :test
+gem 'letter_opener', :group => :development
 
-gem 'ruby-prof', group: :development
+gem 'ruby-prof', :group => :test
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

@@ -1,31 +1,39 @@
-<td colspan="2">
 <% if params[:action] == 'index' %>
-<% path = rides_path %>
+  <% path = rides_path %>
 <% else %>
-<% path = rides_wanted_path %>
+  <% path = rides_wanted_path %>
 <% end %>
-<%= form_tag path, :method => 'get', :class => "form-search" do %>
-<%= select_tag(:miles_radius, options_for_select([['search radius', 0], ['10 miles', 10], ['20 miles', 20], ['30 miles', 30], ['40 miles', 40]], params[:miles_radius]), :class => "auto") %>
-<td class="date">
-<% @search_date = get_search_date %>
-<%= select_date @search_date, {:order => [:month, :day], :use_short_month => true} %>
-</td>
 
-<td colspan="2">
-<% loc = request.location %>
-<% seed_city = params[:search_start] %>
-<% seed_city ||= loc.city if loc.present? %>
-<%= text_field_tag :search_start, seed_city, 
-                                          :placeholder => "(city, state)", :class => "" %>
+<%= form_tag path, :method => 'get', :class => "form-search", :id => "ride_search" do %>
 
-</td>
-<td>					
-<%= text_field_tag :search_end,
-                   params[:search_end],
-                  :placeholder => "(optional)", :class => "" %>
-</td>
+	<td colspan="2">  
+	  <%= select_tag(:miles_radius, 
+			options_for_select([['search radius', 0], ['10 miles', 10], 
+								['20 miles', 20], ['30 miles', 30], 
+								['40 miles', 40]], params[:miles_radius]), :class => "auto") %>
+	</td>
+	
+	<td class="date">
+	  <% @search_date = get_search_date %>
+	  <%= select_date @search_date, {:order => [:month, :day], :use_short_month => true} %>
+	</td>
 
-<td colspan=1 class="ride_hide_small">
-<%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
-</td>
+	<td colspan="2">
+	  <% loc = request.location %>
+	  <% seed_city = params[:search_start] %>
+	  <% seed_city ||= loc.city if loc.present? %>
+	  <%= text_field_tag :search_start, seed_city, 
+	                                          :placeholder => "(city, state)", :class => "" %>
+	</td>
+	
+	<td>					
+	  <%= text_field_tag 	:search_end,
+	                   		params[:search_end],
+	                  		:placeholder => "(optional)", :class => "" %>
+	</td>
+
+	<td colspan=1 class="ride_hide_small">
+	  <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+	</td>
+	
 <% end %>
