@@ -1,39 +1,11 @@
-<div class="shade round ride_container">
-	
-<% unless params[:controller].parameterize == "rides" %>
-  <h3 class="heading top">recent rides</h3>
-<% end %>
-
-
 <table class="table table-condensed rides round_bottom shadow">
-	<thead>
-	<tr class="round">
-		<th colspan=2> </th>
-		<th> On <% link_to "On", "#" %> </th>
-		<th colspan=1> From <% link_to "From", "#" %> </th>
-		<th> </th>
-    	<th colspan=1> To <% link_to "To", "#" %> </th>
-        <th class="ride_hide_small"> </th>
-    </tr>
-	</thead>
-	<tr style="height:40px;">
-	<% if params[:controller] == "pages" %>
-	  <td colspan=3> </td>
-	  <%= render 'shared/city_search' %>
-	<% else %>  
-	  <%= render 'shared/ride_search' %>
-	<% end %>
-	</tr>
-	<% unless @rides.blank? %>
-        <%= render @rides %>
-    <% else %>
-	  <tr><td colspan="7"><h3 align="center">no rides matched your search</h3></tr>	
-	<% end %>
+<% unless @rides.blank? %>
+  <%= render @rides %>
+<% else %>
+  <tr><td colspan="7"><h3 align="center">no rides matched your search</h3></tr>	
+<% end %>
 	
-  <tr><td id="pagination" colspan=7><%= will_paginate @rides, :class => "apple_pagination" unless controller_name == "pages" %></tr>
+<tr><td id="pagination" colspan=7><%= will_paginate @rides, :class => "apple_pagination" unless controller_name == "pages" %></tr>
 
-  <tr><td id="last-row" colspan=7>last row</tr>
+<tr><td id="last-row" colspan=7>last row</tr>
 
-</table>
-
-</div>

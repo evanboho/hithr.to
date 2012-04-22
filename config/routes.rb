@@ -9,6 +9,7 @@ Hithr::Application.routes.draw do
   
   constraints(subdomain: !"blog" ) do
   
+  
   match "rides/:id/return" => "rides#return", :as => "return_trip"
   match "rides/my_rides" => "rides#user", :as => "user_rides"
   get "rides/wanted" => "rides#index_wanted", :as => "rides_wanted"
