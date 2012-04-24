@@ -87,40 +87,41 @@ class Ride < ActiveRecord::Base
     @rides = Ride.where("go_time > ?", criteria[:search_date]).includes(:user)
     if criteria[:search_start_city].present?
       if criteria[:miles_radius].to_i == 0 
-        rides = @rides.search_city_state(criteria[:search_start_city], criteria[:search_start_state])
-        # if rides.count < 10
-        #           criteria[:miles_radius] = 20
-        #         else
-        @rides = rides
-        # end
+        rides = @rides.search_start(criteria[:search_start_city], criteria[:search_start_state])
+        if rides.count < 1
+          criteria[:miles_radius] = 20
+        else
+          @rides = rides
+        end
       end 
       if criteria[:miles_radius].to_i > 1
        rides = @rides.search_near(criteria[:search_start_city], criteria[:search_start_state], criteria[:miles_radius])
-        if rides.count < 5
-                 criteria[:miles_radius] += 10
-                 @rides = @rides.search_near(criteria[:search_start_city], criteria[:search_start_state], criteria[:miles_radius])
-               else
-         @rides = rides
-        end
+        # if rides.count < 5
+          # criteria[:miles_radius] += 10
+          # @rides = @rides.search_near(criteria[:search_start_city], criteria[:search_start_state], criteria[:miles_radius])
+        #else
+          @rides = rides
+        # end
       end
     end
     unless @rides.empty?
       if criteria[:search_end_city].present?
         rides_dest = @rides.search_destination(criteria[:search_end_city], criteria[:search_end_state])
         if rides_dest.count < 1
-          if criteria[:search_start_city].present?
+         if criteria[:search_start_city].present?
             @rides = @rides.search_direction(criteria)
           else
             @rides = @rides.search_near(criteria[:search_end_city], criteria[:search_end_state], 20)
           end
+        else
+          @rides = rides_dest
         end
-        @rides = rides_dest
       end
     end
     @rides
   end  
     
-  def self.search_city_state(city, state)
+  def self.search_start(city, state)
     if state.present?
       rides = @rides.where(:start_state => state)
     end
@@ -142,7 +143,6 @@ class Ride < ActiveRecord::Base
   end
   
   def self.search_near(city, state, radius)
-    @miles_radius = radius  # necessary? How to set search to current miles_radius?
     near("#{city}, #{state}", radius)
   end
   
@@ -151,10 +151,5 @@ class Ride < ActiveRecord::Base
                                                             "#{criteria[:search_end_city]}, #{criteria[:search_end_state]}")
     @rides.where(:bearing => (search_bearing - 20)..(search_bearing + 20))
   end 
-  
-  
-  
-  
-
   
 end
