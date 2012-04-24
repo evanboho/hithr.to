@@ -6,7 +6,7 @@ class RidesController < ApplicationController
  
   def index
     @rides = Ride.where(:offered => true).search(make_criteria).reorder('go_time ASC')
-    #@rides = @rides.paginate(:page => params[:page], :per_page => 10).includes(:user)
+    @rides = @rides.paginate(:page => params[:page], :per_page => 10).includes(:user)
     if @rides.blank?
       flash.now[:notice] = "Sorry. Try increasing the search radius."    
     end
