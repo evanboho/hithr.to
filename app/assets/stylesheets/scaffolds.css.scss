@@ -287,6 +287,9 @@ td.avatar {
   font-size: .85em;
   font-weight: bold;
 }
+.sign_in label {
+  width: 150px;
+}
 .new_detail label {
   font-size:.9em;
 }
@@ -336,7 +339,6 @@ input[type="text"] {
 .new_ride input[type="text"] {
   width: auto;
 }
-
 
 #message_content {
   height: 200px;
