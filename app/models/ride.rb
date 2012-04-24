@@ -18,7 +18,6 @@ class Ride < ActiveRecord::Base
   
   
   def before_save_events
-    clean_up_cities
     find_or_create_cities
     get_distance
     get_your_bearings
@@ -26,19 +25,20 @@ class Ride < ActiveRecord::Base
   
   geocoded_by :start_city_state
   
-  def clean_up_cities
-    self.start_city = clean_up_city(self.start_city)
-    self.end_city = clean_up_city(self.end_city)
-  end
-  def clean_up_city(city)
-    c = city.split(',')
-    c = c.first
-    c.try(:titleize).try(:strip)
-  end
+  # def clean_up_cities
+  #   self.start_city = clean_up_city(self.start_city)
+  #   self.end_city = clean_up_city(self.end_city)
+  # end
+  # def clean_up_city(city)
+  #   c = city.split(',')
+  #   c.try(:titleize).try(:strip)
+  # end
   
   def find_or_create_cities
     s = find_or_create_city(self.start_city, self.start_state)
     e = find_or_create_city(self.end_city, self.end_state)
+    self.start_city = s.name.split(',').first
+    self.end_city = e.name.split(',').first
     self.latitude = s.lat
     self.longitude = s.long
     self.end_lat = e.lat

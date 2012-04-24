@@ -13,8 +13,9 @@ class RidesController < ApplicationController
   end
   
   def index_wanted
-    @rides = Ride.where('offered <> ?', true)
-    @rides = @rides.search(make_criteria).reorder('go_time ASC').paginate(:page => params[:page], :per_page => 15).includes(:user)
+   # @rides = Ride.where('offered <> ?', true)
+   criteria = make_criteria
+    @rides = Ride.search(criteria).where(:offered => false).paginate(:page => params[:page], :per_page =>5) #.search(make_criteria).reorder('go_time ASC').paginate(:page => params[:page], :per_page => 15).includes(:user)
     if @rides.blank?
       flash.now[:notice] = "Sorry. Try increasing the search radius."
     end
