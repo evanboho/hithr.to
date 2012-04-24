@@ -65,6 +65,7 @@ class RidesController < ApplicationController
     @ride.update_attributes(params[:ride])
     @ride.go_time = @ride.go_time.change(:hour => params[:ride][:go_time_hour], :min => params[:ride][:go_time_min])
     @ride.save
+    @ride.detail.update_attributes(:cost => @ride.trip_distance / 10)
     respond_with @ride
   end
   
