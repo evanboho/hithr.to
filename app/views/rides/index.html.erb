@@ -2,18 +2,18 @@
   <div class="hero-unit">
 
     <h1 style="font-size: 3em;">
-	rides </h1>
-	<h2>
+	rides
+	<p>
 	<% unless params[:action] == "user_rides" %>
-	  <%= params[:action] %>
+	   <%= params[:action] %>
 	<% else %>
 	  posted by <%= @user.username %>
 	<% end %>
-	<br>
-	</h3>
+	</p>
+    </h1>
 	<div class="woohoo round">
-	woohoo! we found 
-	</span><span class="ride_count"> </span> rides
+	showing
+	</span><span class="ride_count"><%= pluralize(@rides.count, "ride") %></span>
 	</div>
   </div>
 

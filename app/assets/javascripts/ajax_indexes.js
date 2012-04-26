@@ -1,5 +1,5 @@
 $(function() {
-	$('#index_table th a,  #index_table .apple_pagination a, #rides_table .apple_pagination a').live("click", function() {
+	$('#index_table th a,  #index_table .apple_pagination a, #rides_table .apple_pagination a, td.date select').live("click", function() {
 		$.getScript(this.href);
 		return false;
 	});
