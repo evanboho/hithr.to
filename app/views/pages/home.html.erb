@@ -1,4 +1,4 @@
-<div class="hero-unit">
+<div class="hero-unit" style="height: auto;">
 	<span style="float:left; padding-left: -100;">
 		<%= image_tag "hithrlogo-1.png", :size => "80x100", :style => "float:left; opacity:0.85;" %> 
 	</span>
@@ -42,30 +42,27 @@
 	</script>
 	
 	</span>
-
-  <div class="" style="margin-left: 0;">
-    <h1 style="float:left;"> hithr.to<% image_tag 'hithr-logo.gif', :size => "300x1", :alt => "hithr.to" %></h1>
-    <p style="clear:both;">intercity cooperative transporation</p>
-    
-</div>
-</div>
+    <h1 style="float:left;"> hithr.to
+    <p>intercity cooperative transporation</p></h1>
+  <p style="clear:both;"> </p>
+  </div>
 
 <div class="small-container center well bottom" style="padding: 0px 0 40px 0; margin-bottom: 0px;">
 	<div class="well super-small-container">
-	<h3>New American Rideshare</h3>
-	<p class="home-explain">America is big; gas prices are high.<br>
-		Sharing rides with friendly people saves time and money. <br>
-		Hithr.to helps drivers find riders and riders find rides, 
-		suggesting how much a rider should chip in for gas. </p></div>
+	<h3>North American Rideshare</h3><br>
+	<p class="center">Share the ride, share the cost.<br>
+	<br>Post a ride to find drivers and riders, <br>or browse rides already posted!
+	</p></div>
 	<%= link_to "sign in", new_user_session_path, :class => "not_current_user btn btn-primary btn-large" %>
     <%= link_to "sign up", new_user_registration_path, :class => "not_current_user btn btn-large" %>
     
-<%= render 'layouts/create_authentications' %><br>
   <br><%= link_to "find a ride", rides_offered_path, :class => "current_user btn btn-large btn-primary" %>
   <%= link_to "post a ride", new_ride_path, :class => "current_user btn btn-large" %>
+<%= render 'layouts/create_authentications' %><br>
+
   </div>
 
-
+<%= render 'shared/city_search' %>
 <% if mobile_device? %>
   <div class="well">
 	<%= render 'rides/small_rides_table' %>

@@ -1,13 +1,15 @@
-<td colspan=2>
-<%= form_tag rides_path, :method => 'get', :class => "form-search" do %>
+<div class="content round" style="height: 30px; margin-bottom: 0px;">
+	<div class="small-container" style="padding: 0 32% 0 32%;">
+		
+<%= form_tag rides_offered_path, :method => 'get', :class => "form-search" do %>
     <% loc = request.location %>
 	<% seed_city = loc.city if loc.present? %>
 	<% seed_city ||= "" %>
+	<label style="width: auto;">Start city:</label>
 	<%= text_field_tag :search_start, seed_city, 
-	                                          :placeholder => "(city, state)", :style => "" %> 
+	                                          :placeholder => "(city, state)", :style => "width: 100px;" %> 
 	<%= hidden_field_tag :search_date %>
-	</td>
-	<td colspan=2>
-	<%= submit_tag "search rides", :name => nil, :class => "btn btn-primary" %>
-	</td>
+	<%= submit_tag "search", :name => nil, :class => "btn btn-primary" %>
 <% end %>
+</div>
+</div>
