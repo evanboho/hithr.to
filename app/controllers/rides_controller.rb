@@ -24,7 +24,7 @@ class RidesController < ApplicationController
    
   def user_rides
     @user = User.find(params[:user_id])
-    @rides = @user.rides.search(make_criteria).reorder('created_at DESC')
+    @rides = @user.rides.search(make_criteria).reorder('go_time ASC')
     @rides = @rides.paginate(:page => params[:page], :per_page => 10)
     render 'index'
   end 
