@@ -1,8 +1,6 @@
 $("#rides_table").html("<%= escape_javascript(render("rides_table")) %>");
-// $("span.found").text("woohoo! found ")
-$("span.ride_count").html("<%= pluralize(@rides.count, "ride") %>");
-// $("span.found_rides").text("rides")
-// $(".woohoo").show()
+$(".woohoo").html("showing <%= pluralize(@rides.count, "ride") %>");
+
 
 // $('.rides').append('<%= j render(@rides) %>');
 // alert "hey"

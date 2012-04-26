@@ -4,6 +4,7 @@ $(function() {
 		return false;
 	});
 	$('#name_search, #ride_search').submit(function() {
+		$(".woohoo").html("loading...");
 		$.get(this.action, $(this).serialize(), null, "script");
 		return false;
 	});

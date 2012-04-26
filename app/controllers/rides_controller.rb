@@ -5,6 +5,7 @@ class RidesController < ApplicationController
   respond_to :html, :json
  
   def offered
+    # sleep 1
     @rides = Ride.where(:offered => true).search(make_criteria).reorder('go_time ASC')
     @rides = @rides.paginate(:page => params[:page], :per_page => 10)# .includes(:user)
     if @rides.blank?
