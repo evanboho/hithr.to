@@ -1,4 +1,8 @@
 $("#rides_table").html("<%= escape_javascript(render("rides_table")) %>");
+$("span.found").text("woohoo! found ");
+$("span.ride_count").text(<%= @rides.count %>);
+$("span.found_rides").text("rides");
+$(".woohoo").show();
 
 // $('.rides').append('<%= j render(@rides) %>');
 // alert "hey"

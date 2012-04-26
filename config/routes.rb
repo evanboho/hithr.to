@@ -9,14 +9,15 @@ Hithr::Application.routes.draw do
   
   constraints(subdomain: !"blog" ) do
   
-  
+  match "rides/offered" => "rides#offered", :as => "rides_offered"
+  match "rides/wanted" => "rides#wanted", :as => "rides_wanted"
+  get "users/:user_id/rides" => "rides#user_rides", :as => "user_rides"
+  get "/rides" => redirect("/rides/offered")
   match "rides/:id/return" => "rides#return", :as => "return_trip"
-  match "rides/my_rides" => "rides#user", :as => "user_rides"
-  get "rides/wanted" => "rides#index_wanted", :as => "rides_wanted"
   resources :rides, :shallow => true do
     resources :details
   end
-
+  
   resources :abouts, :except => [:destroy], :path => "/about"
   
   resources :authentications, :only => [:new, :create, :destroy]

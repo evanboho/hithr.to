@@ -1,28 +1,32 @@
 class RidesController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy]
-  before_filter :current_user?, :except => [:index, :show, :index_wanted]
+  before_filter :current_user?, :except => [:index, :show, :index_wanted] #, :user]
   respond_to :html, :json
  
-  def index
+  def offered
     @rides = Ride.where(:offered => true).search(make_criteria).reorder('go_time ASC')
-    @rides = @rides.paginate(:page => params[:page], :per_page => 10).includes(:user)
+    @rides = @rides.paginate(:page => params[:page], :per_page => 10)# .includes(:user)
     if @rides.blank?
       flash.now[:notice] = "Sorry. Try increasing the search radius."    
     end
+    render 'index'
   end
   
-  def index_wanted
+  def wanted
     @rides = Ride.where(:offered => false).search(make_criteria).reorder('go_time ASC')
     @rides = @rides.paginate(:page => params[:page], :per_page => 10) #.includes(:user)
     if @rides.blank?
       flash.now[:notice] = "Sorry. Try increasing the search radius."
     end
+    render 'index'
   end
    
-  def user
-    @rides = current_user.rides.reorder('created_at DESC').paginate(:page => params[:page], :per_page => 10)
-    render 'user_rides'
+  def user_rides
+    @user = User.find(params[:user_id])
+    @rides = @user.rides.search(make_criteria).reorder('created_at DESC')
+    @rides = @rides.paginate(:page => params[:page], :per_page => 10)
+    render 'index'
   end 
   
   def show

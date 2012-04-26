@@ -63,7 +63,8 @@ div {
   margin-bottom: 0px;
   padding-top: 25px;
   padding-bottom: 25px;
-  padding-left: 15%;
+  padding-left: 10%;
+  padding-right: 10%;
   @include rounded(20px, 20px, 20px, 20px);
   @include inset-shadow(#eee, 50%);
   h1 {
@@ -613,4 +614,17 @@ th .asc {
 th .desc {
   background-size: 12px 12px;
   background-image: url(/up_arrow.png);
+}
+
+.woohoo {
+  // visibility: hidden;
+  display: none;
+  color: white;
+  width: 50%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: lighten(#0E2C4B, 20%);
+  border: 2px solid #0E2C4B;
 }

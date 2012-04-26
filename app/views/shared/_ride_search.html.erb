@@ -8,11 +8,10 @@
 </tr>
 </thead>	
 <tr>
-<% if params[:action] == 'index' %>
-  <% path = rides_path %>
-<% else %>
-  <% path = rides_wanted_path %>
-<% end %>
+  <% path = rides_path if params[:action] == 'index' %>
+  <% path = rides_wanted_path if params[:action] == 'index_wanted' %>
+  <% path = user_rides_path(User.find(params[:user_id])) if params[:action] == 'user_rides' %>
+  
 
 <%= form_tag path, :method => 'get', :class => "form-search", :id => "ride_search" do %>
 

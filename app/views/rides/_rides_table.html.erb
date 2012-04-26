@@ -5,8 +5,8 @@
   <tr><td colspan="7"><h3 align="center">no rides matched your search</h3></tr>	
 <% end %>
 	
-<tr><td id="pagination" colspan=7><%= will_paginate @rides, :class => "apple_pagination" unless controller_name == "pages" %></tr>
-
-<tr><td id="last-row" colspan=7>last row</tr>
+<tr><td id="pagination" colspan=7>
+<%= will_paginate @rides, :class => "apple_pagination" unless controller_name == "pages" %>
+</tr>
 
 </table>

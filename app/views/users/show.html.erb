@@ -34,6 +34,10 @@
  	      <%= image_tag "#{auth.provider}_32.png" if !current_user %>
 	    <% end %>
 	  <% end %>
+	  <% if @user.rides.count > 0 %>
+	    <br>
+		<%= link_to "#{@user.rides.count} posted rides.", user_rides_path(@user) %>
+	  <% end %>
 
 </div><!-- end of hero-unit -->
 
