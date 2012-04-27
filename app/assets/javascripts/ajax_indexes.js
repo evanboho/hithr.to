@@ -8,4 +8,9 @@ $(function() {
 		$.get(this.action, $(this).serialize(), null, "script");
 		return false;
 	});
+	// $("#city_search").submit(function() {
+	//         $.getScript(this.url);
+	// 	    //return false;	
+	// 	});
+	
 });

@@ -1,6 +1,7 @@
 <div class="content round" style="height: 30px; margin-bottom: 0px;">
 	<div class="small-container" style="padding: 0 32% 0 32%;">
-		
+
+<div id="city_search">		
 <%= form_tag rides_offered_path, :method => 'get', :class => "form-search" do %>
     <% loc = request.location %>
 	<% seed_city = loc.city if loc.present? %>
@@ -11,5 +12,6 @@
 	<%= hidden_field_tag :search_date %>
 	<%= submit_tag "search", :name => nil, :class => "btn btn-primary" %>
 <% end %>
+</div>
 </div>
 </div>
