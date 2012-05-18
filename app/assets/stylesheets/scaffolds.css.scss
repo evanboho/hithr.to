@@ -57,7 +57,7 @@ div {
   margin-bottom: 0px;
 }
 .hero-unit {
-  background-color: #eee;
+  background-color: #fdfdfd;
   height: 100%;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -76,6 +76,10 @@ div {
   color: #222;
   font-size: 4.5em;
   text-shadow: 0em .05em 0.05em #666;
+}
+
+.happy_monkey {
+  font-family: 'Happy Monkey', cursive;
 }
 
 .heading {
@@ -98,6 +102,7 @@ h3 {
   @include rounded(20px, 20px, 20px, 20px);
 }
 .small-container {
+  background-color: #fdfdfd;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -318,9 +323,7 @@ select {
 .simple_form input[type="submit"] {
   margin-left: 0px;
 }
-.form-search {
-  height: 0px;
-}
+
 select {
   vertical-align: top;
   font-size: .9em;
@@ -632,4 +635,20 @@ th .desc {
 .loading {
   opacity:0.4;
   color: red;
+}
+
+form.search {
+  font-size: 1em;
+  input {
+    font-size: 1.7em;
+    height: auto;
+    width: 180px; }
+  input[type="submit"] {
+    height: auto;
+    padding: 10px 20px 20px 22px; 
+    @include rounded; }
+  ::-webkit-input-placeholder  {  
+    padding-top: 10px; }
+  input:-moz-placeholder { 
+    padding-top: 10px; }
 }

@@ -4,15 +4,10 @@ class Ride < ActiveRecord::Base
   has_one :detail, :dependent => :destroy
   attr_accessor :go_time_hour, :go_time_min
   
-  validates :user_id, :presence => true
-  validates :start_city, :presence => true, 
-             :length => { :maximum => 20 }
-  validates :start_state, :presence => true
-  validates :end_city, :presence => true, 
-             :length => { :maximum => 20 }
-  validates :end_state, :presence => true
-  validates :go_time, :presence => true
-  validates_presence_of :latitude, :longitude, :end_lat, :end_long
+  validates_presence_of :user_id, :start_city, :start_state, :end_city, :end_state, 
+                        :go_time, :latitude, :longitude, :end_lat, :end_long
+  validates :start_city,  :length => { :maximum => 20 }
+  validates :end_city,    :length => { :maximum => 20 }
   
   before_validation :before_save_events
   

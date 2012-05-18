@@ -119,8 +119,6 @@ GEM
       omniauth (~> 1.0)
     omniauth-twitter (0.0.8)
       omniauth-oauth (~> 1.0)
-    omniauth-yahoo (0.0.3)
-      omniauth-oauth (~> 1.0)
     orm_adapter (0.0.6)
     paperclip (2.7.0)
       activerecord (>= 2.3.0)
@@ -207,7 +205,6 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2 (~> 0.1.9)
   omniauth-twitter
-  omniauth-yahoo (~> 0.0.3)
   paperclip (~> 2.7)
   pg
   rails (= 3.2.1)

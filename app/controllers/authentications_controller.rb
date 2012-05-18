@@ -56,7 +56,7 @@ class AuthenticationsController < ApplicationController
           user.profile.save
           sign_in_and_redirect(:user, user)
         else
-          flash[:warning] = "Sorry! You can't create an account with Twitter."
+          flash[:warning] = "Sorry! We didn't get an email. Please try something else"
           # session['devise.omniauth'] = auth
           redirect_to sign_up_path
         end

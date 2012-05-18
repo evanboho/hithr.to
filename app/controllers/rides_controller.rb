@@ -1,7 +1,7 @@
 class RidesController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy]
-  before_filter :current_user?, :except => [:offered, :show, :wanted, :user]
+  before_filter :current_user?, :except => [:offered, :show, :wanted, :user, :home_search]
   respond_to :html, :json
  
   def offered
@@ -98,6 +98,10 @@ class RidesController < ApplicationController
                                   :bikes => @ride.detail.bikes, :smoking => @ride.detail.smoking)
     @ride = return_trip
     redirect_to edit_ride_path(@ride)
+  end
+  
+  def home_search
+    
   end
   
   def make_criteria

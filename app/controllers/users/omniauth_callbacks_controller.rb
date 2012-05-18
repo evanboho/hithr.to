@@ -6,7 +6,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   
   def google_oauth2
     render :text => request.env[omniauth.auth].to_yaml 
-  
   end
   # def facebook
   #     @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)

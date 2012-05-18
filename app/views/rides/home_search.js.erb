@@ -1,0 +1,6 @@
+if ($("select option:selected").text() == "rider") {
+  $("#home_page_search").html("<%= escape_javascript(render("pages/home_search_wanted")) %>");
+}
+else {
+  $("#home_page_search").html("<%= escape_javascript(render("pages/home_search_offered")) %>");
+}

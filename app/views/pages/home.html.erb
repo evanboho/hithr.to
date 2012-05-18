@@ -1,7 +1,7 @@
 <div class="hero-unit" style="height: auto;">
-	<span style="float:left; padding-left: -100;">
-		<%= image_tag "hithrlogo-1.png", :size => "80x100", :style => "float:left; opacity:0.85;" %> 
-	</span>
+	<div style="float: left; margin-left: 29%;">
+		<%= image_tag "logo-dm.png", :size => "", :style => "opacity:0.85;" %> 
+	</div>
 	
     <span style="float:right;"><br>
 	<g:plusone annotation=""></g:plusone>
@@ -42,21 +42,23 @@
 	</script>
 	
 	</span>
-    <h1 style="float:left;"> hithr.to
+    <h1 style="clear:both; text-align:center">
     <p>intercity cooperative transporation</p></h1>
   <p style="clear:both;"> </p>
   </div>
 
-<div class="small-container center well bottom" style="padding: 0px 0 40px 0; margin-bottom: 0px;">
-	<div class="well super-small-container">
-	<h3>North American Rideshare</h3><br>
-	<p class="center">Share the ride, share the cost.<br>
-	<br>Post a ride to find drivers and riders, <br>or browse rides already posted!
-	</p></div>
-	<%= link_to "sign in", new_user_session_path, :class => "not_current_user btn btn-primary btn-large" %>
-    <%= link_to "sign up", new_user_registration_path, :class => "not_current_user btn btn-large" %>
-    
-  <br><%= link_to "find a ride", rides_offered_path, :class => "current_user btn btn-large btn-primary" %>
+<div class="small-container happy_monkey" style="padding: 0px 0 40px 0; margin-bottom: 0px;">
+	<br><br>
+	<h2 class="happy_monkey center" style="font-size: 2em;">
+		Find a 
+		<%= select_tag(:select_wanted, options_for_select([['ride'], ['rider']]), 
+						:id => "home_search_selector", :style => "height: auto;") %>
+	</h2>
+	<br>
+	<div style="width: 55%; margin-left: auto; margin-right: auto;" id="home_page_search">
+	  <%= render :partial => 'home_search_offered' %>
+    </div>
+  <%= link_to "find a ride", rides_offered_path, :class => "current_user btn btn-large btn-primary" %>
   <%= link_to "post a ride", new_ride_path, :class => "current_user btn btn-large" %>
 <%= render 'layouts/create_authentications' %><br>
 

@@ -12,7 +12,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem "omniauth-google-oauth2", "~> 0.1.9"
-gem "omniauth-yahoo", "~> 0.0.3"
+# gem "omniauth-yahoo", "~> 0.0.3"
 
 gem 'aws-sdk'
 gem "paperclip", "~> 2.7"

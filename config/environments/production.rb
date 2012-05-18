@@ -72,5 +72,6 @@ Hithr::Application.configure do
     
   config.session_store :cookie_store, key: '_hithr_session', :domain => "hithr.to"
   config.secret_token = ENV['SECRET_TOKEN']
+  config.action_mailer.default_url_options = { :host => 'hithr.to' }
   
 end

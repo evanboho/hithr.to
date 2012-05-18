@@ -1,0 +1,14 @@
+<%= form_tag rides_wanted_path, :method => 'get', :class => "center search" do %>
+  <div style="float: left; text-align: left;">
+    from: <br><%= text_field_tag :search_start, nil, :placeholder => "(city, state)" %>
+  </div>
+  <div style="float: right; text-align: left;">
+    to: <br><%= text_field_tag :search_end, nil, :placeholder => "(city, state)" %>
+  </div>
+  <div style="clear: both;">
+	<br>
+    <%= submit_tag "go", :class => "btn, btn-primary" %>
+    <br>search rides wanted<br>
+   
+  </div>
+<% end %>
