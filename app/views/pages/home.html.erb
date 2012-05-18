@@ -64,14 +64,14 @@
 
   </div>
 
-<%= render 'shared/city_search' %>
+<% render 'shared/city_search' %>
 <% if mobile_device? %>
   <div class="well">
-	<%= render 'rides/small_rides_table' %>
+	<% render 'rides/small_rides_table' %>
   </div>
 <% else %>
   <div class="">
-    <%= render 'rides/rides_table' %>
+    <% render 'rides/rides_table' %>
   </div>
 <% end %>
 
