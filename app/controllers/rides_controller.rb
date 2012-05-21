@@ -11,7 +11,7 @@ class RidesController < ApplicationController
     if @rides.blank?
       flash.now[:notice] = "Sorry. Try increasing the search radius."    
     end
-    render 'index'
+    render 'index' # , :rides => @rides
   end
   
   def wanted

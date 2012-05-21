@@ -1,0 +1,27 @@
+<% provide :title, "rides" %>
+  <div class="hero-unit">
+
+    <h1 style="font-size: 3em;">
+	rides
+	<p>
+	<% unless params[:action] == "user_rides" %>
+	   <%= params[:action] %>
+	<% else %>
+	  posted by <%= @user.username %>
+	<% end %>
+	</p>
+    </h1>
+	<div class="woohoo round">
+	showing
+	<span class="ride_count"><%= pluralize(@rides.count, "ride") %></span>
+	</div>
+  </div>
+
+  <div class="shade round ride_container">
+	<%= render 'shared/ride_search' %>
+
+  <div id="rides_table">	
+    <%= render 'rides_table' %>
+  </div>
+
+</div>
