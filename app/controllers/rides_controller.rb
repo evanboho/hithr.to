@@ -11,7 +11,10 @@ class RidesController < ApplicationController
     if @rides.blank?
       flash.now[:notice] = "Sorry. Try increasing the search radius."    
     end
-    render 'index' # , :rides => @rides
+    respond_to do |format|
+      format.html { render 'index' }
+      format.js { render 'index' }
+    end
   end
   
   def wanted

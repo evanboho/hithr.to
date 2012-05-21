@@ -1,3 +1,3 @@
-jQuery ->
-  if $('#ride_search').length
-	  $.get(this.action, $(this).serialize(), null, "script")
+# jQuery ->
+#   if $('#ride_search').length
+#     $.get(this.action, $(this).serialize(), null, "script")
