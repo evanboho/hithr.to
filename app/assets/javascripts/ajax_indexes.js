@@ -3,6 +3,7 @@ $(function() {
 	  $.getScript(this.href);
 	  return false;
 	});
+	
 	$('#name_search, #ride_search').live("submit", function() {
 	  $(".woohoo").html("loading...");
 	  $.get(this.action, $(this).serialize(), null, "script");
@@ -15,8 +16,12 @@ $(function() {
 	
 	$('form#home_search_offered, form#home_search_wanted').live("submit", function() {
       $.get(this.action, $(this).serialize(), null, "script");
-      // window.location.href = '/rides/offered';
+      history.pushState(null, "", this.action);
 	  return false;
+	});
+	
+	$(window).bind("popstate", function() {
+	      $.getScript(location.href);
 	});
 	
 	

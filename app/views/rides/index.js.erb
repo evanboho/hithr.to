@@ -1,15 +1,7 @@
-if (window.location == "http://hithr.to/") {
-  $("#body").html("<%= escape_javascript(render("rides/index")) %>");
-}
-else {
-  $("#rides_table").html("<%= escape_javascript(render("rides_table")) %>");
+if ($("#rides_table").length) {
+  $("#rides_table").html('<%= j render("rides_table") %>');
   $(".woohoo").html("showing <%= pluralize(@rides.count, "ride") %>");
 }
-
-// $('.rides').append('<%= j render(@rides) %>');
-// alert "hey"
-// <% if @rides.next_page %>
-//   $('.pagination').replaceWith('<%= will_paginate(@rides) %>');
-// <% else %>
-//   $('.pagination').remove();
-// <% end %>
+else {
+  $("#body").html("<%= escape_javascript(render("rides/index")) %>");
+}
