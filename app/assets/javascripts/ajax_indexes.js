@@ -1,11 +1,24 @@
 $(function() {
+	
+	// var History = window.History;
+	//     if ( !History.enabled ) {
+	//       return false;
+	//     }
+	// 	
+	// 	History.Adapter.bind(window, 'statechange', function() {
+	//         var State = History.getState();
+	//         // alert(State.url);
+	//         History.log(State.data, State.title, State.url);
+	//     });
+	
 	$('#index_table th a,  #index_table .apple_pagination a, #rides_table .apple_pagination a, td.date select').live("click", function() {
 	  $.getScript(this.href);
 	  return false;
 	});
-	
+		
 	$('#name_search, #ride_search').live("submit", function() {
 	  $(".woohoo").html("loading...");
+	  // history.replaceState(null, "title", $("#ride_search").attr("action") + "?" + $("#ride_search").serialize());
 	  $.get(this.action, $(this).serialize(), null, "script");
 	  return false;
 	});
@@ -16,13 +29,13 @@ $(function() {
 	
 	$('form#home_search_offered, form#home_search_wanted').live("submit", function() {
       $.get(this.action, $(this).serialize(), null, "script");
-      history.pushState(null, "", this.action);
+      History.pushState(null, "", this.action);
 	  return false;
 	});
 	
-	$(window).bind("popstate", function() {
-	      $.getScript(location.href);
-	});
+	// $(window).bind("popstate", function() {
+	//       alert(window.location);
+	// });
 	
 	
 	

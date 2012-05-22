@@ -25,6 +25,7 @@
 // require twitter/bootstrap/bootstrap-carousel
 // require twitter/bootstrap/bootstrap-typeahead
 //= require jquery.purr
+//= require history_jquery
 //= require best_in_place
 // require users.js
 //= require_tree .

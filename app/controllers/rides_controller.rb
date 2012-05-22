@@ -11,10 +11,7 @@ class RidesController < ApplicationController
     if @rides.blank?
       flash.now[:notice] = "Sorry. Try increasing the search radius."    
     end
-    respond_to do |format|
-      format.html { render 'index' }
-      format.js { render 'index' }
-    end
+    render 'index'
   end
   
   def wanted
@@ -37,7 +34,7 @@ class RidesController < ApplicationController
     @ride = Ride.find(params[:id])
     @ride.detail ||= Detail.new
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @ride }
     end
   end

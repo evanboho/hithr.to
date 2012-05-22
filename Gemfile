@@ -21,6 +21,8 @@ gem 'geocoder', "~> 1.1.1"
 gem 'best_in_place'
 gem 'thin'
 
+gem "historyjs-rails"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

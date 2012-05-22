@@ -1,0 +1,77 @@
+<div class="hero-unit" style="height: auto;">
+	<div style="float: left; margin-left: 29%;">
+		<%= image_tag "logo-dm.png", :size => "", :style => "opacity:0.85;" %> 
+	</div>
+	
+    <span style="float:right;"><br>
+	<g:plusone annotation=""></g:plusone>
+
+	<script type="text/javascript">
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/plusone.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
+	<br>
+	
+	<a href="https://twitter.com/share" 
+		class="twitter-share-button" 
+		style="text-align:right;"
+		data-via="hithrto" 
+		data-url=<%= "http://hithr.to" %>
+		data-text="A new rideshare website!" >
+		Tweet
+	</a><br>
+    <script> !function(d,s,id){
+				var js,fjs=d.getElementsByTagName(s)[0];
+				if(!d.getElementById(id))
+					{js=d.createElement(s);
+				js.id=id;js.src="//platform.twitter.com/widgets.js";
+				fjs.parentNode.insertBefore(js,fjs);
+					}
+				}
+		     (document,"script","twitter-wjs");
+    </script>
+	<a name="fb_share" 
+		type="button" 
+		share_url=<%= "http://hithr.to" %> >share
+	</a> 
+	<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+	        type="text/javascript">
+	</script>
+	
+	</span>
+    <h1 style="clear:both; text-align:center">
+    <p>intercity cooperative transporation</p></h1>
+  <p style="clear:both;"> </p>
+  </div>
+
+<div class="small-container happy_monkey" style="padding: 0px 0 40px 0; margin-bottom: 0px;">
+	<br><br>
+	<h2 class="happy_monkey center" style="font-size: 2em;">
+		Find a 
+		<%= select_tag(:select_wanted, options_for_select([['ride'], ['rider']]), 
+						:id => "home_search_selector", :style => "height: auto;") %>
+	</h2>
+	<br>
+	<div style="width: 55%; margin-left: auto; margin-right: auto;" id="home_page_search">
+	  <%= render :partial => 'home_search_offered' %>
+    </div>
+  <% link_to "find a ride", rides_offered_path, :class => "current_user btn btn-large btn-primary" %>
+  <% link_to "post a ride", new_ride_path, :class => "current_user btn btn-large" %>
+<%= render 'layouts/create_authentications' %><br>
+
+  </div>
+
+<% render 'shared/city_search' %>
+<% if mobile_device? %>
+  <div class="well">
+	<% render 'rides/small_rides_table' %>
+  </div>
+<% else %>
+  <div class="">
+    <% render 'rides/rides_table' %>
+  </div>
+<% end %>
+
