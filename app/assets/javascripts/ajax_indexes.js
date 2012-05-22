@@ -5,6 +5,7 @@ $(function() {
 	  // alert(this.href);
 	  Data = null;
 	  History.pushState(null, "", this.href);
+	  $(".woohoo").text("loading...");
 	  return false;
 	})
 	
@@ -16,7 +17,7 @@ $(function() {
 	});
 		
 	$('#name_search, #ride_search').live("submit", function() {
-	  $(".woohoo").html("loading...");
+	  $(".woohoo").text("loading...");
 	  // history.replaceState(null, "title", $("#ride_search").attr("action") + "?" + $("#ride_search").serialize());
 	  $.get(this.action, $(this).serialize(), null, "script");
 	  return false;
@@ -29,6 +30,7 @@ $(function() {
 	$('form#home_search_offered, form#home_search_wanted').live("submit", function() {
       // $.get(this.action, $(this).serialize(), null, "script");
       Data = $(this).serialize();
+ 	  $('form').addClass('loading');
       History.pushState(null, "", this.action);
 	  return false;
 	});

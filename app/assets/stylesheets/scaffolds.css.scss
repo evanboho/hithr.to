@@ -71,6 +71,7 @@ div {
     font-size: 4em;
     letter-spacing: .06em; }
 }
+
 .hero-unit h1 {
   font-family: 'Happy Monkey', cursive;
   color: #222;
@@ -638,8 +639,11 @@ th .desc {
 }
 
 .loading {
-  opacity:0.4;
-  color: red;
+  opacity:0.8;
+}
+
+.home_search_loading {
+  background-color: #666;
 }
 
 form.search {
