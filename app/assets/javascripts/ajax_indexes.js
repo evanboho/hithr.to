@@ -1,13 +1,14 @@
 $(function() {
 	
-	$('#nav_ride_wanted a, #nav_ride_offered a').live("click", function() {
-	  $.getScript(this.href);
+	$('#nav_ride_wanted a, #nav_ride_offered a, a#nav_brand').live("click", function() {
+	  // $.getScript(this.href);
 	  History.pushState(null, "", this.href);
 	  return false;
 	})
 	
 	$('#index_table th a,  #index_table .apple_pagination a, #rides_table .apple_pagination a, td.date select').live("click", function() {
-	  $.getScript(this.href);
+	  // $.getScript(this.href);
+	  History.pushState(null, "", this.href);
 	  return false;
 	});
 		
@@ -18,12 +19,13 @@ $(function() {
 	  return false;
 	});
 	
-	$('select#home_search_selector').change(function() {
+	$('select#home_search_selector').live("change", function() {
 	  $.getScript('home_search');
 	});
 	
 	$('form#home_search_offered, form#home_search_wanted').live("submit", function() {
-      $.get(this.action, $(this).serialize(), null, "script");
+      // $.get(this.action, $(this).serialize(), null, "script");
+      Data = $(this).serialize();
       History.pushState(null, "", this.action);
 	  return false;
 	});

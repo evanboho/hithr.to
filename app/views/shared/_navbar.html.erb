@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <%= link_to "hithr.to", root_path, :class => "brand", 
+      <%= link_to "hithr.to", root_path, :class => "brand", :id => "nav_brand", 
 				:style => "text-decoration: none; margin-left:80px;" if request.subdomain != "blog" %>
 	  <%= link_to "blog.hithr.to", root_url(subdomain: "blog"), :class => "brand", 
 				:style => "text-decoration: none; margin-left:80px;" if request.subdomain == "blog" %>

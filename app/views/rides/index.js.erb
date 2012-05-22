@@ -1,9 +1,9 @@
 if ($("#rides_table").length) {
   $("#rides_table").html('<%= j render('rides_table') %>');
   $(".woohoo").html("showing <%= pluralize(@rides.count, "ride") %>");
+  $("#rides_subtitle").text('<%= j params[:action] %>');
+  $("#ride_search").html('<%= j render('shared/ride_search') %>');
 }
 else {
   $("#body").html("<%= escape_javascript(render("rides/index")) %>");
 }
-$("#rides_subtitle").text('<%= j params[:action] %>');
-$("#ride_search").html('<%= j render('shared/ride_search') %>');
