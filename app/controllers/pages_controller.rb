@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
-  
+    
   def home
-    @rides = Ride.order('created_at DESC')
-    @rides = @rides.paginate(:page => params[:page], :per_page => 5).includes(:user)
     respond_to do |format|
       format.html
       format.js

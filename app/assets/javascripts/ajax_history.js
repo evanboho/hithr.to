@@ -10,7 +10,6 @@
     History.Adapter.bind(window,'statechange',function(){
       var State = History.getState();
       History.log(State.data, State.title, State.url);
-      //if (Data == null) {alert(Data);}
       if (Data != null) {
     	// alert(location.href + "data");
         $.get(location.href, Data, null, "script");
@@ -20,7 +19,6 @@
 	    // alert(location.href);
 	    $.getScript(location.href);
       }
-      return false;
     });
 
 })(window);

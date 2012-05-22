@@ -75,7 +75,12 @@ div {
   font-family: 'Happy Monkey', cursive;
   color: #222;
   font-size: 4.5em;
-  text-shadow: 0em .05em 0.05em #666;
+  text-shadow: 0.1em 0.01em .2em #666;
+}
+
+a.dropdown-toggle {
+  &:hover {
+  cursor: pointer; }
 }
 
 .happy_monkey {
