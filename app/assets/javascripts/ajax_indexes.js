@@ -1,15 +1,10 @@
 $(function() {
 	
-	// var History = window.History;
-	//     if ( !History.enabled ) {
-	//       return false;
-	//     }
-	// 	
-	// 	History.Adapter.bind(window, 'statechange', function() {
-	//         var State = History.getState();
-	//         // alert(State.url);
-	//         History.log(State.data, State.title, State.url);
-	//     });
+	$('#nav_ride_wanted a, #nav_ride_offered a').live("click", function() {
+	  $.getScript(this.href);
+	  History.pushState(null, "", this.href);
+	  return false;
+	})
 	
 	$('#index_table th a,  #index_table .apple_pagination a, #rides_table .apple_pagination a, td.date select').live("click", function() {
 	  $.getScript(this.href);
