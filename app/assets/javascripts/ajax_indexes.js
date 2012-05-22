@@ -2,12 +2,15 @@ $(function() {
 	
 	$('#nav_ride_wanted a, #nav_ride_offered a, a#nav_brand').live("click", function() {
 	  // $.getScript(this.href);
+	  // alert(this.href);
+	  Data = null;
 	  History.pushState(null, "", this.href);
 	  return false;
 	})
 	
 	$('#index_table th a,  #index_table .apple_pagination a, #rides_table .apple_pagination a, td.date select').live("click", function() {
 	  // $.getScript(this.href);
+	  Data = null;
 	  History.pushState(null, "", this.href);
 	  return false;
 	});
@@ -29,23 +32,5 @@ $(function() {
       History.pushState(null, "", this.action);
 	  return false;
 	});
-	
-	// $(window).bind("popstate", function() {
-	//       alert(window.location);
-	// });
-	
-	
-	
-	  // var str = "";
-	  // alert(($("select option:selected").text()));
-      //str = $("select option:selected").text();
-      //if (str == "rider") {
-	   // $("#home_page_search").html }
-	  //else {	
-	//}
-	// $("#city_search").submit(function() {
-	//         $.getScript(this.url);
-	// 	    //return false;	
-	// 	});
 	
 });

@@ -7,18 +7,20 @@
     }
 
     // Bind to StateChange Event
-    History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
-      var State = History.getState(); // Note: We are using History.getState() instead of event.state
+    History.Adapter.bind(window,'statechange',function(){
+      var State = History.getState();
       History.log(State.data, State.title, State.url);
+      //if (Data == null) {alert(Data);}
       if (Data != null) {
-		// alert("data present");
+    	// alert(location.href + "data");
         $.get(location.href, Data, null, "script");
         Data = null;
       }
       else {
-		// alert('no');
+	    // alert(location.href);
 	    $.getScript(location.href);
       }
+      return false;
     });
 
 })(window);
