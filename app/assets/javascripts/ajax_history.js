@@ -8,7 +8,7 @@
 
     // Bind to StateChange Event
     History.Adapter.bind(window,'statechange',function(){
-      var State = History.getState();
+      State = History.getState();
       History.log(State.data, State.title, State.url);
       if (Data != null) {
     	// alert(location.href + "data");

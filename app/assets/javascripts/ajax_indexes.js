@@ -4,9 +4,15 @@ $(function() {
 	  // $.getScript(this.href);
 	  // alert(this.href);
 	  Data = null;
+	  if (History.getState().url == this.href) {
+		return false;
+	} else {
 	  History.pushState(null, "", this.href);
+	  
 	  $(".woohoo").text("loading...");
 	  return false;
+	
+	}
 	})
 	
 	$('#index_table th a,  #index_table .apple_pagination a, #rides_table .apple_pagination a, td.date select').live("click", function() {
