@@ -221,7 +221,7 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV['FB_KEY'], ENV['FB_SECRET'],
                   { :scope => 'email', 
                     :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt',
-                    :display => 'popup'}}}
+                    }}, :display => 'popup' }
   config.omniauth :twitter, ENV['TW_KEY'], ENV['TW_SECRET'], :display => 'popup'    
   config.omniauth :google_oauth2, ENV['GOO_KEY'], ENV['GOO_SECRET'], { :display => 'popup' }
   
