@@ -1,6 +1,6 @@
 $(function() {
 		
-	$('#nav_ride_wanted a, #nav_ride_offered a, a#nav_brand, #navbar_about_link a').live("click", function() {
+	$('#nav_ride_wanted a, #nav_ride_offered a, a#nav_brand, #navbar_about_link a, #user_rides_link a').live("click", function() {
 	  // $.getScript(this.href);
 	  // alert(this.href);
 	  Data = null;

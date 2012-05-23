@@ -30,7 +30,7 @@
 	  <% loc = request.location %>
 	  <% seed_city = params[:search_start] %>
 	  <% seed_city ||= loc.city if loc.present? %>
-	  <%= text_field_tag :search_start, seed_city, 
+	  <%= text_field_tag :search_start, params[:search_start], 
 	                                          :placeholder => "(city, state)", :class => "" %>
 	</td>
 	

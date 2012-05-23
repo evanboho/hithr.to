@@ -45,7 +45,7 @@
 	           <b class="caret"></b></a>
 	        <ul class="dropdown-menu">
 		      <li><%= link_to "messages", user_messages_path(current_user) %></li> 
-		      <li><%= link_to "my rides", user_rides_path(current_user) %></li>
+		      <li id="user_rides_link"><%= link_to "my rides", user_rides_path(current_user) %></li>
 		      <li><%= link_to "profile", current_user %></li>
 		      <li><%= link_to "sign out", sign_out_path %></li>  
 		    </ul>
