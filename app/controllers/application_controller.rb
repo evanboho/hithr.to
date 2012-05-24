@@ -22,8 +22,9 @@ class ApplicationController < ActionController::Base
    end
    
   def after_sign_in_path_for(resource)
-    session[:return_to] || root_path
+    return_to = session[:return_to] || root_path
     session.delete(:return_to)
+    return_to
   end
    
    private 
