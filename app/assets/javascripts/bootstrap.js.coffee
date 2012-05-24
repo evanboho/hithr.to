@@ -5,3 +5,4 @@ jQuery ->
   else
   # if $('#not_current_user').length
     $('.not_current_user').show()
+  

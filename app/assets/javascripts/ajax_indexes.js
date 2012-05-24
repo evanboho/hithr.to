@@ -1,3 +1,10 @@
+$(document).ajaxSend(function(e, xhr, options) {
+ var token = $("meta[name='csrf-token']").attr("content");
+  xhr.setRequestHeader("X-CSRF-Token", token);
+});
+
+jQuery.ajaxSetup({ cache: true });
+
 $(function() {
 		
 	$('#nav_ride_wanted a, #nav_ride_offered a, a#nav_brand, #navbar_about_link a, #user_rides_link a').live("click", function() {
@@ -5,14 +12,12 @@ $(function() {
 	  // alert(this.href);
 	  Data = null;
 	  if (History.getState().url == this.href) {
-		return false;
-	} else {
-	  History.pushState(null, "", this.href);
-	  
-	  $(".woohoo").text("loading...");
-	  return false;
-	
-	}
+		return false; } 
+	  else {
+	    History.pushState(null, "", this.href);
+	    $(".woohoo").text("loading...");
+	    return false; 
+	  }
 	})
 	
 	$('#index_table th a,  #index_table .apple_pagination a, #rides_table .apple_pagination a, td.date select').live("click", function() {
