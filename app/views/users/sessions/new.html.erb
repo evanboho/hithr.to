@@ -6,6 +6,7 @@
 <div class="sign_in">
 <div class="super-small-container well shadow round">
 <br>
+<%= session[:return_to] %>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <%= f.input :email, :label => "email:", :required => false %>
   <%= f.input :password, :required => false, :label => "password:" %>

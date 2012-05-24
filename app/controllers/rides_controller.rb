@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
   before_filter :current_user?, :except => [:offered, :show, :wanted, :user, :home_search]
   respond_to :html, :json
  

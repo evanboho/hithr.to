@@ -16,9 +16,15 @@ class ApplicationController < ActionController::Base
   def current_user?
      if !current_user
        flash[:error] = "you must be signed in to do that."
+       store_location
        redirect_to sign_in_path
      end
    end
+   
+  def after_sign_in_path_for(resource)
+    session[:return_to] || root_path
+    session.delete(:return_to)
+  end
    
    private 
   
@@ -33,6 +39,10 @@ class ApplicationController < ActionController::Base
    def admin?
      current_user == admin
    end 
+   
+   def store_location
+     session[:return_to] = request.fullpath
+   end
    
    helper_method :admin?
    helper_method :mobile_device?
