@@ -2,7 +2,12 @@
 <div class="hero-unit">
   <h1>w.hithr.to?</h1>
 </div>
-<%= form_for @ride do |f| %>
-  <%= render 'form', :f => f %>
-<% end %>
+<div class="small-container">
+  <div class="new_ride">
+    <div class="round"><br>
+      <%= form_for @ride do |f| %>
+        <%= render 'form', :f => f %>
+      <% end %>
+    </div>
+  </div>
 </div>

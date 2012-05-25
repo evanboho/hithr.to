@@ -76,7 +76,7 @@ div {
   font-family: 'Happy Monkey', cursive;
   color: #222;
   font-size: 4.5em;
-  text-shadow: 0.1em 0.01em .2em #666;
+  text-shadow: 0.01em 0.01em .1em #666;
 }
 
 a.dropdown-toggle {
@@ -291,14 +291,14 @@ td.avatar {
 // Forms
 //
 
-.simple_form label, form label {
-  float: left;
-  width: 15%;
-  text-align: right;
-  margin: 2px 10px;
-  font-size: .85em;
-  font-weight: bold;
-}
+//.simple_form label, form label {
+//  float: left;
+//  width: 15%;
+//  text-align: right;
+//  margin: 2px 10px;
+//  font-size: .85em;
+//  font-weight: bold;
+// }
 .sign_in label {
   width: 150px;
 }
@@ -345,9 +345,19 @@ textarea#message {
 }
 input[type="text"] {
   width: 90%;
+  height: auto;
+}
+
+form .city_label {
+  width: 10%;
+  height: 38px;
+  float: left;
+  margin-top: 11px;
+  margin-left: 21%;
+  font-size: .9em;
 }
 .new_ride input[type="text"] {
-  width: auto;
+  // width: auto;
 }
 
 #message_content {
@@ -512,8 +522,9 @@ ul.dropdown-menu li a {
 
 
 #ride_offered {
-  width: 150px;
-  font-size: 110%;
+  width: auto;
+  height: auto;
+  // font-size: 110%;
 }
 .top {
   @include rounded(10px, 10px, 0px, 0px); 
@@ -626,8 +637,6 @@ th .desc {
 }
 
 .woohoo {
-  // visibility: hidden;
-  // display: none;
   color: white;
   width: 50%;
   padding: 10px;
@@ -646,18 +655,31 @@ th .desc {
   background-color: #666;
 }
 
-form.search {
+form.ride, form.new_ride {
   font-size: 1em;
+  padding: 10px 0px 20px 0px;
   input {
     font-size: 1.7em;
-    height: auto;
+    height: 38px;
     width: 180px; }
+  select {
+  font-size: 1.5em; 
+  width: auto;
+  height: 48px;
+  color: #666; }
   input[type="submit"] {
     height: auto;
     padding: 10px 20px 20px 22px; 
     @include rounded; }
   ::-webkit-input-placeholder  {  
-    padding-top: 10px; }
+    padding-top: .25em; }
   input:-moz-placeholder { 
-    padding-top: 10px; }
+    padding-top: .25em; }
+}
+@media (max-width: 480px) {
+  form.ride, form.new_ride {
+    input[type="text"] {
+      width: 50px;
+}
+}
 }

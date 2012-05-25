@@ -13,9 +13,11 @@ class Ride < ActiveRecord::Base
   
   
   def before_save_events
-    find_or_create_cities
-    get_distance
-    get_your_bearings
+   unless self.start_city == "" || self.end_city == ""
+      find_or_create_cities
+      get_distance
+      get_your_bearings
+    end
   end
   
   geocoded_by :start_city_state
