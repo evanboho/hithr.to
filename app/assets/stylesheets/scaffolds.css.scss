@@ -349,15 +349,15 @@ input[type="text"] {
 }
 
 form .city_label {
-  width: 10%;
+  width: 15%;
   height: 38px;
   float: left;
-  margin-top: 11px;
-  margin-left: 21%;
-  font-size: .9em;
-}
-.new_ride input[type="text"] {
-  // width: auto;
+  text-align: right;
+  // margin-top: 11px;
+  margin: 11px 5% 0 5%;
+  font-size: 1em;
+  font-family: 'Happy Monkey', cursive;
+  font-weight: bold;
 }
 
 #message_content {
@@ -657,13 +657,14 @@ th .desc {
 
 form.ride, form.new_ride {
   font-size: 1em;
-  padding: 10px 0px 20px 0px;
+  padding: 25px 0px 20px 4%;
   input {
-    font-size: 1.7em;
+    font-size: 1.3em;
     height: 38px;
     width: 180px; }
   select {
-  font-size: 1.5em; 
+  text-align: left;
+  font-size: 1.3em; 
   width: auto;
   height: 48px;
   color: #666; }

@@ -1,7 +1,7 @@
 module MessageMailerHelper
 
 
-	def gravatar_for(user, size, options = {})
+	def gravatar_for(user, size=100, options = {})
     if user.profile.avatar_file_name.present?
       image_tag user.profile.avatar.url(size)
     else
